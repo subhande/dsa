@@ -67,7 +67,7 @@ class Solution:
     ################################
     # Memoization Approach
     ################################
-    
+
     def targetSumMemoizationHelper(self, ind, target, arr, dp):
         # Base case: if index is 0
         if ind == 0:
@@ -84,12 +84,12 @@ class Solution:
             return dp[ind][target]
 
         # Calculate the number of ways by not taking the current element
-        notTaken = self.targetSumTabularHelper(ind - 1, target, arr, dp)
+        notTaken = self.targetSumMemoizationHelper(ind - 1, target, arr, dp)
 
         # Calculate the number of ways by taking the current element
         taken = 0
         if arr[ind] <= target:
-            taken = self.targetSumTabularHelper(ind - 1, target - arr[ind], arr, dp)
+            taken = self.targetSumMemoizationHelper(ind - 1, target - arr[ind], arr, dp)
 
         # Store the result in dp array
         dp[ind][target] = (notTaken + taken) % (10**9 + 7)
@@ -109,7 +109,7 @@ class Solution:
         # Create a dp array
         dp = [[-1 for i in range(s2 + 1)] for j in range(n)]
         # Call the helper function to find the number of ways
-        return self.targetSumTabularHelper(n - 1, s2, nums, dp)
+        return self.targetSumMemoizationHelper(n - 1, s2, nums, dp)
 
 
 if __name__ == "__main__":
@@ -120,14 +120,14 @@ if __name__ == "__main__":
     nums = [1, 2, 3, 1]
     target = 3
     n = len(nums)
-    print("The total number of ways is", sol.targetSumTabular(n, target, nums))
+    print("The total number of ways is", sol.targetSumMemoization(n, target, nums))
 
     nums = [1, 2, 7, 1, 5]
     target = 4
     n = len(nums)
-    print("The total number of ways is", sol.targetSumTabular(n, target, nums))
+    print("The total number of ways is", sol.targetSumMemoization(n, target, nums))
 
     num = [2, 1, 3, 1, 2]
     target = 2
     n = len(nums)
-    print("The total number of ways is", sol.targetSumTabular(n, target, nums))
+    print("The total number of ways is", sol.targetSumMemoization(n, target, nums))
