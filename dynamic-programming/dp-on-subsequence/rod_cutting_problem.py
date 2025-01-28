@@ -126,7 +126,7 @@ if __name__ == "__main__":
     test_cases = [
         {"price": [1, 6, 8, 9, 10, 19, 7, 20], "N": 8, "expected": 25},
         {"price": [1, 5, 8, 9], "N": 4, "expected": 8},
-        {"price": [5, 5, 8, 9, 10, 17, 17, 20], "N": 8, "expected": 22},
+        {"price": [5, 5, 8, 9, 10, 17, 17, 20], "N": 8, "expected": 40},
     ]
 
     for test in test_cases:
