@@ -1,46 +1,11 @@
-
-
-def buildTreeFromArray(arr):
-    if not arr:
-        return None
-    root = TreeNode(arr[0])
-    q = [root]
-    front = 0
-    index = 1
-    while index < len(arr):
-        node = q[front]
-        front += 1
-
-        item = arr[index]
-        index += 1
-        if item is not None:
-            node.left = TreeNode(item)
-            q.append(node.left)
-
-        if index >= len(arr):
-            break
-
-        item = arr[index]
-        index += 1
-        if item is not None:
-            node.right = TreeNode(item)
-            q.append(node.right)
-    return root
-
-# Bottom view of BT
-
-
-class TreeNode(object):
-    def __init__(self, val=0, left=None, right=None):
-        self.data = val
-        self.left = left
-        self.right = right
+# Bottom View of a Binary Tree
+from utils import buildTreeFromArray, TreeNode
 
 from collections import deque
 
 class Solution:
     # Time Complexity: O(n) | Space Complexity: O(n)
-    def bottomView(self, root):
+    def bottomView(self, root: TreeNode | None):
         if not root:
             return []
 
