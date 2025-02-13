@@ -28,4 +28,4 @@ if __name__ == "__main__":
     target = root.left
     k = 2
     # Output: [0, 8]
-    print(sol1.distanceK(root))
+    print(sol1.distanceK(root, target, k))
