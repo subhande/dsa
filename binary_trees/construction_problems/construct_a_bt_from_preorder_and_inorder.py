@@ -6,7 +6,10 @@ from utils import buildTreeFromArray, TreeNode
 
 from collections import deque
 
+# Construct a BT from Preorder and Inorder
+
 class Solution:
+    # Time Complexity: O(n) | Space Complexity: O(n)
     def buildTree(self, preorder, inorder):
         # Create a map to store indices
         # of elements in the inorder traversal
