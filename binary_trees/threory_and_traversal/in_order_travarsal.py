@@ -41,5 +41,7 @@ if __name__ == "__main__":
     root.right.right = TreeNode(7)
 
     s = Solution()
+    print("===== Recursive In Order Traversal =====")
     print(s.inOrderRecursive(root))
+    print("===== Iterative In Order Traversal =====")
     print(s.inOrderIterative(root))

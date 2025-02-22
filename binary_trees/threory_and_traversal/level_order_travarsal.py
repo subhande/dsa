@@ -2,6 +2,8 @@
 # Level Order Traversal
 """
 
+from collections import deque
+
 class TreeNode(object):
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -13,14 +15,14 @@ class Solution:
         result = []
         if root is None:
             return result
-        queue = []
+        queue = deque()
 
         queue.append(root)
 
         while queue:
             level = []
             for _ in range(len(queue)):
-                node = queue.pop(0)
+                node = queue.popleft()
                 level.append(node.value)
                 if node.left is not None:
                     queue.append(node.left)

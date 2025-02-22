@@ -114,6 +114,10 @@ if __name__ == "__main__":
             "str": "bbabcbcab",
             "output": 7
 
+        },
+        {
+            "str": "aacabdkacaa",
+            "output": 9
         }
     ]
 

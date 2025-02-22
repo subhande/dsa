@@ -41,6 +41,14 @@ if __name__ == "__main__":
     root.right.right = TreeNode(7)
 
     s = Solution()
-    for i in s.tree_traversal(root):
-        print(i)
+    for i, traversal in enumerate(s.tree_traversal(root)):
+        if i == 0:
+            print("===== Pre Order Traversal =====")
+            print(traversal)
+        elif i == 1:
+            print("===== In Order Traversal =====")
+            print(traversal)
+        else:
+            print("===== Post Order Traversal =====")
+            print(traversal)
     # print(s.preOrderIterative(root))
