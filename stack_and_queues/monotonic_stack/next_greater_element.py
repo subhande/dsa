@@ -52,6 +52,46 @@ class Solution:
 
         return result
 
+
+    # Time complexity: O(n) | Space complexity: O(n)
+    def nextLargerElement2(self, arr):
+        n = len(arr)
+        # Initialize the result list with default value -1 for each element
+        result = [-1] * n
+        # Use a stack to keep track of the potential next greater elements
+        stack = []
+
+        # Traverse the array from right to left
+        for i in range(n):
+            # print(stack)
+            # Pop elements that are less than or equal to arr[i]
+            while stack and arr[stack[-1]] <= arr[i]:
+                prev = stack.pop()
+                result[prev] = arr[i]
+            stack.append(i)
+
+        return result
+
+    # Time complexity: O(n) | Space complexity: O(n)
+    def nextLargerElement3(self, arr):
+        n = len(arr)
+        # Initialize the result list with default value -1 for each element
+        result = [-1] * n
+        # Use a stack to keep track of the potential next greater elements
+        stack = []
+
+        # Traverse the array from right to left
+        for i in range(n):
+            # print(stack)
+            # Pop elements that are less than or equal to arr[i]
+            while stack and stack[-1] < arr[i]:
+                stack.pop()
+            if stack:
+                result[i] = stack[-1]
+            stack.append(i)
+
+        return result
+
 """
 arr = [1, 3, 2, 4]
 
@@ -124,23 +164,33 @@ if __name__ == '__main__':
     # Test 1
     arr = [1, 3, 2, 4]
     # Output: [3, 4, 4, -1]
+    print(arr)
     print(sol.nextLargerElementBruteForce(arr))
     print(sol.nextLargerElement(arr))
+    print(sol.nextLargerElement2(arr))
+    print(sol.nextLargerElement3(arr))
+
 
     # Test 2
     arr = [4, 3, 2, 1]
     # Output: [-1, -1, -1, -1]
+    print(arr)
     print(sol.nextLargerElementBruteForce(arr))
     print(sol.nextLargerElement(arr))
+    print(sol.nextLargerElement2(arr))
 
     # Test 3
     arr = [1, 2, 3, 4]
     # Output: [2, 3, 4, -1]
+    print(arr)
     print(sol.nextLargerElementBruteForce(arr))
     print(sol.nextLargerElement(arr))
+    print(sol.nextLargerElement2(arr))
 
     # Test 3
     arr = [5, 6, 7, 3, 1, 2, 4]
     # Output: [6, 7, -1, 4, 2, 4, -1]
+    print(arr)
     print(sol.nextLargerElementBruteForce(arr))
     print(sol.nextLargerElement(arr))
+    print(sol.nextLargerElement2(arr))
