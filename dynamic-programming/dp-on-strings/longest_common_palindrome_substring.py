@@ -1,6 +1,7 @@
 # Longest common palindromic substring
 # https://leetcode.com/problems/longest-palindromic-substring/?envType=company&envId=google&favoriteSlug=google-three-months
 
+
 class Solution:
     def longestPalindromeSubstringBruteForce(self, input_string: str) -> str:
         string_length = len(input_string)
@@ -23,33 +24,46 @@ class Solution:
             return s
 
         # dp[i][j] will be True if s[i:j+1] is a palindrome
-        dp = [[False] * n for _ in range(n)]
+        dp = [[False] * (n+1) for _ in range(n+1)]
         start, max_len = 0, 1
 
         # Every single character is a palindrome
         for i in range(n):
             dp[i][i] = True
 
-        # Fill the DP table:
-        # We consider all substrings by varying the end index (j)
-        for j in range(2, n): # String Length
-            for i in range(n-j): # Start Index
-                # If the current substring is of length 2 or 3,
-                # then it's a palindrome if the end characters match.
-                # # Else, it is a palindrome only if the substring inside is also a palindrome.
-                if s[i] == s[j] and (j - i <= 2 or dp[i+1][j-1]):
+        # Check for palindromes of length 1
+        for length in range(2, n+1):
+            for i in range(n-length+1):
+                j = i + length - 1
+                if s[i] == s[j] and (length == 2 or dp[i+1][j-1]):
                     dp[i][j] = True
-                else:
-                    dp[i][j] = False
-
-                # Update the maximum length palindrome found so far.
-                if dp[i][j] and (j - i + 1) > max_len:
                     start = i
-                    max_len = j - i + 1
+                    max_len = length
 
         return s[start:start+max_len]
 
 
+    def longestPalindrome(self, s: str) -> str:
+        dp = {"": True}
+        if len(s) == 1:
+            return s
+        for ch in s:
+            dp[ch] = True
+        max_str_size = 1
+        max_str = s[0]
+        n = len(s)
+        for length in range(2, n+1):
+            for start in range(n-length+1):
+                start_ch = s[start]
+                end = start + length - 1
+                end_ch = s[end]
+                if start_ch == end_ch and dp.get(s[start+1:end]) is True:
+                    temp = s[start:end+1]
+                    dp[temp] = True
+                    if len(temp) > max_str_size:
+                        max_str_size = len(temp)
+                        max_str = temp
+        return max_str
 
 
 
@@ -59,24 +73,54 @@ if __name__ == "__main__":
 
     # Test 1
     s = "babad"
-    # Expected output: "aba"
+    expected_output = "aba"
+    print(f"Expected output: {expected_output}")
     print(sol.longestPalindromeSubstringBruteForce(s))
     print(sol.longestPalindromeSubstringOptimal(s))
+    print(sol.longestPalindrome(s))
+    print("==================================")
 
     # Test 2
     s = "cbbd"
-    # Expected output: "bb"
+    expected_output = "bb"
+    print(f"Expected output: {expected_output}")
     print(sol.longestPalindromeSubstringBruteForce(s))
     print(sol.longestPalindromeSubstringOptimal(s))
+    print(sol.longestPalindrome(s))
+    print("==================================")
 
     # Test 3
     s = "ac"
-    # Expected output: "a"
+    expected_output = "a"
+    print(f"Expected output: {expected_output}")
     print(sol.longestPalindromeSubstringBruteForce(s))
     print(sol.longestPalindromeSubstringOptimal(s))
+    print(sol.longestPalindrome(s))
+    print("==================================")
+
+    # Test 4
+    s = "bb"
+    expected_output = "bb"
+    print(f"Expected output: {expected_output}")
+    print(sol.longestPalindromeSubstringBruteForce(s))
+    print(sol.longestPalindromeSubstringOptimal(s))
+    print(sol.longestPalindrome(s))
+    print("==================================")
+
+    # Test 5
+    s = "abb"
+    expected_output = "bb"
+    print(f"Expected output: {expected_output}")
+    print(sol.longestPalindromeSubstringBruteForce(s))
+    print(sol.longestPalindromeSubstringOptimal(s))
+    print(sol.longestPalindrome(s))
+    print("==================================")
 
     # Test 4
     s = "aacabdkacaa"
-    # Expected output: "aca"
+    expected_output = "aca"
+    print(f"Expected output: {expected_output}")
     print(sol.longestPalindromeSubstringBruteForce(s))
     print(sol.longestPalindromeSubstringOptimal(s))
+    print(sol.longestPalindrome(s))
+    print("==================================")

@@ -30,6 +30,49 @@ Constraints:
 class Solution:
 
     ################################
+    # Recursive Approach with Memoization
+    # ###############################
+
+    def lpsMemoizationHelper(self, str1, str2, index1, index2, memo):
+        # Base case: If either string is exhausted
+        if index1 < 0 or index2 < 0:
+            return 0
+
+        # Return the result if it is already computed
+        if memo[index1][index2] != -1:
+            return memo[index1][index2]
+
+        # If characters match, store the result and move diagonally in both strings
+        if str1[index1] == str2[index2]:
+            memo[index1][index2] = 1 + self.lpsMemoizationHelper(str1, str2, index1 - 1, index2 - 1, memo)
+        else:
+            # If characters do not match, take the maximum of the two possibilities
+            memo[index1][index2] = max(
+                self.lpsMemoizationHelper(str1, str2, index1 - 1, index2, memo),
+                self.lpsMemoizationHelper(str1, str2, index1, index2 - 1, memo)
+            )
+        return memo[index1][index2]
+
+    def lpsMemoization(self, str1):
+        n, m = len(str1), len(str1)
+        # Initialize a memoization table with -1
+        memo = [[-1] * m for _ in range(n)]
+        return self.lpsMemoizationHelper(str1, str1[::-1], n - 1, m - 1, memo)
+
+    def longestPalinSubseqRecursiveMemo(self, str, start, end, memo):
+        if start > end:
+            return 0
+        if start == end:
+            return 1
+        if memo[start][end] != -1:
+            return memo[start][end]
+        if str[start] == str[end]:
+            memo[start][end] = 2 + self.longestPalinSubseqRecursiveMemo(str, start + 1, end - 1, memo)
+        else:
+            memo[start][end] = max(self.longestPalinSubseqRecursiveMemo(str, start + 1, end, memo), self.longestPalinSubseqRecursiveMemo(str, start, end - 1, memo))
+        return memo[start][end]
+
+    ################################
     # Tabulation Approach
     ################################
 
@@ -131,3 +174,5 @@ if __name__ == "__main__":
 
         assert outputTabulation == test_case["output"]
         # assert outputTabulationSpaceOptimized == test_case["output"]
+        outputRecursiveMemo = longestPalinSubseq.lpsMemoization(test_case["str"])
+        print(f"Output (Recursive with Memoization): {outputRecursiveMemo}")
