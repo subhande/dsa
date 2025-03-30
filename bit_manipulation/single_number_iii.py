@@ -20,7 +20,7 @@ class Solution1:
 
         # Variable to get the rightmost
         # set bit in overall XOR
-        rightmost = (XOR & (XOR - 1)) ^ XOR
+        rightmost = (XOR & (XOR - 1)) ^ XOR # XOR ^ -XOR
 
         # Variables to stores XOR of
         # elements in bucket 1 and 2
