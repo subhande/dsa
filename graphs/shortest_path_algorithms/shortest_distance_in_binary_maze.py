@@ -2,8 +2,10 @@
 # https://takeuforward.org/plus/dsa/graph/shortest-path-algorithms/shortest-path-with-minimum-effort
 from collections import deque
 class Solution:
+
     def isValid(self, row, col, rows, cols):
         return 0 <= row < rows and 0 <= col < cols
+
     def shortestPath(self, grid, source, destination):
         if source == destination:
             return 0

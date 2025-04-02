@@ -3,7 +3,7 @@
 # https://leetcode.com/problems/word-ladder-ii/description/
 
 from collections import deque
-
+# Time Complexity: O(26 * L * N) | Space Complexity: O(N*M)
 class Solution:
     def findSequences(self, startWord, targetWord, wordList):
         wordSet = set(wordList)

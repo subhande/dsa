@@ -6,7 +6,7 @@
 from collections import deque
 from typing import List
 
-
+# Time Complexity: O(V + E) | Space Complexity: O(V)
 class Solution:
     def topologicalSort(self, graph, V):
         inDegree = [False] * V

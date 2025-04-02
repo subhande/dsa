@@ -57,6 +57,7 @@ class Solution:
                 i += 1
 
             # if the match count is equal to the min length and the length of str1 is greater than str2
+            # e.g. "abc", "ab" -> this order is invalid
             if match_count == min_length and len(str1) > len(str2):
                 return ""
 

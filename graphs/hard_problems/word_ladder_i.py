@@ -3,7 +3,7 @@
 # https://leetcode.com/problems/word-ladder/editorial/
 
 from collections import deque
-
+# Time Complexity: O(26 * L * N) | Space Complexity: O(N)
 class Solution:
     def wordLadderLength(self, startWord, targetWord, wordList):
 

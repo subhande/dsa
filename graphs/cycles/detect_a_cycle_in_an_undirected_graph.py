@@ -52,8 +52,44 @@ class Solution:
         return False
 
 
+from collections import deque
+from typing import List
+
+class SolutionLeetcode:
+    def isValid(self, row, col, rows, cols):
+        return 0 <= row < rows and 0 <= col < cols
+
+    def bfs(self, r, c, rows, cols, grid, value, visitedValue):
+        queue = deque()
+        grid[r][c] = visitedValue
+        queue.append((r, c, (-1, -1)))
+
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+        while queue:
+            row, col, parent = queue.popleft()
+            for dr, dc in directions:
+                nr = row + dr
+                nc = col + dc
+                if self.isValid(nr, nc, rows, cols):
+                    if grid[nr][nc] == value:
+                        queue.append((nr, nc, (row, col)))
+                        grid[nr][nc] = visitedValue
+                    elif grid[nr][nc] == visitedValue and (nr, nc) != parent:
+                        return True
+        return False
 
 
+
+    def containsCycle(self, grid: List[List[str]]) -> bool:
+        rows = len(grid)
+        cols = len(grid[0])
+
+        for row in range(rows):
+            for col in range(cols):
+                if "vis-" not in grid[row][col] and self.bfs(row, col, rows, cols, grid, grid[row][col], "vis-" + grid[row][col]):
+                    return True
+        return False
 
 
 

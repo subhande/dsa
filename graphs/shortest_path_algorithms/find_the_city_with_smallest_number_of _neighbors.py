@@ -5,12 +5,14 @@
 from typing import List
 
 class Solution:
+
     def shortestPathFloyedWarshall(self, matrix):
         n = len(matrix)
         for k in range(n):
             for i in range(n):
                 for j in range(n):
                     matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j])
+
     def findCity(self, n: int, m: int, edges: List[List[int]], distanceThreshold: int) -> int:
         INF = float("inf")
         matrix = [[INF] * n for _ in range(n)]
