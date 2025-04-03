@@ -28,3 +28,23 @@ class Solution:
 • cost_two_steps_back and cost_one_step_back indicate the minimum cost to reach the two steps before and one step before the current step respectively.
 • cost_to_current_step represents the computed minimum cost to reach the current step using the given recurrence relation.
 """
+
+
+
+class Solution2:
+    def minCostClimbingStairsRecursiveHelper(self, cost: List[int], step: int, memo: List[int]) -> int:
+        if step < 2:
+            return 0
+        if memo[step] != -1:
+            return memo[step]
+
+        cost_to_current_step = min(
+            self.minCostClimbingStairsRecursiveHelper(cost, step - 1, memo) + cost[step - 1],
+            self.minCostClimbingStairsRecursiveHelper(cost, step - 2, memo) + cost[step - 2]
+        )
+        memo[step] = cost_to_current_step
+        return cost_to_current_step
+    def minCostClimbingStairsRecursive(self, cost: List[int]) -> int:
+        total_steps = len(cost)
+        memo = [-1] * (total_steps + 1)
+        return self.minCostClimbingStairsRecursiveHelper(cost, total_steps, memo)

@@ -1,7 +1,7 @@
 # Triangle
 
 
-```class Solution:
+class Solution:
     def minTriangleSum(self, triangle):
         """
         Function to calculate the minimum falling path sum from the first row to the last
@@ -47,4 +47,20 @@
 
         # Return the minimum value in the last row's minimum sums
         return min(prev_row_min_sums)
-```
+
+class Solution2:
+    def minTriangleSum(self, triangle):
+        n = len(triangle)
+        m = len(triangle[-1])
+        prev = [float("inf")] * m
+
+        prev[0] = triangle[0][0]
+
+        for i in range(1, n):
+            curr = [float("inf")] * m
+            curr[0] = prev[0] + triangle[i][0]
+            for j in range(1, i + 1):
+                curr[j] = min(prev[j] + triangle[i][j], prev[j - 1] + triangle[i][j])
+            prev = curr[:]
+
+        return min(prev)

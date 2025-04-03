@@ -19,3 +19,27 @@ class Solution:
             two_step_back = one_step_back
             one_step_back = current_energy
         return one_step_back
+
+# Time: O(n) | Space: O(n)
+class Solution2:
+    def solve(self, ind, heights, dp):
+        if ind == 0:
+            # Base case
+            return 0
+        if dp[ind] != -1:
+            # Memoized result
+            return dp[ind]
+
+        jumpOne = self.solve(ind - 1, heights, dp) + abs(heights[ind] - heights[ind - 1])
+        jumpTwo = float('inf')
+        if ind > 1:
+            jumpTwo = self.solve(ind - 2, heights, dp) + abs(heights[ind] - heights[ind - 2])
+        # Store and return result
+        dp[ind] = min(jumpOne, jumpTwo)
+        return dp[ind]
+
+    def frogJump(self, heights):
+        n = len(heights)
+        dp = [-1] * n
+        # Start solving from the last stair
+        return self.solve(n - 1, heights, dp)
