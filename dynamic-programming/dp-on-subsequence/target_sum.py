@@ -23,6 +23,22 @@ Constraints:
 -------------------------------------------------------------
 """
 
+"""
+
+a1 + a2 - b1 + b2 = target
+
+subset(a) + subset(b) = total
+
+subset(a) - subset(b) = target
+
+-----------------------------------
+2 * subset(a) = target + total
+-----------------------------------
+subset(a) = (target + total) / 2
+
+
+"""
+
 
 class Solution:
     ################################

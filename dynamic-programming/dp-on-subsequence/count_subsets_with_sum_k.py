@@ -48,3 +48,49 @@ class Solution:
         """ The final result is in the
         last cell of the 'prev' vector"""
         return prev[K]
+
+
+MODULO = 10**9 + 7
+
+class Solution2:
+    """ Function to count the number of
+    subsets with sum k using memoization """
+    def findWaysUtil(self, ind, target, arr, dp):
+        """ Base case: If the target sum
+        is 0, we found a valid subset """
+        if target == 0:
+            return 1
+
+        """ Base case: If we have considered all elements
+        and the target is still not 0, return 0 """
+        if ind == 0:
+            return 1 if arr[0] == target else 0
+
+        """ If the result for this state
+        is already calculated, return it """
+        if dp[ind][target] != -1:
+            return dp[ind][target]
+
+        # Exclude the current element
+        notTaken = self.findWaysUtil(ind - 1, target, arr, dp)
+
+        """ Include the current element if
+        it doesn't exceed the target"""
+        taken = 0
+        if arr[ind] <= target:
+            taken = self.findWaysUtil(ind - 1, target - arr[ind], arr, dp)
+
+        """Store the result in DP table and return
+        Also, take modulo for the code to be accepted"""
+        dp[ind][target] = (notTaken + taken) % MODULO
+        return dp[ind][target]
+
+    # Function to find out number of subsets with sum k
+    def perfectSum(self, arr, K):
+        n = len(arr)
+
+        # DP array to store the subproblems
+        dp = [[-1] * (K + 1) for _ in range(n)]
+
+        # Return the result
+        return self.findWaysUtil(n - 1, K, arr, dp)
