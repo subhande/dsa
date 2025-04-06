@@ -4,7 +4,23 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
 sys.path.insert(0, project_root)
 
+
+
+
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
+
+from typing import Optional
+class Solution2:
+    def find(self, root: Optional[TreeNode], k: int, seen: set) -> bool:
+        if root is None:
+            return False
+        if k - root.val in seen:
+            return True
+        seen.add(root.val)
+        return self.find(root.left, k, seen) or self.find(root.right, k, seen)
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+        seen = set()
+        return self.find(root, k, seen)
 
 # BST Iterator to iterate in the inorder and reverse inorder manner
 class BSTIterator:
