@@ -44,14 +44,15 @@ class DisjointSet:
 
 class Solution:
     # Prim's Algorithm
+    # Time complexity: O(ElogE) | Space complexity: O(E + V)
     def spanningTreePrimAlgorithm(self, V, adj):
         total_weight = 0
         visited = [False] * V
         # Start from vertex 0 (can start from any vertex)
-        minHeap = [(0, 0, -1)] # (weight, vertex, parent)
+        minHeap = [(0, 0)] # (weight, vertex)
 
         while minHeap:
-            weight, node, parent = heapq.heappop(minHeap)
+            weight, node = heapq.heappop(minHeap)
 
             if visited[node]:
                 continue
@@ -61,11 +62,12 @@ class Solution:
 
             for neighbor, w in adj[node]:
                 if not visited[neighbor]:
-                    heapq.heappush(minHeap, (w, neighbor, node))
+                    heapq.heappush(minHeap, (w, neighbor))
 
         return total_weight
 
     # Kruskal's Algorithm
+    # Time complexity: O(V+E) + O(ElogE) + O(E*4α*2) |  | Space complexity: O(V+E)
     def spanningTreeKruskalAlgorithm(self, V, adj):
         edges = []
         for u in range(V):
