@@ -19,3 +19,10 @@ class Solution:
             maxLen = max(maxLen, right - left + 1)
             right += 1
         return maxLen
+
+
+if __name__ == "__main__":
+    s = "AABABBA"
+    k = 1
+    solution = Solution()
+    print(solution.characterReplacement(s, k))  # Output: 4

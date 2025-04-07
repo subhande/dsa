@@ -60,6 +60,16 @@ class Solution:
             self.heapifyDown(0, nums, size)
         return nums[0]
 
+        # # Iterate over all elements of the heap. This also works
+        # for i in range(k):
+        #     # Swap the root of the heap with the last element of the heap
+        #     nums[0], nums[size-1] = nums[size-1], nums[0]
+        #     # Reduce the size of the heap by 1
+        #     size -= 1
+        #     # Maintain the max-heap property of the heap
+        #     self.heapifyDown(0, nums, size)
+        # return nums[size]
+
 
 # Driver code
 if __name__ == "__main__":
