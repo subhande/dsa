@@ -2,6 +2,7 @@
 
 
 from typing import List
+# Time Complexity: O(2^n) | Space Complexity: O(n)
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         result = []

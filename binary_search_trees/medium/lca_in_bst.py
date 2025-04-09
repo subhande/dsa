@@ -1,7 +1,6 @@
 import os, sys
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
-from tkinter.constants import LEFT
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
 sys.path.insert(0, project_root)
 

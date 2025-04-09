@@ -10,6 +10,7 @@ sys.path.insert(0, project_root)
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 from typing import Optional
+# Time Complexity: O(n) | Space Complexity: O(n)
 class Solution2:
     def find(self, root: Optional[TreeNode], k: int, seen: set) -> bool:
         if root is None:
