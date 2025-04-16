@@ -22,6 +22,29 @@ class Solution:
 
         return longest_streak
 
+class Solution12:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        maxSequenceLength = 1
+        currSequenceLength = 1
+        nums.sort()
+        n = len(nums)
+        right = 1
+        while right < n:
+            if nums[right] - nums[right-1] == 1:
+                currSequenceLength += 1
+                maxSequenceLength = max(maxSequenceLength, currSequenceLength)
+            elif nums[right] - nums[right-1] == 0:
+                pass
+            else:
+                currSequenceLength = 1
+            right += 1
+
+        return maxSequenceLength
+
+
+
 # Longest Increasing Consicutive Subsequence
 from typing import List
 

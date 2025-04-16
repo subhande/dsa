@@ -174,3 +174,5 @@ cython_debug/
 **/.DS_Store
 
 .ropeproject
+
+google_interview_questions/interview.md
