@@ -87,9 +87,9 @@ class Solution:
             dp[i][j] = self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j - 1, dp)
         else:
             dp[i][j] = 1 + min(
-                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j, dp),
-                self.editDistanceRecursionMemoizationHelper(start, target, i, j - 1, dp),
-                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j - 1, dp)
+                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j, dp), # delete
+                self.editDistanceRecursionMemoizationHelper(start, target, i, j - 1, dp), # insert
+                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j - 1, dp) # replace
             )
         return dp[i][j]
 

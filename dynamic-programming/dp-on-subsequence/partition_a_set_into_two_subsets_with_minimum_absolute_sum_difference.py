@@ -97,7 +97,8 @@ class Solution2:
         """ Calculate the subset sum for each
         possible sum from 0 to the total sum"""
         for i in range(tot_sum + 1):
-            dummy = self.func(n - 1, i, arr, dp)
+            self.func(n - 1, i, arr, dp)
+
 
         mini = float('inf')
         for i in range(tot_sum + 1):
@@ -106,3 +107,12 @@ class Solution2:
                 mini = min(mini, diff)
 
         return mini
+
+
+if __name__ == "__main__":
+    arr = [1, 7, 14, 5]
+    n = len(arr)
+    sol = Solution()
+    print(sol.minDifference(arr, n))  # Output: 1
+    sol2 = Solution2()
+    print(sol2.minDifference(arr, n))  # Output: 1
