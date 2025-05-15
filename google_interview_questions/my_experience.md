@@ -6,6 +6,15 @@
 
 # Onsite 1
 
+Min Hand movement to play piano notes
+- Given a list of notes, find the minimum hand movement to play the notes.
+- Notes are represented as a list of integers.  
+- Input: [1, 2, 3, 4, 5]
+- Output: 1
+- Input: [1, 2, 3, 4, 5, 6]
+- Output: 2
+- Follow up: Return which notes to play with which hand. Thumb is 0, index is 1, middle is 2, ring is 3, pinky is 4.
+
 # Onsite 2
 - Movie recomendation system.
 Given
