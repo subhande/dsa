@@ -3,7 +3,7 @@ from typing import List
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         n = len(nums)
-        prefixProductArray = [1] * (n+1)
+        prefixProductArray = [1] * n
         product = 1
         for idx in range(n):
             product *= nums[idx]

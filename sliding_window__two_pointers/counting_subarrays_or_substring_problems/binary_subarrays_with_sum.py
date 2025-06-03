@@ -42,6 +42,8 @@ class Solution2:
             freq[current_sum] = freq.get(current_sum, 0) + 1
 
         return total_count
+
+
 # Solution2 and Solution3 are the same but freq is initialized differently
 class Solution3:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:

@@ -1,5 +1,11 @@
 
 # Number of Wonderful Substrings
+"""
+There are two types of substrings:
+    - Substrings with all letters occurring an even number of times. e.g "aa", "bbbb"
+    - Substrings with all letters occurring an even number of times, except for one letter that occurs an odd number of times e.g. "d", "bbd", "abb"
+
+"""
 
 class Solution:
     def wonderfulSubstrings(self, word: str) -> int:
