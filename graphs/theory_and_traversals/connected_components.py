@@ -22,6 +22,8 @@ Explanation of the code:
 
 This solution efficiently counts the number of connected components in an undirected graph.
 """
+from collections import deque, defaultdict
+from typing import List
 
 class Solution:
     # Time Complexity: O(V + E) | Space Complexity: O(V + E)
@@ -77,6 +79,49 @@ class Solution:
         return component_count
 
 
+class Solution2:
+
+    # Depth-First Search (DFS) helper function
+    def dfs(self, node, graph, visited):
+        visited.add(node)  # Mark the current node as visited
+        for neighbor in graph[node]:  # Traverse all neighbors of the current node
+            if neighbor not in visited:  # If neighbor hasn't been visited
+                self.dfs(neighbor, graph, visited)  # Recursively visit the neighbor
+
+    # Breadth-First Search (BFS) helper function
+    def bfs(self, node, graph, visited):
+        queue = deque([node])  # Initialize queue with the starting node
+        visited.add(node)      # Mark the starting node as visited
+
+        while queue:  # Continue until the queue is empty
+            current = queue.popleft()  # Get the next node from the queue
+            for neighbor in graph[current]:  # Check all neighbors of the current node
+                if neighbor not in visited:  # If neighbor hasn't been visited
+                    visited.add(neighbor)   # Mark neighbor as visited
+                    queue.append(neighbor)  # Add neighbor to the queue for further traversal
+
+    # Main function to count the number of connected components in the graph
+    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+
+        # Build the adjacency list for the graph
+        graph = defaultdict(list)
+        for edge in edges:
+            graph[edge[0]].append(edge[1])  # Add the edge in both directions (undirected)
+            graph[edge[1]].append(edge[0])
+
+        visited = set()  # Set to keep track of visited nodes
+        connectedComponents = 0  # Counter for connected components
+
+        # Iterate through all nodes from 0 to n-1
+        for node in range(n):
+            if node not in visited:  # If the node hasn't been visited yet
+                connectedComponents += 1  # Found a new connected component
+                self.bfs(node, graph, visited)  # Traverse all nodes in this component using BFS
+                # Alternatively, you could use DFS:
+                # self.dfs(node, graph, visited)
+        return connectedComponents  # Return the total number of connected components
+
+
 if __name__ == "__main__":
     s = Solution()
 
@@ -92,3 +137,16 @@ if __name__ == "__main__":
     V = 7
     edges = [[0, 1], [1, 2], [2, 3], [4, 5]]
     print(s.findNumberOfComponent(E, V, edges)) # 3
+
+
+    s2 = Solution2()
+
+    # Test Case 1
+    n = 5
+    edges = [[0, 1], [1, 2], [3, 4]]
+    print(s2.countComponents(n, edges))  # Output: 2
+
+    # Test Case 2
+    n = 6
+    edges = [[0, 1], [1, 2], [3, 4], [4, 5]]
+    print(s2.countComponents(n, edges))  # Output: 2
