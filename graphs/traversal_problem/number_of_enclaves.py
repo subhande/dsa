@@ -1,6 +1,7 @@
 # Number Of Enclaves
 
 from collections import deque
+from typing import List
 
 class Solution:
     def isValid(self, r, c, n_rows, n_cols):
@@ -35,6 +36,50 @@ class Solution:
         for row in grid:
             enclave_count += sum(row)
         return enclave_count
+
+
+class Solution2:
+    def isValid(self, row, col, n, m) -> bool:
+        return 0 <= row < n and 0 <= col < m
+
+    def bfs(self, r, c, n, m, grid) -> int:
+        queue = deque()
+        grid[r][c] = 0
+        pathLength = 0
+        queue.append((r, c))
+        directions = [(0,-1), (0, 1), (-1, 0), (1, 0)]
+        while queue:
+            row, col = queue.popleft()
+            pathLength += 1
+            for (dr, dc) in directions:
+                nr = row + dr
+                nc = col + dc
+                if self.isValid(nr, nc, n, m) and grid[nr][nc] == 1:
+                    grid[nr][nc] = 0
+                    queue.append((nr,nc))
+        return pathLength
+
+
+    def numEnclaves(self, grid: List[List[int]]) -> int:
+
+        n = len(grid)
+        m = len(grid[0])
+        totalLandCells = 0
+
+
+        for row in range(n):
+            for col in range(m):
+                if grid[row][col] == 1:
+                    totalLandCells += 1
+
+        for row in range(n):
+            for col in range(m):
+                if (row in [0, n-1] or col in [0, m-1]) and grid[row][col] == 1:
+                    totalLandCells -= self.bfs(row, col, n, m, grid)
+
+        return totalLandCells
+
+
 
 if __name__ == "__main__":
     sol = Solution()
