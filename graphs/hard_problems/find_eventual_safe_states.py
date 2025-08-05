@@ -9,7 +9,7 @@ from typing import List
 # Time Complexity: O(V + E) | Space Complexity: O(V)
 class Solution:
     def topologicalSort(self, graph, V):
-        inDegree = [False] * V
+        inDegree = [0] * V
 
         for node in range(V):
             for neighbour in graph[node]:
@@ -44,6 +44,33 @@ class Solution:
         topoOrder.sort()
         return topoOrder
 
+
+
+class Solution2:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        V = len(graph)
+        revGraph = [[]for _ in range(V)]
+        inDegree = [0] * V
+
+        for vertex_u, edges in enumerate(graph):
+            for vertex_v in edges:
+                revGraph[vertex_v].append(vertex_u)
+                inDegree[vertex_u] += 1
+
+        queue = deque()
+
+        for node in range(V):
+            if inDegree[node] == 0:
+                queue.append(node)
+        safeNodes = []
+        while queue:
+            node = queue.popleft()
+            safeNodes.append(node)
+            for neighbour in revGraph[node]:
+                inDegree[neighbour] -= 1
+                if inDegree[neighbour] == 0:
+                    queue.append(neighbour)
+        return sorted(safeNodes)
 
 if __name__ == "__main__":
     sol = Solution()

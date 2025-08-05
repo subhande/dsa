@@ -1,6 +1,6 @@
 # Course Schedule
-# https://leetcode.com/problems/course-schedule/
-# https://takeuforward.org/plus/dsa/graph/hard-problems/course-schedule-i
+# https://leetcode.com/problems/course-schedule-ii/
+# https://takeuforward.org/plus/dsa/graph/hard-problems/course-schedule-ii
 
 
 from collections import deque
@@ -26,9 +26,9 @@ class Solution:
                 inDegree[neighbour] -= 1
                 if inDegree[neighbour] == 0:
                     queue.append(neighbour)
-        return topologicalOrder if len(topologicalOrder) == V else []
+        return True if len(topologicalOrder) == V else False
 
-    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         adj = [[] for _ in range(numCourses)]
 
         for prerequisite in prerequisites:
