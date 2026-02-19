@@ -2,6 +2,30 @@
 
 --------------------------------"""
 
+"""
+Compare with Next Element and Swap if Necessary
+Initial: [5, 1, 4, 2, 8]
+
+Pass 1:
+ compare 5 & 1 -> swap -> [1, 5, 4, 2, 8]
+ compare 5 & 4 -> swap -> [1, 4, 5, 2, 8]
+ compare 5 & 2 -> swap -> [1, 4, 2, 5, 8]
+ compare 5 & 8 -> no swap -> [1, 4, 2, 5, 8]
+ After pass 1, 8 is in correct final position.
+
+Pass 2:
+ compare 1 & 4 -> no swap -> [1, 4, 2, 5, 8]
+ compare 4 & 2 -> swap -> [1, 2, 4, 5, 8]
+ compare 4 & 5 -> no swap -> [1, 2, 4, 5, 8]
+ After pass 2, 5 is in correct place.
+
+Pass 3:
+ compare 1 & 2 -> no swap
+ compare 2 & 4 -> no swap
+ No swaps this pass -> array is sorted: [1, 2, 4, 5, 8]
+
+"""
+
 def bubble_sort(arr):
     n = len(arr)
     # Traverse through all elements in the list

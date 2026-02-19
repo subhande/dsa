@@ -66,3 +66,33 @@ Explanation:
 - The process is repeated for all elements until the entire array is sorted.
 
 This makes insertion sort simple and efficient for small or nearly-sorted datasets, even though it performs poorly on large and/or randomly ordered arrays due to its quadratic time complexity in the average and worst cases."""
+
+
+"""
+Arr: 5 2 4 6 1 3
+Pass 1:
+  key = 2, j = 0
+  compare 2 & 5 -> shift 5 to the right -> [5, 5, 4, 6, 1, 3]
+  insert 2 at position j+1 -> [2, 5, 4, 6, 1, 3]
+Pass 2:
+  key = 4, j = 1
+  compare 4 & 5 -> shift 5 to the right -> [2, 5, 5, 6, 1, 3]
+  insert 4 at position j+1 -> [2, 4, 5, 6, 1, 3]
+Pass 3:
+  key = 6, j = 2
+  compare 6 & 5 -> no shift -> [2, 4, 5, 6, 1, 3]
+Pass 4:
+  key = 1, j = 3
+  compare 1 & 6 -> shift 6 to the right -> [2, 4, 5, 6, 6, 3]
+  compare 1 & 5 -> shift 5 to the right -> [2, 4, 5, 5, 6, 3]
+  compare 1 & 4 -> shift 4 to the right -> [2, 4, 4, 5, 6, 3]
+  compare 1 & 2 -> shift 2 to the right -> [2, 2, 4, 5, 6, 3]
+  insert 1 at position j+1 -> [1, 2, 4, 5, 6, 3]
+Pass 5:
+  key = 3, j = 4
+  compare 3 & 6 -> shift 6 to the right -> [1, 2, 4, 5, 6, 6]
+  compare 3 & 5 -> shift 5 to the right -> [1, 2, 4, 5, 5, 6]
+  compare 3 & 4 -> shift 4 to the right -> [1, 2, 4, 4, 5, 6]
+  compare 3 & 2 -> no shift -> [1, 2, 4, 4, 5, 6]
+  insert 3 at position j+1 -> [1, 2, 3, 4, 5, 6]
+"""

@@ -1,5 +1,7 @@
 """Quick Sort is a highly efficient, comparison-based, divide-and-conquer sorting algorithm. Here’s an in-depth explanation along with Python code, complexity analysis, advantages and disadvantages, examples, and more details.
 
+Pick a pivot, put smaller elements left and larger right, then repeat recursively.
+
 ──────────────────────────────
 1. Explanation
 
@@ -151,3 +153,38 @@ Conclusion
 Quick sort is an excellent general-purpose sorting algorithm, particularly known for its average-case efficiency and in-place sorting capability. While it has potential pitfalls in terms of worst-case performance, careful implementation (e.g., randomized pivot selection) usually results in an algorithm that is both fast and efficient for large datasets.
 
 This concludes the brief explanation, Python code examples, time and space complexity analysis, as well as the advantages and disadvantages of Quick sort."""
+
+
+"""
+Array: [33, 10, 59, 25, 72, 18, 10]
+
+Pass 1:
+- Choose pivot(last element): 10
+- Partitioning:
+- Compare 33 with 10 -> 33 > 10, no swap
+- Compare 10 with 10 -> 10 <= 10, swap with itself (i = 0)
+- Compare 59 with 10 -> 59 > 10, no swap
+- Compare 25 with 10 -> 25 > 10, no swap
+- Compare 72 with 10 -> 72 > 10, no swap
+- Compare 18 with 10 -> 18 > 10, no swap
+- Swap pivot with element at i+1 (10 with 10)
+Array after Pass 1: [10, 10, 59, 25, 72, 18, 33]
+Partition index: 1
+Left sub-array: [10]
+Right sub-array: [59, 25, 72, 18, 33]
+
+Pass 2 (Right sub-array):
+- Choose pivot(last element): 33
+- i = 1 (starting index of right sub-array)
+- Partitioning:
+- Compare 59 with 33 -> 59 > 33, no swap
+- Compare 25 with 33 -> 25 <= 33, swap with itself (i = 2) -> [10, 10, 25, 59, 72, 18, 33]
+- Compare 72 with 33 -> 72 > 33, no swap
+- Compare 18 with 33 -> 18 <= 33, swap with itself (i = 3) -> [10, 10, 25, 18, 72, 59, 33]
+- Swap pivot with element at i+1 (33 with 59)
+Array after Pass 2: [10, 10, 25, 18, 33, 72, 59]
+Partition index: 4
+Left sub-array: [25, 18]
+Right sub-array: [72, 59]
+
+"""
