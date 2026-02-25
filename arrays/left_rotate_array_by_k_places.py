@@ -1,7 +1,8 @@
 # Left/Right Rotate Array by K Places
 
 
-# Approach 1
+# Approach 1: Using Temporary Array
+# Time Complexity: O(n) | Space Complexity: O(k)
 class Solution:
     def rotateArrayLeft(self, nums, k):
         n = len(nums)
@@ -44,7 +45,8 @@ class Solution:
         return nums
 
 
-# Approach 2
+# Approach 2: Using Reversal Algorithm
+# Time Complexity: O(n) | Space Complexity: O(1)
 """
 ------------------------------------------------------
 # Left Rotate Array by K Places
