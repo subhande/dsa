@@ -8,3 +8,11 @@ class Solution:
             result = result & result-1
             count += 1
         return count
+
+    def minBitFlips2(self, start: int, goal: int) -> int:
+        result = start ^ goal
+        count = 0
+        while result:
+            count += result & 1
+            result = result >> 1
+        return count

@@ -2,6 +2,23 @@
 
 from typing import List
 
+"""6, 3, 6, 5, 4, 4
+
+6 ^ 3 ^ 6 ^ 5 ^ 4 ^ 4 = 3 ^ 5
+
+3 ^ 5 = 6
+
+  0 1 1
+^ 1 0 1
+-----
+  1 1 0
+
+6 => 0 1 1
+
+Now check which numbers have 1 at the rightmost set bit position (which is 1 in this case)
+
+
+"""
 
 class Solution1:
     # Function to get the single
