@@ -41,3 +41,9 @@ class Solution2:
             maxFruits = max(maxFruits, right - left + 1)
             right += 1
         return maxFruits
+
+
+if __name__ == "__main__":
+    fruits = [1, 2, 1]
+    print(Solution1().totalFruit(fruits))
+    print(Solution2().totalFruit(fruits))

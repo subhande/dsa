@@ -2,6 +2,8 @@
 
 
 from collections import defaultdict
+
+
 class Solution1:
     def numberOfSubstrings(self, s: str) -> int:
         left = right = 0

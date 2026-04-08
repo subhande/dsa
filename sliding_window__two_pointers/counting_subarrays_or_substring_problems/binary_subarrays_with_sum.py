@@ -1,27 +1,45 @@
 # Binary Subarrays With Sum
+from typing import List
+
+# Ref: https://youtu.be/j4JDr4-jvo4?si=JbYVXjfcDzQqcy1p
+
 
 # Sliding Window
-from typing import List
 class Solution:
+    # Helper function to count subarrays with sum at most 'goal'
     def numSubarraysWithSumHelper(self, nums: List[int], goal: int) -> int:
         if goal < 0:
+            # No subarray can have a negative sum in a binary array
             return 0
-        noOfValidSubArray = 0
-        left = right = 0
+        noOfValidSubArray = 0  # To store the count of valid subarrays
+        left = right = 0  # Sliding window pointers
         length = len(nums)
-        currSum = 0
+        currSum = 0  # Current sum of the window
+
+        # Expand the window by moving 'right'
         while right < length:
             currSum += nums[right]
+            # Shrink the window from the left if the sum exceeds 'goal'
             while currSum > goal:
                 currSum -= nums[left]
                 left += 1
-            noOfValidSubArray += (right - left + 1)
+            # All subarrays ending at 'right' and starting from 'left' to 'right' are valid
+            noOfValidSubArray += right - left + 1
             right += 1
         return noOfValidSubArray
+
+    # Main function to count subarrays with sum exactly equal to 'goal'
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        return self.numSubarraysWithSumHelper(nums, goal) - self.numSubarraysWithSumHelper(nums, goal-1)
+        # The number of subarrays with sum exactly 'goal' is the difference between:
+        # - subarrays with sum at most 'goal'
+        # - subarrays with sum at most 'goal - 1'
+        return self.numSubarraysWithSumHelper(
+            nums, goal
+        ) - self.numSubarraysWithSumHelper(nums, goal - 1)
+
 
 # Prefix Sum
+
 
 class Solution2:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:

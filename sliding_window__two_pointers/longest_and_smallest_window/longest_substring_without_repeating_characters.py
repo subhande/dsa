@@ -1,5 +1,6 @@
 # Longest Substring Without Repeating Characters
 
+# Time Complexity: O(n) | Space Complexity: O(k) where k is the number of unique characters in the string.
 class Solution1:
     def lengthOfLongestSubstring(self, s: str) -> int:
         maxSubStringLen = 0
@@ -17,7 +18,7 @@ class Solution1:
                 currSubString = {}
                 currSubStringLen = 0
                 # Add the characters from the last repeating character to the current character
-                for j in range(l+1, i):
+                for j in range(l + 1, i):
                     currSubString[s[j]] = j
                     currSubStringLen += 1
                 currSubStringLen += 1
@@ -26,9 +27,11 @@ class Solution1:
             maxSubStringLen = max(maxSubStringLen, currSubStringLen)
         return maxSubStringLen
 
+
 from collections import Counter
 
 
+# Time Complexity: O(n) | Space Complexity: O(k) where k is the number of unique characters in the current window.
 class Solution2:
     def lengthOfLongestSubstring(self, s: str) -> int:
         chars = Counter()
@@ -37,17 +40,55 @@ class Solution2:
 
         res = 0
         while right < len(s):
-            r = s[right]
-            chars[r] += 1
+            # Expand the window by moving right pointer and adding the character to the counter
+            rightValue = s[right]
+            chars[rightValue] += 1
 
-            while chars[r] > 1:
-                l = s[left]
-                chars[l] -= 1
+            # If the count of the current character is greater than 1, it means we have a duplicate character in the window. We need to shrink the window from the left until we remove the duplicate character.
+            # Note: Here we need while if will not work
+            # e.g. pww -> we need to move left pointer twice to remove the duplicate character 'w'
+            # if we use if, we will only move left pointer once and we will still have duplicate character 'w' in the window
+            while chars[rightValue] > 1:
+                leftValue = s[left]
+                chars[leftValue] -= 1
                 left += 1
 
+            # Update the result with the maximum length of the current window
             res = max(res, right - left + 1)
 
+            # Move the right pointer to expand the window
             right += 1
+
+        return res
+
+
+# Time Complexity: O(n * k) where n is the length of the string and k is the number of unique characters in the current window. | Space Complexity: O(k) where k is the number of unique characters in the current window.
+class Solution3:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        chars = Counter()
+
+        left = right = 0
+
+        res = 0
+        while right < len(s):
+            # Expand the window by moving right pointer and adding the character to the counter
+            rightValue = s[right]
+            chars[rightValue] += 1
+
+            # If the count of the current character is greater than 1, it means we have a duplicate character in the window. We need to shrink the window from the left until we remove the duplicate character.
+            if sum(chars.values()) > len(chars):
+                leftValue = s[left]
+                chars[leftValue] -= 1
+                left += 1
+                if chars[leftValue] == 0:
+                    chars.pop(leftValue)
+
+            # Update the result with the maximum length of the current window
+            res = max(res, right - left + 1)
+
+            # Move the right pointer to expand the window
+            right += 1
+
         return res
 
 
@@ -69,7 +110,9 @@ class Solution2:
 
 """
 
-class Solution3:
+
+# Time Complexity: O(n) | Space Complexity: O(k) where k is the number of unique characters in the string.
+class Solution4:
     def lengthOfLongestSubstring(self, s: str) -> int:
         n = len(s)
         ans = 0
@@ -86,3 +129,11 @@ class Solution3:
             charToNextIndex[s[j]] = j + 1
 
         return ans
+
+
+if __name__ == "__main__":
+    s = "pwwkew"
+    print(Solution1().lengthOfLongestSubstring(s))
+    print(Solution2().lengthOfLongestSubstring(s))
+    print(Solution3().lengthOfLongestSubstring(s))
+    print(Solution4().lengthOfLongestSubstring(s))
