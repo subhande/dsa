@@ -1,11 +1,26 @@
 # Random Pick with Weight
 # https://leetcode.com/problems/random-pick-with-weight/description/?envType=problem-list-v2&envId=prefix-sum
-
-from typing import List
+# Ref: https://youtu.be/fWS0TCcr-lE
 import random
+from typing import List
+
+"""
+
+w = [1, 2, 3, 4]
+
+-- | -- -- | -- -- -- | -- -- -- -- |
+   1       3          6            10
+
+prefixSum = 10
+target = 10 * random.random()  # target is a random number between 0 and 10
+       = 2.5
+target is in the range of 1 and 3, so we return index 1
+So we represent all sums as zones on a number line, and we pick a random number in the range of the total sum. The zone in which the random number falls corresponds to the index we return.
+
+"""
+
 
 class Solution1:
-
     def __init__(self, w: List[int]):
         """
         :type w: List[int]
@@ -58,8 +73,7 @@ class Solution2:
         return low
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     w = [1, 3]
     obj = Solution1(w)
     print(obj.pickIndex())
