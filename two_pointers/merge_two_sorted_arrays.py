@@ -41,7 +41,7 @@ class Solution2:
         Do not return anything, modify nums1 in-place instead.
         """
 
-        index_nums1, index_nums2 = m -1, n - 1
+        index_nums1, index_nums2 = m - 1, n - 1
 
         index = m + n - 1
 
