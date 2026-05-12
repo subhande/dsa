@@ -13,20 +13,20 @@ class Solution:
         profit = 0
         if buy == 0:
             profit = max(
-                0 + self.maxProfitRecursive(ind+1, 0, prices, memo),
-                -prices[ind] + self.maxProfitRecursive(ind+1, 1, prices, memo)
+                0 + self.maxProfitRecursive(ind + 1, 0, prices, memo),
+                -prices[ind] + self.maxProfitRecursive(ind + 1, 1, prices, memo),
             )
         else:
             profit = max(
-                0 + self.maxProfitRecursive(ind+1, 1, prices, memo),
-                prices[ind] + self.maxProfitRecursive(ind+1, 0, prices, memo)
+                0 + self.maxProfitRecursive(ind + 1, 1, prices, memo),
+                prices[ind] + self.maxProfitRecursive(ind + 1, 0, prices, memo),
             )
         memo[ind][buy] = profit
         return memo[ind][buy]
 
     def maxProfitTabular(self, prices):
         n = len(prices)
-        dp = [[-1, -1] for i in range(n+1)]
+        dp = [[-1, -1] for i in range(n + 1)]
         dp[n][0] = dp[n][1] = 0
 
         # Loop through the array in reverse order
@@ -35,7 +35,9 @@ class Solution:
                 profit = 0
                 # We can buy the stock
                 if buy == 0:
-                    profit = max(0 + dp[ind + 1][0], (-1)*prices[ind] + dp[ind + 1][1])
+                    profit = max(
+                        0 + dp[ind + 1][0], (-1) * prices[ind] + dp[ind + 1][1]
+                    )
 
                 # We can sell the stock
                 if buy == 1:
@@ -51,31 +53,25 @@ class Solution:
 
         n = len(prices)
         dp = [[0, 0] for _ in range(n)]
-        dp[0][0] = 0           # No stock held on day 0
+        dp[0][0] = 0  # No stock held on day 0
         dp[0][1] = -prices[0]  # Bought stock on day 0
 
         for ind in range(1, n):
             # Maximum profit if not holding a stock today:
-            dp[ind][0] = max(
-                0 + dp[ind-1][0],
-                prices[ind] + dp[ind-1][1]
-            )
+            dp[ind][0] = max(0 + dp[ind - 1][0], prices[ind] + dp[ind - 1][1])
             # Maximum profit if holding a stock today:
-            dp[ind][1] = max(
-                0 + dp[ind-1][1],
-                (-1) * prices[ind] + dp[ind-1][0]
-            )
+            dp[ind][1] = max(0 + dp[ind - 1][1], (-1) * prices[ind] + dp[ind - 1][0])
 
-        return dp[n-1][0]
+        return dp[n - 1][0]
 
+    # Single Pass Solution
     def maxProfitOptimal(self, prices: List[int]) -> int:
         profit = 0
         n = len(prices)
         for i in range(1, n):
-            if prices[i] > prices[i-1]:
-                profit += prices[i] - prices[i-1]
+            if prices[i] > prices[i - 1]:
+                profit += prices[i] - prices[i - 1]
         return profit
-
 
     def maxProfit(self, prices: List[int]) -> int:
         n = len(prices)

@@ -22,6 +22,7 @@ Explanation: There is no common prefix among the input strings.
 # Time Complexity: O(n*m) | Space Complexity: O(1)
 # Time Complexity: O(s) where s is the sum of all characters in all strings in
 
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if not strs:
@@ -54,3 +55,20 @@ class Solution2:
                 if i >= len(strs[j]) or strs[j][i] != char:
                     return strs[0][:i]
         return strs[0]
+
+
+# Time Complexity: O(n*m) | Space Complexity: O(s)
+class Solution3:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        min_length = min([len(string) for string in strs])
+
+        prefix = ""
+
+        for idx in range(min_length):
+            for j in range(1, len(strs)):
+                if strs[j - 1][idx] != strs[j][idx]:
+                    return prefix
+            prefix += strs[0][idx]
+
+        return prefix

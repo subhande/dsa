@@ -3,6 +3,11 @@
 
 ## A. Array
 
+### Simple Array
+
+### Simple String
+
+### Advanced String
 
 ### Two Pointer (Simple)
 

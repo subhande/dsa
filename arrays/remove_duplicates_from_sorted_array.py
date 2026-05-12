@@ -5,6 +5,7 @@ from typing import List
 # Approach 1: Brute Force
 # Time Complexity: O(n) | Space Complexity: O(n)
 
+
 class Solution:
     # Function to remove duplicates from the array
     def removeDuplicates(self, nums):
@@ -41,7 +42,6 @@ class Solution2:
             """ If current element is different
             from the previous unique element"""
             if nums[i] != nums[j]:
-
                 """ Move to the next position in
                 the list for the unique element"""
                 i += 1
@@ -53,13 +53,25 @@ class Solution2:
         return i + 1
 
     def removeDuplicates2(self, nums: List[int]) -> int:
-            size = len(nums)
-            insertIndex = 1
-            for i in range(1, size):
-                # Found unique element
-                if nums[i - 1] != nums[i]:
-                    # Updating insertIndex in our main array
-                    nums[insertIndex] = nums[i]
-                    # Incrementing insertIndex count by 1
-                    insertIndex = insertIndex + 1
-            return insertIndex
+        size = len(nums)
+        insertIndex = 1
+        for i in range(1, size):
+            # Found unique element
+            if nums[i - 1] != nums[i]:
+                # Updating insertIndex in our main array
+                nums[insertIndex] = nums[i]
+                # Incrementing insertIndex count by 1
+                insertIndex = insertIndex + 1
+        return insertIndex
+
+
+class Solution3:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        insertIndex = 0
+        currentNum = nums[0]
+        for idx in range(1, len(nums)):
+            if currentNum != nums[idx]:
+                currentNum = nums[idx]
+                insertIndex += 1
+                nums[insertIndex] = nums[idx]
+        return insertIndex + 1

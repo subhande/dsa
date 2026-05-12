@@ -30,6 +30,7 @@ Number of columns = 3 * (4 - 1) = 9
 Idellay 7 columns are required why create more ?
 Because computing exact columns for the last partial cycle is complex. At max we wil overcompute by numRows - 2 columns which is not a big deal as we will ignore the empty spaces while creating the answer string.
 """
+
 from math import ceil
 
 
@@ -59,9 +60,7 @@ class Solution:
             curr_col += 1
 
             # Move up (with moving right also).
-            while (
-                curr_row > 0 and curr_col < num_cols and curr_string_index < n
-            ):
+            while curr_row > 0 and curr_col < num_cols and curr_string_index < n:
                 matrix[curr_row][curr_col] = s[curr_string_index]
                 curr_row -= 1
                 curr_col += 1
@@ -72,6 +71,55 @@ class Solution:
             answer += "".join(row)
 
         return answer.replace(" ", "")
+
+
+class Solution2:
+    def convert(self, s: str, numRows: int) -> str:
+        n = len(s)
+
+        if not s or n == 1 or numRows == 1:
+            return s
+
+        segmentColLength = 1 + numRows - 2
+
+        charInEachSegment = numRows + numRows - 2
+
+        noOfSegments = ceil(n / charInEachSegment)
+
+        numCols = segmentColLength * noOfSegments
+
+        pattern = [[""] * numCols for _ in range(numRows)]
+
+        i, j = 0, 0
+        s_idx = 0
+
+        MOVEMENT = "DOWN"  # DIAGONAL
+
+        while i < numRows and j < numCols and s_idx < n:
+            # Move DOWN
+            while i < numRows and s_idx < n:
+                pattern[i][j] = s[s_idx]
+                i += 1
+                s_idx += 1
+
+            i -= 2
+            j += 1
+
+            # Move DIAGONAL
+            while i > 0 and j < numCols and s_idx < n:
+                pattern[i][j] = s[s_idx]
+                i -= 1
+                j += 1
+                s_idx += 1
+
+        result = ""
+        for i in range(numRows):
+            for j in range(numCols):
+                if pattern[i][j]:
+                    result += pattern[i][j]
+        return result
+
+
 if __name__ == "__main__":
     s = "PAYPALISHIRING"
     numRows = 4

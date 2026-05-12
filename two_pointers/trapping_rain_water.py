@@ -15,7 +15,7 @@ class Solution:
         for i in range(n):
             left_max_h = max(height[i], left_max_h)
             left_max[i] = left_max_h
-        for i in range(n-1, -1, -1):
+        for i in range(n - 1, -1, -1):
             right_max_h = max(height[i], right_max_h)
             right_max[i] = right_max_h
         total = 0
@@ -23,6 +23,29 @@ class Solution:
         for i in range(n):
             total += min(left_max[i], right_max[i]) - height[i]
         return total
+
+
+# Time Complexity: O(n) | Space Complexity: O(n)
+class Solution3:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        left_max = [0] * n
+        right_max = [0] * n
+        left_max[0] = height[0]
+        right_max[-1] = height[-1]
+
+        for i in range(1, n):
+            left_max[i] = max(left_max[i - 1], height[i])
+        for i in range(n - 2, -1, -1):
+            right_max[i] = max(right_max[i + 1], height[i])
+
+        volumeOfTrapWater = 0
+
+        for i in range(n):
+            volumeOfTrapWater += max(min(left_max[i], right_max[i]) - height[i], 0)
+
+        return volumeOfTrapWater
+
 
 # Time Complexity: O(n) | Space Complexity: O(1)
 class Solution2:

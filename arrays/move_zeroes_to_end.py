@@ -23,6 +23,7 @@ class Solution:
         for i in range(n):
             nums[i] = arr[i]
 
+
 # Optimal Solution:
 # Time Complexity: O(n) | Space Complexity: O(1)
 # Pseudo Code:
@@ -48,6 +49,8 @@ nums = [1, 4, 5, 2, 5, 2]
 nums = [1, 4, 5, 2, 0, 0]
 
 """
+
+
 class SolutionOptimal:
     def moveZeroes(self, nums: List[int]) -> None:
         """
@@ -60,3 +63,21 @@ class SolutionOptimal:
                 lastNonZeroFoundAt += 1
         for i in range(lastNonZeroFoundAt, len(nums)):
             nums[i] = 0
+
+
+class Solution3:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Move all zeros to the end while maintaining the relative order
+        of non-zero elements. Modify nums in-place.
+        """
+
+        insert_position = 0  # Position to place the next non-zero element
+
+        for current_index in range(len(nums)):
+            if nums[current_index] != 0:
+                nums[insert_position], nums[current_index] = (
+                    nums[current_index],
+                    nums[insert_position],
+                )
+                insert_position += 1
