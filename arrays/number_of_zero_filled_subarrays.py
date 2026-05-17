@@ -18,7 +18,9 @@ class Solution:
         if currZeroSubArrLength > 0:
             lengthsOfZeroSubArrays.append(currZeroSubArrLength)
 
-        totalNumberOfZeroSubarrays = sum([(length * (length +1 ))//2 for length in lengthsOfZeroSubArrays])
+        totalNumberOfZeroSubarrays = sum(
+            [(length * (length + 1)) // 2 for length in lengthsOfZeroSubArrays]
+        )
 
         return totalNumberOfZeroSubarrays
 
@@ -31,10 +33,14 @@ class Solution:
                 currZeroSubArrLength += 1
             else:
                 if currZeroSubArrLength > 0:
-                    totalNumberOfZeroSubarrays += (currZeroSubArrLength * (currZeroSubArrLength + 1 ))//2
+                    totalNumberOfZeroSubarrays += (
+                        currZeroSubArrLength * (currZeroSubArrLength + 1)
+                    ) // 2
                     currZeroSubArrLength = 0
         if currZeroSubArrLength > 0:
-            totalNumberOfZeroSubarrays += (currZeroSubArrLength * (currZeroSubArrLength + 1 ))//2
+            totalNumberOfZeroSubarrays += (
+                currZeroSubArrLength * (currZeroSubArrLength + 1)
+            ) // 2
         return totalNumberOfZeroSubarrays
 
     # Time Complexity: O(n) | Space Complexity: O(1)
@@ -49,13 +55,28 @@ class Solution:
     num = 0 -> currZeroSubArrLength = 1, totalNumberOfZeroSubarrays = 6 + 1 = 7
 
     """
+
     def zeroFilledSubarray3(self, nums: List[int]) -> int:
-            currZeroSubArrLength = 0
-            totalNumberOfZeroSubarrays = 0
-            for num in nums:
-                if num == 0:
-                    currZeroSubArrLength += 1
-                else:
-                    currZeroSubArrLength = 0
-                totalNumberOfZeroSubarrays += currZeroSubArrLength
-            return totalNumberOfZeroSubarrays
+        currZeroSubArrLength = 0
+        totalNumberOfZeroSubarrays = 0
+        for num in nums:
+            if num == 0:
+                currZeroSubArrLength += 1
+            else:
+                currZeroSubArrLength = 0
+            totalNumberOfZeroSubarrays += currZeroSubArrLength
+        return totalNumberOfZeroSubarrays
+
+
+class Solution3:
+    def zeroFilledSubarray(self, nums: List[int]) -> int:
+        subArrayCount = 0
+        currZeroCount = 0
+        for num in nums:
+            if num == 0:
+                currZeroCount += 1
+            elif currZeroCount > 0:
+                subArrayCount += (currZeroCount * (currZeroCount + 1)) // 2
+                currZeroCount = 0
+        subArrayCount += (currZeroCount * (currZeroCount + 1)) // 2
+        return subArrayCount

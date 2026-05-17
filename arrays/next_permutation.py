@@ -11,6 +11,7 @@ Explanation
 4. Finally, reverse the portion of the list to the right of the pivot.
 """
 
+
 class Solution:
     def nextPermutation(self, nums: list[int]) -> None:
         # Find the first index "i" from the right such that nums[i] < nums[i+1]
@@ -34,10 +35,14 @@ class Solution:
             left += 1
             right -= 1
 
+
 # Example usage:
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
     nums = [1, 2, 3]
+    sol.nextPermutation(nums)
+    print(nums)  # Output should be [1, 3, 2]
+    nums = [3, 2, 1]
     sol.nextPermutation(nums)
     print(nums)  # Output should be [1, 3, 2]
     nums = [1, 2, 4, 9, 8, 7, 6, 5, 3]

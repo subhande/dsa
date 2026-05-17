@@ -63,12 +63,9 @@ class Solution3:
 
         min_length = min([len(string) for string in strs])
 
-        prefix = ""
-
         for idx in range(min_length):
             for j in range(1, len(strs)):
                 if strs[j - 1][idx] != strs[j][idx]:
-                    return prefix
-            prefix += strs[0][idx]
+                    return strs[0][:idx]
 
-        return prefix
+        return strs[0][:min_length]
