@@ -15,5 +15,20 @@ class Solution:
                 result += min(prev, curr)
                 prev = curr
                 curr = 1
-        print([result, prev, curr])
         return result + min(prev, curr)
+
+
+class Solution2:
+    def countBinarySubstrings(self, s: str) -> int:
+        prev = 0
+        curr = 0
+        validSubstringCount = 0
+        curr = 1
+        for i in range(1, len(s)):
+            if s[i - 1] == s[i]:
+                curr += 1
+            else:
+                prev = curr
+                curr = 1
+            validSubstringCount += 1 if prev >= curr else 0
+        return validSubstringCount

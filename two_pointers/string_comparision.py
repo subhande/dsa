@@ -32,3 +32,37 @@ class Solution:
             chars[insert_index] = ch
             insert_index += 1
         return string_length
+
+
+class Solution2:
+    def compress(self, chars: List[str]) -> int:
+        insert_index = 0
+
+        curr_ch = chars[0]
+        count = 1
+        for i in range(1, len(chars)):
+            if curr_ch == chars[i]:
+                count += 1
+            else:
+                chars[insert_index] = curr_ch
+                insert_index += 1
+                if count > 1:
+                    count_str = str(count)
+                    count_str_len = len(count_str)
+                    chars[insert_index : insert_index + count_str_len] = list(
+                        str(count)
+                    )
+                    insert_index += count_str_len
+
+                curr_ch = chars[i]
+                count = 1
+
+        chars[insert_index] = curr_ch
+        insert_index += 1
+        if count > 1:
+            count_str = str(count)
+            count_str_len = len(count_str)
+            chars[insert_index : insert_index + count_str_len] = list(str(count))
+            insert_index += count_str_len
+
+        return insert_index

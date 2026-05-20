@@ -61,3 +61,34 @@ class Solution2:
             word_idx += 1
             abbr_idx += 1
         return word_idx == word_len and abbr_idx == abbr_len
+
+
+class Solution3:
+    def validWordAbbreviation(self, word: str, abbr: str) -> bool:
+
+        n, m = len(word), len(abbr)
+
+        i, j = 0, 0
+
+        while i < n and j < m:
+            skip = 0
+
+            if abbr[j].isnumeric() and abbr[j] == "0":
+                return False
+
+            while j < m and abbr[j].isnumeric():
+                skip = skip * 10 + int(abbr[j])
+                j += 1
+
+            i += skip
+
+            if i >= n and j >= m:
+                break
+
+            if i < n and j < m and word[i] != abbr[j]:
+                return False
+
+            i += 1
+            j += 1
+
+        return i == n and j == m

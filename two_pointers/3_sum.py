@@ -11,15 +11,17 @@ class Solution:
         triplets = {}
         target = 0
         n = len(nums)
-        for i in range(n-2):
-            left = i+1
-            right = n-1
+        for i in range(n - 2):
+            left = i + 1
+            right = n - 1
+            # Since the array is sorted, if the current number is greater than 0, then there cannot be any triplet with sum equal to 0, as all the numbers after it will also be greater than 0.
+            # This specific case when target is always 0
             if nums[i] > 0:
                 break
             while left < right:
                 currentSum = nums[i] + nums[left] + nums[right]
                 if currentSum == target:
-                    triplet = [nums[i] , nums[left] , nums[right]]
+                    triplet = [nums[i], nums[left], nums[right]]
                     triplets[str(triplet)] = triplet
                     left += 1
                     right -= 1
@@ -30,6 +32,7 @@ class Solution:
 
         return list(triplets.values())
 
+
 # Approach 2: Hashing
 # Time Complexity: O(n^2) | Space Complexity: O(n)
 class Solution2:
@@ -38,11 +41,11 @@ class Solution2:
         triplets = {}
         target = 0
         n = len(nums)
-        for i in range(n-2):
+        for i in range(n - 2):
             if nums[i] > 0:
                 break
             seen = set()
-            for j in range(i+1, n):
+            for j in range(i + 1, n):
                 complement = target - nums[i] - nums[j]
                 if complement in seen:
                     triplet = [nums[i], complement, nums[j]]
