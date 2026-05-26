@@ -1,6 +1,8 @@
 # Sub Array Sum Equals K
 # https://leetcode.com/problems/subarray-sum-equals-k/
+from collections import defaultdict
 from typing import List
+
 
 class Solution1:
     def subarraySum(self, nums: List[int], k: int) -> int:
@@ -14,6 +16,7 @@ class Solution1:
                     count += 1
         return count
 
+
 class Solution2:
     def subarraySum(self, nums: List[int], k: int) -> int:
         count = 0
@@ -25,4 +28,25 @@ class Solution2:
             if sum - k in hashMap:
                 count += hashMap.get(sum - k, 0)
             hashMap[sum] = hashMap.get(sum, 0) + 1
+        return count
+
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+
+        freq = defaultdict(int)
+
+        freq[0] = 1
+
+        runningSum = 0
+
+        count = 0
+
+        for num in nums:
+            runningSum += num
+
+            if runningSum - k in freq:
+                count += freq.get(runningSum - k, 0)
+            freq[runningSum] += 1
+
         return count

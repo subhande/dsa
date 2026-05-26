@@ -18,3 +18,18 @@ class Solution:
             differenceArray[i] += differenceArray[i - 1]
 
         return differenceArray
+
+
+class Solution2:
+    def getModifiedArray(self, length: int, updates: List[List[int]]) -> List[int]:
+        arr = [0] * length
+
+        for update in updates:
+            arr[update[0]] += update[-1]
+            if update[1] + 1 < length:
+                arr[update[1] + 1] += -1 * update[-1]
+
+        for i in range(1, length):
+            arr[i] += arr[i - 1]
+
+        return arr
