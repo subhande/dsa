@@ -19,5 +19,19 @@ class Solution2:
         return len(s) == len(goal) and goal in s + s
 
 
+class Solution3:
+    def rotateString(self, s: str, goal: str) -> bool:
+        n, m = len(s), len(goal)
+        if n != m:
+            return False
+        if s == goal:
+            return True
+        for i in range(n):
+            s = s[1:] + s[0]
+            if s == goal:
+                return True
+        return False
+
+
 # Approach 3: KMP Algorithm
 # TODO: Implement KMP Algorithm for string matching
