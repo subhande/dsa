@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def maxScoreSlidingWindow(self, card_points: List[int], k: int) -> int:
         """
@@ -56,8 +57,27 @@ class Solution:
 
         # Shift cards from the left side to the right side, one by one
         for i in range(k - 1, -1, -1):
-            left_sum -= card_points[i]      # Remove one card from the left
+            left_sum -= card_points[i]  # Remove one card from the left
             right_sum += card_points[right_pointer]  # Add one card from the right
             right_pointer -= 1
             max_score = max(max_score, left_sum + right_sum)
+        return max_score
+
+    def maxScoreSlidingWindowOptimized(self, card_points: List[int], k: int) -> int:
+        """
+        Optimized sliding window approach to calculate the maximum score by picking k cards from either end.
+        """
+
+        left, right = 0, len(card_points) - k
+        max_score = sum(card_points[right:])  # Start with the sum of the last k cards
+        current_window_sum = max_score
+
+        while right < len(card_points):
+            current_window_sum += (
+                card_points[left] - card_points[right]
+            )  # Add left card, remove right card
+            max_score = max(max_score, current_window_sum)
+            left += 1
+            right += 1
+
         return max_score

@@ -1,5 +1,8 @@
 # Count number of Nice subarrays
+#
 from typing import List
+
+
 class Solution:
     def numberOfSubarraysHelper(self, nums: List[int], k: int) -> int:
         left = right = 0
@@ -17,10 +20,10 @@ class Solution:
             right += 1
         return validSubArrayCount
 
-
-
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
-        return self.numberOfSubarraysHelper(nums, k) - self.numberOfSubarraysHelper(nums, k-1)
+        return self.numberOfSubarraysHelper(nums, k) - self.numberOfSubarraysHelper(
+            nums, k - 1
+        )
 
 
 class Solution2:

@@ -1,6 +1,7 @@
 # Max Consecutive Ones III
 from typing import List
 
+
 class Solution:
     # Time Complexity: O(2n) | Space Complexity: O(1)
     def longestOnes(self, nums: List[int], k: int) -> int:
@@ -38,3 +39,24 @@ class Solution:
             maxLen = max(maxLen, right - left + 1)
             right += 1
         return maxLen
+
+
+class Solution3:
+    def longestOnes(self, nums: List[int], k: int) -> int:
+
+        left, right = 0, 0
+        n = len(nums)
+
+        maxLenConsicutiveOnes = 0
+
+        while right < n:
+            if nums[right] == 0:
+                k -= 1
+
+            while k < 0:
+                if nums[left] == 0:
+                    k += 1
+                left += 1
+            maxLenConsicutiveOnes = max(maxLenConsicutiveOnes, right - left + 1)
+            right += 1
+        return maxLenConsicutiveOnes
