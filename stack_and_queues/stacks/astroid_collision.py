@@ -16,6 +16,7 @@ This implementation efficiently simulates the collision process with a time comp
 
 """
 
+
 class Solution:
     def asteroidCollision(self, asteroids):
         # stack will hold the asteroids that haven't exploded yet
@@ -32,16 +33,14 @@ class Solution:
                     # both asteroids explode
                     stack.pop()
                 # if abs(asteroid) is less than abs(stack[-1]), the incoming asteroid explodes
-                break
+                break  # This would not go to else clause
             else:
                 # no collision or collision was resolved without explosion of current asteroid
                 stack.append(asteroid)
         return stack
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1

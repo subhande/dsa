@@ -1,4 +1,7 @@
 # Sum of Subarray Minimums
+#
+# Sum of Subarray Minimums = Value * Count of Subarrays where the value is the minimum
+
 
 class Solution:
     def sumSubarrayMinsBruteForce(self, arr):
@@ -7,13 +10,14 @@ class Solution:
         # Initialize the sum of minimum elements in subarrays.
         subArraySumOfMinElements = 0
         # For each subarray size, find the minimum element in each subarray.
-        for size in range(1, n+1):
+        for size in range(1, n + 1):
             # Find the minimum element in each subarray of size 'size'.
-            for i in range(n-size+1):
+            for i in range(n - size + 1):
                 # Add the minimum element to the sum.
-                subArraySumOfMinElements = (subArraySumOfMinElements + min(arr[i:i+size])) % mod
+                subArraySumOfMinElements = (
+                    subArraySumOfMinElements + min(arr[i : i + size])
+                ) % mod
         return subArraySumOfMinElements
-
 
     def previousSmallerElement(self, arr):
         n = len(arr)
@@ -39,7 +43,7 @@ class Solution:
 
         # Arrays to hold count contributions from left and right
         left = [0] * n  # counts for subarrays ending at i
-        right = [0] * n # counts for subarrays starting at i
+        right = [0] * n  # counts for subarrays starting at i
 
         # Compute left: for each element, count the number of contiguous subarrays ending at i
         # where arr[i] is minimum by scanning to the left.
@@ -67,13 +71,35 @@ class Solution:
 
         # Aggregate the result using the counts from left and right.
         total = 0
-        print(arr)
-        print(left)
-        print(right)
         for i in range(n):
             total = (total + arr[i] * left[i] * right[i]) % mod
 
         return total
+
+    def sumSubarrayMinsOptimized2(self, arr):
+        mod = 10**9 + 7
+        n = len(arr)
+
+        res = 0
+        stack = []  # (index, num)
+
+        for i, ele in enumerate(arr):
+            while stack and ele < stack[-1][1]:
+                j, m = stack.pop()
+                left = j - stack[-1][0] if stack else j + 1
+                right = i - j
+                res += left * right * m
+                res %= mod
+            stack.append((i, ele))
+
+        for i in range(len(stack)):
+            j, m = stack[i]
+            left = j - stack[i - 1][0] if i > 0 else j + 1
+            right = n - j
+            res += left * right * m
+            res %= mod
+
+        return res
 
 
 """
@@ -96,8 +122,7 @@ The idea behind computing total += arr[i] * left[i] * right[i] is to account for
 By doing total += arr[i] * left[i] * right[i], we are effectively summing the minimum values of all subarrays, but by counting contributions from each element in an optimized way rather than by iterating over all possible subarrays explicitly.
 """
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
