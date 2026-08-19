@@ -3,11 +3,13 @@
 
 # Definition for a binary tree node.
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.data = val
         self.left = left
         self.right = right
+
 
 # Time Complexity: O(n) | Space Complexity: O(n)
 class Solution:
@@ -50,8 +52,31 @@ class Solution:
         # nodes in the binary tree
         return count[0]
 
-# Time Complexity: O(logn * logn) | Space Complexity: O(logn)
+
 class Solution2:
+    def dfs(self, node, count):
+        if node is None:
+            return
+        count[0] += 1
+
+        self.dfs(node.left, count)
+        self.dfs(node.right, count)
+
+        return
+
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+
+        count = [0]
+
+        self.dfs(root, count)
+
+        return count[0]
+
+
+# Time Complexity: O(logn * logn) | Space Complexity: O(logn)
+class Solution3:
     # Function to count nodes
     # in a binary tree
     def count_nodes(self, root):
@@ -97,6 +122,27 @@ class Solution2:
             height += 1
             node = node.right
         return height
+
+
+class Solution4:
+    def findHeight(self, node, left: bool = True):
+        height = 0
+        while node:
+            node = node.left if left else node.right
+            height += 1
+        return height
+
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+
+        leftHeight = self.findHeight(root, left=True)
+        rightHeight = self.findHeight(root, left=False)
+
+        if leftHeight == rightHeight:
+            return (1 << leftHeight) - 1
+
+        return 1 + self.countNodes(root.left) + self.countNodes(root.right)
 
 
 if __name__ == "__main__":

@@ -1,8 +1,9 @@
 # Right and Left view of a binary tree
 
-from utils import buildTreeFromArray, TreeNode
-
 from collections import deque
+from typing import List, Optional
+
+from utils import TreeNode, buildTreeFromArray
 
 
 class Solution1:
@@ -23,6 +24,7 @@ class Solution1:
                     queue.append(node.right)
             result.append(level)
         return result
+
     # Time Complexity: O(n) | Space Complexity: O(n)
     def rightSideView(self, root):
         result = []
@@ -50,9 +52,7 @@ class Solution1:
         return result
 
 
-
 class Solution2:
-
     # Time Complexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     def rightSideView(self, root):
         result = []
@@ -82,6 +82,67 @@ class Solution2:
             result.append(root.data)
         self.recursionLeft(root.left, level + 1, result)
         self.recursionLeft(root.right, level + 1, result)
+
+
+class Solution3:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
+
+        rightSideView = []
+
+        queue = deque([root])
+
+        while queue:
+            rightMostNodeValue = None
+
+            size = len(queue)
+
+            for _ in range(size):
+                node = queue.popleft()
+
+                rightMostNodeValue = node.val
+
+                if node.left is not None:
+                    queue.append(node.left)
+
+                if node.right is not None:
+                    queue.append(node.right)
+
+            if rightMostNodeValue is not None:
+                rightSideView.append(rightMostNodeValue)
+
+        return rightSideView
+
+    def leftSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
+
+        leftSideView = []
+
+        queue = deque([root])
+
+        while queue:
+            leftMostNodeValue = None
+
+            size = len(queue)
+
+            for _ in range(size):
+                node = queue.popleft()
+
+                if leftMostNodeValue is None:
+                    leftMostNodeValue = node.val
+
+                if node.left is not None:
+                    queue.append(node.left)
+
+                if node.right is not None:
+                    queue.append(node.right)
+
+            if leftMostNodeValue is not None:
+                leftSideView.append(leftMostNodeValue)
+
+        return leftSideView
 
 
 if __name__ == "__main__":

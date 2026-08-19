@@ -2,12 +2,15 @@
 # Maximum Depth in BT
 """
 
+from typing import Optional
+
 
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
         self.data = val
         self.left = left
         self.right = right
+
 
 """
 Below is one way to implement a binary tree in Python and write functions to compute the tree’s maximum depth (sometimes also called the height of the tree). Note that depending on your definition, “depth” and “height” can be measured in one of two ways:
@@ -22,6 +25,7 @@ In the explanation below, we follow the second definition:
 
 """
 
+
 class Solution:
     # Time Conmplexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     """
@@ -31,18 +35,19 @@ class Solution:
     - Height of a node is the number of edges on the longest path from the node to a leaf.
     - Height of a tree is the height of the root node.
     """
+
     def maxDepthRecusive(self, root, depth=0):
         if root is None:
             return 0
-        leftSubTreeDepth = self.maxDepthRecusive(root.left, depth+1)
-        rigtSubTreeDepth = self.maxDepthRecusive(root.right, depth+1)
+        leftSubTreeDepth = self.maxDepthRecusive(root.left, depth + 1)
+        rigtSubTreeDepth = self.maxDepthRecusive(root.right, depth + 1)
         # print([root.data, depth, leftSubTreeDepth, rigtSubTreeDepth])
         return max(depth, leftSubTreeDepth, rigtSubTreeDepth)
 
     # Time Conmplexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     def maxHeightRecusive(self, root):
         if root is None:
-            return 0 # can also return -1 if height is defined as the number of edges
+            return 0  # can also return -1 if height is defined as the number of edges
         leftSubTreeDepth = self.maxHeightRecusive(root.left)
         rigtSubTreeDepth = self.maxHeightRecusive(root.right)
         # print([root.data, 1 + max(leftSubTreeDepth, rigtSubTreeDepth), leftSubTreeDepth, rigtSubTreeDepth])
@@ -51,7 +56,7 @@ class Solution:
     # Time Conmplexity: O(n) | Space Complexity: O(n) (worst case) | O(w) (avg case) where w is the width of the tree
     def maxHeightIterative(self, root):
         if root is None:
-            return 0 # can also return -1 if height is defined as the number of edges
+            return 0  # can also return -1 if height is defined as the number of edges
         queue = [root]
         level = 0
         while queue:
@@ -71,8 +76,31 @@ class Solution:
         return level
 
 
-if __name__ == "__main__":
+class Solution3:
+    def maxDepthRecursive(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        maxDepth = 1
+
+        stack = [(1, root)]
+
+        while stack:
+            depth, node = stack.pop()
+            maxDepth = max(depth, maxDepth)
+            if node and node.left is not None:
+                stack.append((depth + 1, node.left))
+            if node and node.right is not None:
+                stack.append((depth + 1, node.right))
+
+        return maxDepth
+
+
+if __name__ == "__main__":
     root = TreeNode(3)
     root.left = TreeNode(9)
     root.right = TreeNode(20)
@@ -84,6 +112,8 @@ if __name__ == "__main__":
     root.right.right.right = TreeNode(7)
 
     s = Solution()
-    print("Max Depth: ", s.maxDepthRecusive(root, 0)) # s.maxDepthRecusive(root, 1)) root node can be considered as level 1
+    print(
+        "Max Depth: ", s.maxDepthRecusive(root, 0)
+    )  # s.maxDepthRecusive(root, 1)) root node can be considered as level 1
     print("Max Height (Recursive): ", s.maxHeightRecusive(root))
     print("Max Height (Iterative): ", s.maxHeightIterative(root))

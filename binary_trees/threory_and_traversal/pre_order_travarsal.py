@@ -2,19 +2,27 @@
 # Pre Order Traversal
 """
 
+
 class TreeNode(object):
     def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
 
+
 class Solution:
     def preOrderRecursive(self, root: TreeNode | None):
         if root is None:
             return []
-        return [root.value] + self.preOrderRecursive(root.left) + self.preOrderRecursive(root.right)
+        return (
+            [root.value]
+            + self.preOrderRecursive(root.left)
+            + self.preOrderRecursive(root.right)
+        )
 
     def preOrderIterative(self, root: TreeNode | None):
+        if root is None:
+            return []
         stack = []
         stack.append(root)
         result = []

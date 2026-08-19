@@ -1,9 +1,9 @@
 # LCA in BT
 
-from utils import buildTreeFromArray, TreeNode
-
 from collections import deque
+from typing import List, Optional
 
+from utils import TreeNode, buildTreeFromArray
 
 
 class Solution1:
@@ -77,17 +77,83 @@ class Solution2:
         return maxWidth
 
 
+class Solution3:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+
+        if root is None:
+            return 0
+
+        queue = deque([(root, 1)])
+
+        maxWidth = -1
+
+        while queue:
+            level = []
+            size = len(queue)
+
+            for _ in range(size):
+                node, pos = queue.popleft()
+
+                level.append(pos)
+
+                if node.left is not None:
+                    queue.append((node.left, pos * 2))
+
+                if node.right is not None:
+                    queue.append((node.right, pos * 2 + 1))
+
+            if level:
+                maxWidth = max(maxWidth, level[-1] - level[0] + 1)
+
+        return maxWidth
+
+
+class Solution4:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+
+        if root is None:
+            return 0
+
+        queue = deque([(root, 1)])
+
+        maxWidth = -1
+
+        while queue:
+            size = len(queue)
+
+            start = 0
+
+            end = 0
+
+            for i in range(size):
+                node, pos = queue.popleft()
+
+                if i == 0:
+                    start = pos
+
+                if i == size - 1:
+                    end = pos
+
+                if node.left is not None:
+                    queue.append((node.left, pos * 2))
+
+                if node.right is not None:
+                    queue.append((node.right, pos * 2 + 1))
+
+            maxWidth = max(maxWidth, end - start + 1)
+
+        return maxWidth
+
+
 if __name__ == "__main__":
     sol1 = Solution1()
     sol2 = Solution2()
 
     # Test Case 1
-    root = buildTreeFromArray( [1, 3, 2, 5, 3, None, 9])
+    root = buildTreeFromArray([1, 3, 2, 5, 3, None, 9])
     # Output: 4
     print(sol1.widthOfBinaryTree(root))
     print(sol2.widthOfBinaryTree(root))
-
-
 
     # Test Case 2
     root = buildTreeFromArray([1, 3, 2, 5, None, None, 9, 6, None, 7])

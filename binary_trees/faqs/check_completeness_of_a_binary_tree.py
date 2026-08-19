@@ -1,17 +1,18 @@
 # Check Completeness Of a Binary Tree
 
 
-
 from collections import deque
-from typing import Optional
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
+
 class Solution1:
-    def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
+    def isCompleteTree(self, root: TreeNode | None) -> bool:
         if root is None:
             return False
 
@@ -19,17 +20,21 @@ class Solution1:
         level = 0
         while queue:
             size = len(queue)
-            allNodesPresent = size == (2 ** level)
+            allNodesPresent = size == (2**level)
             rightChildMisssing = False
             noChild = False
             for _ in range(len(queue)):
                 node = queue.popleft()
 
-                if (node.left is None and node.right is not None):
+                if node.left is None and node.right is not None:
                     return False
-                if rightChildMisssing is True and (node.left is not None or node.right is not None):
+                if rightChildMisssing is True and (
+                    node.left is not None or node.right is not None
+                ):
                     return False
-                if noChild is True and (node.left is not None or node.right is not None):
+                if noChild is True and (
+                    node.left is not None or node.right is not None
+                ):
                     return False
                 if node.left is None and node.right is None:
                     noChild = True
@@ -49,7 +54,7 @@ class Solution1:
 
 
 class Solution2:
-    def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
+    def isCompleteTree(self, root: TreeNode | None) -> bool:
         if root is None:
             return False
 

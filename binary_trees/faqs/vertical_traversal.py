@@ -1,3 +1,7 @@
+from collections import defaultdict, deque
+from typing import List, Optional
+
+
 def buildTreeFromArray(arr):
     if not arr:
         return None
@@ -25,7 +29,9 @@ def buildTreeFromArray(arr):
             q.append(node.right)
     return root
 
+
 # Vertical Order Traversal
+
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -34,7 +40,6 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
-from collections import defaultdict, deque
 
 class Solution1:
     # Time Complexity: O(n) * O(log n) *  O(log n) * O(log n) = O(nlogn) | Space Complexity: O(n)
@@ -117,8 +122,37 @@ class Solution2:
         return result
 
 
-if __name__ == "__main__":
+class Solution3:
+    def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
 
+        verticalOrderDict = defaultdict(list)
+
+        queue = deque([(0, root)])
+
+        while queue:
+            size = len(queue)
+
+            for _ in range(size):
+                order, node = queue.popleft()
+
+                verticalOrderDict[order].append(node.val)
+
+                if node.left is not None:
+                    queue.append((order - 1, node.left))
+
+                if node.right is not None:
+                    queue.append((order + 1, node.right))
+
+        result = []
+
+        for order in sorted(verticalOrderDict.keys()):
+            result.append(verticalOrderDict[order])
+        return result
+
+
+if __name__ == "__main__":
     sol1 = Solution1()
     sol2 = Solution2()
     tree = [3, 9, 20, None, None, 15, 7]

@@ -2,30 +2,38 @@
 
 
 # Definition for a binary tree node.
-class TreeNode(object):
+class TreeNode:
     def __init__(self, val=0, left=None, right=None):
-        self.data = val
+        self.val = val
         self.left = left
         self.right = right
+
 
 class Solution1:
     def diameterOfBinaryTreeHelper(self, root, maxPathlength):
         if root is None:
             return 0, max(0, maxPathlength)
 
-        leftSubTreeHeight, leftSubTreeMaxPathLength = self.diameterOfBinaryTreeHelper(root.left, maxPathlength)
-        rightSubTreeHeight, rightSubTreeMaxPathLength = self.diameterOfBinaryTreeHelper(root.right, maxPathlength)
+        leftSubTreeHeight, leftSubTreeMaxPathLength = self.diameterOfBinaryTreeHelper(
+            root.left, maxPathlength
+        )
+        rightSubTreeHeight, rightSubTreeMaxPathLength = self.diameterOfBinaryTreeHelper(
+            root.right, maxPathlength
+        )
 
         currentTreePathLength = leftSubTreeHeight + rightSubTreeHeight
         currentSubTreeHeight = 1 + max(leftSubTreeHeight, rightSubTreeHeight)
-        maxPathlength = max(currentTreePathLength, leftSubTreeMaxPathLength, rightSubTreeMaxPathLength, maxPathlength)
+        maxPathlength = max(
+            currentTreePathLength,
+            leftSubTreeMaxPathLength,
+            rightSubTreeMaxPathLength,
+            maxPathlength,
+        )
         return currentSubTreeHeight, maxPathlength
 
     def diameterOfBinaryTree(self, root):
         _, maxPathlength = self.diameterOfBinaryTreeHelper(root, float("-inf"))
         return maxPathlength
-
-
 
 
 class Solution2:
@@ -43,9 +51,36 @@ class Solution2:
         return diameter[0]
 
 
+class Solution3:
+    def diameterOfBinaryTreeHelper(self, node: TreeNode | None) -> int:
+        if node is None:
+            return -1
+        if node and node.left is None and node.right is None:
+            return 0
+
+        leftSubTreeLongestPath = 1 + self.diameterOfBinaryTreeHelper(node.left)
+
+        rightSubTreeLongestPath = 1 + self.diameterOfBinaryTreeHelper(node.right)
+
+        maxPath = max(leftSubTreeLongestPath, rightSubTreeLongestPath)
+
+        self.diameter = max(
+            maxPath, leftSubTreeLongestPath + rightSubTreeLongestPath, self.diameter
+        )
+
+        return maxPath
+
+    def diameterOfBinaryTree(self, root: TreeNode | None) -> int:
+        self.diameter = 0
+        if root is None:
+            return 0
+
+        self.diameterOfBinaryTreeHelper(root)
+
+        return self.diameter
+
 
 if __name__ == "__main__":
-
     root = TreeNode(3)
     root.left = TreeNode(9)
     root.right = TreeNode(20)

@@ -10,6 +10,7 @@ class TreeNode(object):
 
 class Solution:
     def inOrderRecursive(self, root: TreeNode | None):
+        # In-order: left subtree, then root, then right subtree
         if root is None:
             return []
         return self.inOrderRecursive(root.left) + [root.value] + self.inOrderRecursive(root.right)
@@ -19,14 +20,18 @@ class Solution:
         result = []
         while True:
             if node is not None:
+                # Go as far left as possible, remembering nodes to visit later
                 stack.append(node)
                 node = node.left
             elif len(stack) > 0:
+                # No more left children, backtrack to the last saved node
                 node = stack.pop()
                 if node is not None:
                     result.append(node.value)
+                    # Now explore its right subtree
                     node = node.right
             else:
+                # Stack empty and no current node means traversal is done
                 break
         return result
 
