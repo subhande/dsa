@@ -1,13 +1,19 @@
-# Count Good Nodes in Binary Tree
+from __future__ import annotations
+
+
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+    def __init__(self, val: int = 0, left: TreeNode | None = None, right: TreeNode | None = None):
+        self.val: int = val
+        self.left: TreeNode | None = left
+        self.right: TreeNode | None = right
 
 
+# Count Good Nodes in Binary Tree
 class Solution:
-    def goodNodesHelper(self, node: TreeNode | None, maxTillNow: float | int) -> None:
+    def __init__(self) -> None:
+        self.numOfgoodNodes: int = 0
+
+    def goodNodesHelper(self, node: TreeNode | None, maxTillNow: float) -> None:
         if node is None:
             return
         if node.val >= maxTillNow:
@@ -17,6 +23,5 @@ class Solution:
         self.goodNodesHelper(node.right, maxTillNow)
 
     def goodNodes(self, root: TreeNode) -> int:
-        self.numOfgoodNodes = 0
         self.goodNodesHelper(root, float("-inf"))
         return self.numOfgoodNodes
