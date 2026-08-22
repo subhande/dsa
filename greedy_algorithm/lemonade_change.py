@@ -1,6 +1,8 @@
 # Lemonade Change
 from typing import List
 from collections import defaultdict
+
+
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
         total_bills = defaultdict(int)
@@ -26,8 +28,9 @@ class Solution:
 
 
 class Solution2:
-    """ Function to find whether each customer can
-    be provided with correct change """
+    """Function to find whether each customer can
+    be provided with correct change"""
+
     def lemonadeChange(self, bills):
 
         # Counter for $5
@@ -38,7 +41,6 @@ class Solution2:
 
         # Iterate through each customer's bill
         for bill in bills:
-
             # If the customer's bill is $5
             if bill == 5:
                 # Increment $5

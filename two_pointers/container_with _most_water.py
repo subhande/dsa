@@ -30,9 +30,7 @@ class Solution3:
         maxStoredWater = 0
 
         while left < right:
-            maxStoredWater = max(
-                maxStoredWater, min(height[left], height[right]) * (right - left)
-            )
+            maxStoredWater = max(maxStoredWater, min(height[left], height[right]) * (right - left))
 
             if height[left] < height[right]:
                 left += 1

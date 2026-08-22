@@ -10,4 +10,4 @@ class Solution:
             return 1
         if dp.get(n) is not None:
             return dp[n]
-        return self.fib(n-1, dp) + self.fib(n-2, dp)
+        return self.fib(n - 1, dp) + self.fib(n - 2, dp)

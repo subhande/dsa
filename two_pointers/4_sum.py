@@ -25,9 +25,7 @@ class Solution:
                     total = nums[first] + nums[second] + nums[left] + nums[right]
 
                     if total == target:
-                        result.append(
-                            [nums[first], nums[second], nums[left], nums[right]]
-                        )
+                        result.append([nums[first], nums[second], nums[left], nums[right]])
 
                         # Skip duplicates for left and right pointers
                         while left < right and nums[left] == nums[left + 1]:

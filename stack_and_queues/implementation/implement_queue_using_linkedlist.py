@@ -1,4 +1,3 @@
-
 # Implement a queue using linked list
 
 
@@ -27,7 +26,6 @@ class LinkedListQueue:
             self.tail = node
         self.size += 1
 
-
     def pop(self):
         if self.isEmpty():
             return -1
@@ -36,19 +34,16 @@ class LinkedListQueue:
         self.size -= 1
         return temp.val
 
-
     def peek(self):
         if self.isEmpty():
             return -1
         return self.head.val
 
-
     def isEmpty(self):
         return self.size == 0
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     queue = LinkedListQueue()
     queue.push(1)
     queue.push(2)

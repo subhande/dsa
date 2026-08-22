@@ -25,14 +25,15 @@ Your goal is to return rotation table without overlapping periods representing w
 
 import heapq
 from typing import List, Any
+
+
 def get_rotation_table(on_calls: List[List[Any]]) -> List[List[Any]]:
 
     events = []
 
     for start, end, name in on_calls:
-        heapq.heappush(events, (start, name, 'start'))
-        heapq.heappush(events, (end, name, 'end'))
-
+        heapq.heappush(events, (start, name, "start"))
+        heapq.heappush(events, (end, name, "end"))
 
     on_call = set()
     result = []
@@ -47,9 +48,9 @@ def get_rotation_table(on_calls: List[List[Any]]) -> List[List[Any]]:
 
         prev_time = time
 
-        if event_type == 'start':
+        if event_type == "start":
             on_call.add(name)
-        elif event_type == 'end':
+        elif event_type == "end":
             on_call.remove(name)
 
     return result

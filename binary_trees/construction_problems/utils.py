@@ -1,9 +1,9 @@
-
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
         self.data = val
         self.left = left
         self.right = right
+
     def __str__(self):
         if self.left is None and self.right is None:
             return str(self.data)
@@ -13,8 +13,10 @@ class TreeNode(object):
             return f"""{str(self.data)} {str(self.left)}"""
         else:
             return f"""{str(self.data)} {str(self.left)} {str(self.right)}"""
+
     def __eq__(self, other):
         return self.data == other.data and self.left == other.left and self.right == other.right
+
 
 def buildTreeFromArray(arr):
     if not arr:

@@ -1,6 +1,4 @@
-
 # Minimum number of platforms required for a railway
-
 
 
 class Solution:
@@ -13,14 +11,11 @@ class Solution:
         # platforms[0] = trains[0][1]
 
         for idx in range(n):
-
-            train_arr_time, train_dep_time =  trains[idx]
+            train_arr_time, train_dep_time = trains[idx]
 
             for platform_idx in range(len(platforms)):
-
                 last_train_dep_time = platforms[platform_idx]
                 if train_arr_time > last_train_dep_time:
-
                     platforms[platform_idx] = train_dep_time
 
                     break

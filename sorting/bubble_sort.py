@@ -26,6 +26,7 @@ Pass 3:
 
 """
 
+
 def bubble_sort(arr):
     n = len(arr)
     # Traverse through all elements in the list
@@ -42,6 +43,7 @@ def bubble_sort(arr):
         if not swapped:
             break
     return arr
+
 
 # Example usage:
 unsorted_list = [64, 34, 25, 12, 22, 11, 90]

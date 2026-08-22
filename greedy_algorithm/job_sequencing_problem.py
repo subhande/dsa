@@ -1,5 +1,6 @@
 # Job Sequencing Problem
 
+
 class Solution:
     def JobScheduling(self, Jobs):
         Jobs.sort(key=lambda x: x[2], reverse=True)
@@ -60,4 +61,4 @@ class Solution2:
                     break
 
         # Return the list
-        return [cnt,totalProfit]
+        return [cnt, totalProfit]

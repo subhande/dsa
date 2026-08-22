@@ -1,17 +1,16 @@
-
-
 # Construct a BT from Postorder and Inorder
 #
 from utils import buildTreeFromArray, TreeNode
 
 from collections import deque
 
+
 class Solution:
     def buildTree(self, postorder, inorder):
         if len(inorder) != len(postorder):
             return None
 
-        inorderMap = {val: idx for idx, val in enumerate(inorder) }
+        inorderMap = {val: idx for idx, val in enumerate(inorder)}
 
         def helper(postStart, postEnd, inStart, inEnd):
             # Base case
@@ -32,8 +31,6 @@ class Solution:
             return root
 
         return helper(0, len(postorder) - 1, 0, len(inorder) - 1)
-
-
 
 
 if __name__ == "__main__":

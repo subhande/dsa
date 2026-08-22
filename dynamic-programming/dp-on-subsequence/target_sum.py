@@ -129,7 +129,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-
     # Create an instance of Solution class
     sol = Solution()
 

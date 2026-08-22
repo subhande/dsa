@@ -3,6 +3,7 @@
 
 from typing import List
 
+
 class DisjoinSet:
     def __init__(self, n: int):
         self.parent = [i for i in range(n)]
@@ -51,16 +52,15 @@ class Solution:
             for curr_col in range(cols):
                 if grid[curr_row][curr_col] == 1:
                     # Flatten 2D index to 1D
-                    current_node = (cols * curr_row) +  curr_col
+                    current_node = (cols * curr_row) + curr_col
 
                     for direction in directions:
                         nrow = curr_row + direction[0]
                         ncol = curr_col + direction[1]
                         # Check bounds and ensure the neighbor is also `1`
                         if self.isValid(nrow, ncol, rows, cols) and grid[nrow][ncol] == 1:
-                            nnode = (cols * nrow) +  ncol
+                            nnode = (cols * nrow) + ncol
                             ds.union(current_node, nnode)
-
 
         # Step 2: Calculate the maximum possible island size
         max_island_size = 0
@@ -70,7 +70,6 @@ class Solution:
 
         # To store unique roots for a `0`'s neighbors
         unique_roots = set()
-
 
         for curr_row in range(rows):
             for curr_col in range(cols):
@@ -86,10 +85,9 @@ class Solution:
 
                         # Check bounds and ensure the neighbor is `1`
                         if self.isValid(nrow, ncol, rows, cols) and grid[nrow][ncol] == 1:
-                            nnode = (cols * nrow) +  ncol
+                            nnode = (cols * nrow) + ncol
                             parent = ds.findParent(nnode)
                             unique_roots.add(parent)
-
 
                     # Sum up the sizes of unique neighboring islands
                     for root in unique_roots:

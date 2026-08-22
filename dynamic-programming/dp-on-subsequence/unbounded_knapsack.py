@@ -22,12 +22,11 @@ Constraints:
 1 ≤ W ≤ 1000
 1 ≤ wt[i] ≤ 500
 1 ≤ val[i] ≤ 500
-    
+
 """
 
 
 class Solution:
-
     ################################
     # Recursive Approach
     ################################
@@ -41,7 +40,9 @@ class Solution:
             return (capacity // weights[0]) * values[0]
 
         # Option 1: Do not take the current item
-        maxValueWithoutItem = self.unboundedKnapsackRecursiveHelper(weights, values, index - 1, capacity)
+        maxValueWithoutItem = self.unboundedKnapsackRecursiveHelper(
+            weights, values, index - 1, capacity
+        )
 
         # Option 2: Take the current item (if its weight allows it)
         maxValueWithItem = 0
@@ -73,7 +74,9 @@ class Solution:
             return memo[index][capacity]
 
         # Option 1: Do not take the current item
-        maxValueWithoutItem = self.unboundedKnapsackMemoizationHelper(weights, values, index - 1, capacity, memo)
+        maxValueWithoutItem = self.unboundedKnapsackMemoizationHelper(
+            weights, values, index - 1, capacity, memo
+        )
 
         # Option 2: Take the current item (if its weight allows it)
         maxValueWithItem = 0
@@ -163,9 +166,18 @@ if __name__ == "__main__":
         n = len(weights)
 
         print("=" * 50)
-        print("The maximum value is (Recursive):", sol.unboundedKnapsackRecursive(weights, values, n, capacity))
-        print("The maximum value is (Memoization):", sol.unboundedKnapsackMemoization(weights, values, n, capacity))
-        print("The maximum value is (Tabulation):", sol.unboundedKnapsackTabulation(weights, values, n, capacity))
+        print(
+            "The maximum value is (Recursive):",
+            sol.unboundedKnapsackRecursive(weights, values, n, capacity),
+        )
+        print(
+            "The maximum value is (Memoization):",
+            sol.unboundedKnapsackMemoization(weights, values, n, capacity),
+        )
+        print(
+            "The maximum value is (Tabulation):",
+            sol.unboundedKnapsackTabulation(weights, values, n, capacity),
+        )
         print(
             "The maximum value is (Space Optimized):",
             sol.unboundedKnapsackTabulationSpaceOptimized(weights, values, n, capacity),

@@ -1,8 +1,9 @@
-
 # Topological sort or Kahn's algorithm
 # Apply for DAG: Directed Acyclic Graph (DAG) is a directed graph with no cycles.
 # Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every directed edge u v, vertex u comes before v in the ordering.
 from collections import deque
+
+
 class Solution:
     def topoSortUsingDFS(self, V, adj):
         visited = [False] * V
@@ -79,12 +80,13 @@ class Solution:
         # Finally, return the topologically sorted order of vertices.
         return topologicalOrder
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
     V = 6
-    adj =[ [ ], [ ], [3], [1], [0,1], [0,2] ]
+    adj = [[], [], [3], [1], [0, 1], [0, 2]]
     output = [5, 4, 2, 3, 1, 0]
     print(f"Expected output: {output}")
     print(f"Actual output: {sol.topoSortUsingDFS(V, adj)}")
@@ -92,7 +94,7 @@ if __name__ == '__main__':
 
     # Test 2
     V = 4
-    adj = [ [ ], [0], [0], [0] ]
+    adj = [[], [0], [0], [0]]
     output = [3, 2, 1, 0]
     print(f"Expected output: {output}")
     print(f"Actual output: {sol.topoSortUsingDFS(V, adj)}")

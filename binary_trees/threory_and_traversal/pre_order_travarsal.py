@@ -14,11 +14,7 @@ class Solution:
     def preOrderRecursive(self, root: TreeNode | None):
         if root is None:
             return []
-        return (
-            [root.value]
-            + self.preOrderRecursive(root.left)
-            + self.preOrderRecursive(root.right)
-        )
+        return [root.value] + self.preOrderRecursive(root.left) + self.preOrderRecursive(root.right)
 
     def preOrderIterative(self, root: TreeNode | None):
         if root is None:

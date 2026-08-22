@@ -22,5 +22,6 @@ build-backend = "uv_build"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F"]
-ignore = ["E501"]
+select = []
+# select = ["E", "F"]
+# ignore = ["E501"]

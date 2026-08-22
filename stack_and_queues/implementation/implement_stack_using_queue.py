@@ -1,5 +1,6 @@
 from queue import Queue
 
+
 class QueueStack:
     def __init__(self):
         self.queue = Queue()
@@ -23,7 +24,7 @@ class QueueStack:
         return self.queue.empty()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     stack = QueueStack()
     stack.push(1)
     stack.push(2)

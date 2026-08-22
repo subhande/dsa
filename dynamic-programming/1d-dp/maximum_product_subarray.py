@@ -1,5 +1,6 @@
 # Maximum Product Subarray
 
+
 class Solution:
     def maxProduct(self, nums: list[int]) -> int:
         if not nums:

@@ -27,6 +27,7 @@ Constraints:
 --------------------------------------------
 """
 
+
 class Solution:
     def heapifyDown(self, arr, index, heapSize):
         """
@@ -36,7 +37,7 @@ class Solution:
         :param heapSize: Current size of the heap.
         """
 
-        smallest = index # assume the current index is the smallest value
+        smallest = index  # assume the current index is the smallest value
         leftChild = 2 * index + 1
         rightChild = 2 * index + 2
 
@@ -66,11 +67,14 @@ class Solution:
 
         return nums
 
+
 from binarytree import build
+
 
 def print_tree(arr):
     tree = build(arr)
     print(tree)
+
 
 if __name__ == "__main__":
     sol = Solution()

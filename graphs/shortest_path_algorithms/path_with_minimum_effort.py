@@ -3,9 +3,12 @@
 
 
 import heapq
+
+
 class Solution:
     def isValid(self, row, col, rows, cols):
         return 0 <= row < rows and 0 <= col < cols
+
     def MinimumEffort(self, grid):
         rows, cols = len(grid), len(grid[0])
         source = (0, 0)
@@ -16,9 +19,7 @@ class Solution:
 
         directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-
-
-        effort = [[float('inf') for _ in range(cols)] for _ in range(rows)]
+        effort = [[float("inf") for _ in range(cols)] for _ in range(rows)]
 
         effort[source[0]][source[1]] = 0
 

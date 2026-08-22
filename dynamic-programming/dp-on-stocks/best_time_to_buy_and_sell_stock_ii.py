@@ -35,9 +35,7 @@ class Solution:
                 profit = 0
                 # We can buy the stock
                 if buy == 0:
-                    profit = max(
-                        0 + dp[ind + 1][0], (-1) * prices[ind] + dp[ind + 1][1]
-                    )
+                    profit = max(0 + dp[ind + 1][0], (-1) * prices[ind] + dp[ind + 1][1])
 
                 # We can sell the stock
                 if buy == 1:

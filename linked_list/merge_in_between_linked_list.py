@@ -7,9 +7,7 @@ class ListNode:
 
 
 class Solution:
-    def mergeInBetween(
-        self, list1: ListNode, a: int, b: int, list2: ListNode
-    ) -> ListNode:
+    def mergeInBetween(self, list1: ListNode, a: int, b: int, list2: ListNode) -> ListNode:
 
         tail = list2
 

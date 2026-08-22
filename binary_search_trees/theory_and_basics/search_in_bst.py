@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -28,7 +29,6 @@ if __name__ == "__main__":
     val = 2
     root = buildTreeFromArray(root)
     print(sol.searchBST(root, val))
-
 
     # Test 2
     root = [4, 2, 7, 1, 3]

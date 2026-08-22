@@ -13,20 +13,20 @@ class Solution:
         profit = 0
         if buy == 0:
             profit = max(
-                0 + self.maxProfitRecursive(ind+1, 0, prices, memo),
-                -prices[ind] + self.maxProfitRecursive(ind+1, 1, prices, memo)
+                0 + self.maxProfitRecursive(ind + 1, 0, prices, memo),
+                -prices[ind] + self.maxProfitRecursive(ind + 1, 1, prices, memo),
             )
         else:
             profit = max(
-                0 + self.maxProfitRecursive(ind+1, 1, prices, memo),
-                prices[ind] + self.maxProfitRecursive(ind+2, 0, prices, memo)
+                0 + self.maxProfitRecursive(ind + 1, 1, prices, memo),
+                prices[ind] + self.maxProfitRecursive(ind + 2, 0, prices, memo),
             )
         memo[ind][buy] = profit
         return memo[ind][buy]
 
     def maxProfitTabular(self, prices):
         n = len(prices)
-        dp = [[-1, -1] for i in range(n+1)]
+        dp = [[-1, -1] for i in range(n + 1)]
         dp[n][0] = dp[n][1] = 0
 
         # Loop through the array in reverse order
@@ -35,7 +35,7 @@ class Solution:
                 profit = 0
                 # We can buy the stock
                 if buy == 0:
-                    profit = max(0 + dp[ind + 1][0], (-1)*prices[ind] + dp[ind + 1][1])
+                    profit = max(0 + dp[ind + 1][0], (-1) * prices[ind] + dp[ind + 1][1])
 
                 # We can sell the stock
                 if buy == 1:
@@ -47,6 +47,7 @@ class Solution:
                 dp[ind][buy] = profit
 
         return dp[0][0]
+
     def maxProfit(self, prices: List[int]) -> int:
         return self.maxProfitTabular(prices)
         n = len(prices)

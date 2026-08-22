@@ -1,8 +1,10 @@
 # Shortest Job First
 
+
 class Solution:
     """Function to calculate total waiting
     time using Shortest Job First algorithm"""
+
     def solve(self, bt):
         # Sort jobs in ascending order
         bt.sort()

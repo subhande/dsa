@@ -18,6 +18,8 @@ Space Complexity: O(1).
 We only use a fixed number of variables and therefore the algorithm requires constant extra space.
 
 """
+
+
 class Solution1:
     def minimizeXor(self, num1: int, num2: int) -> int:
         # Initialize result to num1. We will modify result.
@@ -60,6 +62,7 @@ class Solution1:
     # Helper function to unset the given bit position in x (set it to 0).
     def _unset_bit(self, x: int, bit: int):
         return x & ~(1 << bit)
+
 
 class Solution2:
     def minimizeXor(self, num1: int, num2: int) -> int:

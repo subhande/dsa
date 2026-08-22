@@ -21,7 +21,6 @@ s consists of only lowercase English letters
 
 """
 
-
 """
 Solution:
 --------------
@@ -31,15 +30,14 @@ Approach:
 -> Return (n-k) as answer.
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Tabulation Approach
     ################################
 
     def minInsertionTabulation(self, str):
         pass
-
 
     ################################
     # Tabulation Space Optimized Approach
@@ -49,28 +47,19 @@ class Solution:
         pass
 
 
-
-
 if __name__ == "__main__":
     minInsertion = Solution()
 
-    test_cases = [
-        {
-            "str": "abcaa",
-            "output": 2
-        },
-        {
-            "str": "ba",
-            "output": 1
-        }
-    ]
+    test_cases = [{"str": "abcaa", "output": 2}, {"str": "ba", "output": 1}]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
+        print(f"Test case {i + 1}")
         outputTabulation = minInsertion.minInsertionTabulation(test_case["str"])
         print(f"Output (Tabulation): {outputTabulation}")
-        outputTabulationSpaceOptimized = minInsertion.minInsertionTabulationSpaceOptimized(test_case["str"])
+        outputTabulationSpaceOptimized = minInsertion.minInsertionTabulationSpaceOptimized(
+            test_case["str"]
+        )
         print(f"Output (Tabulation Space Optimized): {outputTabulationSpaceOptimized}")
 
         # assert outputTabulation == test_case["output"]

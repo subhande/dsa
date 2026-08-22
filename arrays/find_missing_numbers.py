@@ -22,6 +22,7 @@ class Solution:
         # Return the missing number
         return missingNum
 
+
 # Approach 2: Bit Manipulation
 # Time Complexity: O(n) | Space Complexity: O(1)
 # XOR ->
@@ -46,6 +47,7 @@ xor1 ^ xor2 = (1 ^ 2 ^ 3 ^ 4 ^ 5) ^ (0 ^ 2 ^ 3 ^ 1 ^ 4)
 
 """
 
+
 class Solution2:
     # Function to find the missing number
     def missingNumber(self, nums: List[int]) -> int:
@@ -54,7 +56,7 @@ class Solution2:
 
         # Calculate XOR of all array elements
         for i in range(len(nums)):
-            xor1 ^= (i + 1)  # XOR up to [1...N]
+            xor1 ^= i + 1  # XOR up to [1...N]
             xor2 ^= nums[i]  # XOR of array elements
 
         # XOR of xor1 and xor2 gives missing number

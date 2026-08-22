@@ -8,11 +8,10 @@ class TreeNode(object):
         self.right = right
 
 
-
-
 class Solution:
     def isLeaf(self, node):
         return node.left is None and node.right is None
+
     def leftBoundary(self, node, boundary):
         if node is None:
             return
@@ -24,6 +23,7 @@ class Solution:
         elif node.right is not None:
             self.leftBoundary(node.right, boundary)
         return
+
     def rightBoundary(self, node, boundary):
         if node is None:
             return
@@ -58,6 +58,7 @@ class Solution:
         self.rightBoundary(root.right, boundary)
         return boundary
 
+
 class Solution2:
     def isLeaf(self, node):
         return node.left is None and node.right is None
@@ -70,6 +71,7 @@ class Solution2:
                 node = node.left
             else:
                 node = node.right
+
     def rightBoundary(self, node, boundary):
         temp = []
         while node:
@@ -102,6 +104,7 @@ class Solution2:
         self.rightBoundary(root.right, boundary)
         return boundary
 
+
 def buildTreeFromArray(arr):
     if not arr:
         return None
@@ -129,6 +132,7 @@ def buildTreeFromArray(arr):
             q.append(node.right)
     return root
 
+
 if __name__ == "__main__":
     root = TreeNode(1)
     # root.left = TreeNode(2)
@@ -143,7 +147,29 @@ if __name__ == "__main__":
     s = Solution2()
     print(s.boundary(root))
 
-    tree = [1 ,None, 15, 69 ,None ,None, 97 ,None, 96, 45 ,None, None, 70 ,None, 61 ,None, 67 ,None, 55 ,None ,None]
+    tree = [
+        1,
+        None,
+        15,
+        69,
+        None,
+        None,
+        97,
+        None,
+        96,
+        45,
+        None,
+        None,
+        70,
+        None,
+        61,
+        None,
+        67,
+        None,
+        55,
+        None,
+        None,
+    ]
     root = buildTreeFromArray(tree)
     print(s.boundary(root))
     # print_tree(tree)

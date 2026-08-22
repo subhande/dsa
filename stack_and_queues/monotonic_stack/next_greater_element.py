@@ -17,8 +17,8 @@ Tutorial: https://www.youtube.com/watch?v=Dq_ObZwTY_Q
 
 """
 
-class Solution:
 
+class Solution:
     # Time complexity: O(n^2) | Space complexity: O(n)
     def nextLargerElementBruteForce(self, arr):
         n = len(arr)
@@ -54,7 +54,6 @@ class Solution:
 
         return result
 
-
     # Time complexity: O(n) | Space complexity: O(n)
     def nextLargerElement2(self, arr):
         n = len(arr)
@@ -73,7 +72,6 @@ class Solution:
             stack.append(i)
 
         return result
-
 
 
 """
@@ -142,7 +140,7 @@ stack = [7, 6, 5]
 Output: [6, 7, -1, 4, 2, 4, -1]
 """
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
@@ -153,7 +151,6 @@ if __name__ == '__main__':
     print(sol.nextLargerElement(arr))
     print(sol.nextLargerElement2(arr))
     # print(sol.nextLargerElement3(arr))
-
 
     # Test 2
     arr = [4, 3, 2, 1]

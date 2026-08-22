@@ -4,6 +4,7 @@ from utils import buildTreeFromArray, TreeNode
 
 from collections import deque
 
+
 class Solution:
     # Time Complexity: O(n) | Space Complexity: O(n)
     def topView(self, root: TreeNode | None):
@@ -32,10 +33,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-
     sol = Solution()
 
     # Test Case 1
-    root = buildTreeFromArray([20, 8, 22, 5, 3, None, 25, None, None, 10 ,14])
+    root = buildTreeFromArray([20, 8, 22, 5, 3, None, 25, None, None, 10, 14])
     # Bottom view: [2, 1, 3, 5]
     print(sol.topView(root))

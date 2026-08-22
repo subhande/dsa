@@ -1,11 +1,10 @@
-
 # Number Of Islands II
 # https://leetcode.com/problems/number-of-islands-ii/description/
 # https://takeuforward.org/plus/dsa/graph/hard-problems-ii/number-of-islands-ii
 
 
-
 from typing import List
+
 
 class DisjointSet:
     def __init__(self, n):
@@ -61,6 +60,19 @@ if __name__ == "__main__":
     n = 4
     m = 5
     k = 12
-    positions = [[0,0],[0,0],[1,1],[1,0],[0,1],[0,3],[1,3],[0,4], [3,2], [2,2],[1,2], [0,2]]
+    positions = [
+        [0, 0],
+        [0, 0],
+        [1, 1],
+        [1, 0],
+        [0, 1],
+        [0, 3],
+        [1, 3],
+        [0, 4],
+        [3, 2],
+        [2, 2],
+        [1, 2],
+        [0, 2],
+    ]
 
     print(s.numIslands2(n, m, positions))

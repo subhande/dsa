@@ -23,8 +23,9 @@ class Solution:
 
 
 class Solution2:
-    """ Function to check if there is a subset of arr
+    """Function to check if there is a subset of arr
     with sum equal to 'target' using memoization"""
+
     def func(self, ind, target, arr, dp):
         # Base cases
         if target == 0:
@@ -52,6 +53,7 @@ class Solution2:
 
     """ Function to check if there is a subset
     of 'arr' with sum equal to 'target'"""
+
     def isSubsetSum(self, arr, target):
         # Initialize a memoization table with -1.
         dp = [[-1 for j in range(target + 1)] for i in range(len(arr))]

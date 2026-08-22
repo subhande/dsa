@@ -2,6 +2,7 @@
 from utils import buildTreeFromArray, TreeNode
 from collections import deque
 
+
 class Solution:
     def serialize(self, root):
         """

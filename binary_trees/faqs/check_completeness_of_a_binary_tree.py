@@ -28,13 +28,9 @@ class Solution1:
 
                 if node.left is None and node.right is not None:
                     return False
-                if rightChildMisssing is True and (
-                    node.left is not None or node.right is not None
-                ):
+                if rightChildMisssing is True and (node.left is not None or node.right is not None):
                     return False
-                if noChild is True and (
-                    node.left is not None or node.right is not None
-                ):
+                if noChild is True and (node.left is not None or node.right is not None):
                     return False
                 if node.left is None and node.right is None:
                     noChild = True

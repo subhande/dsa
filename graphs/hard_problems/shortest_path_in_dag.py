@@ -40,15 +40,12 @@ class Solution:
         for node in topoOrder:
             if distance[node] != float("inf"):
                 for neighbor in adj[node]:
-                    distance[neighbor[0]] = min(
-                        distance[neighbor[0]], distance[node] + neighbor[1]
-                    )
+                    distance[neighbor[0]] = min(distance[neighbor[0]], distance[node] + neighbor[1])
         for i in range(N):
             if distance[i] == float("inf"):
                 distance[i] = -1
 
         return distance
-
 
 
 class Solution2:
@@ -73,7 +70,6 @@ class Solution2:
                     queue.append(neighbor[0])
         return topoOrder
 
-
     def shortestPath(self, N, M, edges):
         adj = [[] for _ in range(N)]
         for edge in edges:
@@ -91,9 +87,7 @@ class Solution2:
         for node in topoOrder:
             if distance[node] != float("inf"):
                 for neighbor in adj[node]:
-                    distance[neighbor[0]] = min(
-                        distance[neighbor[0]], distance[node] + neighbor[1]
-                    )
+                    distance[neighbor[0]] = min(distance[neighbor[0]], distance[node] + neighbor[1])
         for i in range(N):
             if distance[i] == float("inf"):
                 distance[i] = -1

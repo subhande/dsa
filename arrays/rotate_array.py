@@ -1,6 +1,7 @@
 # Rotate Array
 # https://leetcode.com/problems/rotate-array/description/?envType=company&envId=google&favoriteSlug=google-three-months
 
+
 class Solution:
     def rotateBruteForce(self, nums: list[int], k: int) -> None:
         # speed up the rotation
@@ -10,7 +11,6 @@ class Solution:
             previous = nums[-1]
             for j in range(len(nums)):
                 nums[j], previous = previous, nums[j]
-
 
     def rotateExtraSpace(self, nums: list[int], k: int) -> None:
         n = len(nums)
@@ -26,7 +26,7 @@ class Solution:
         k %= n
 
         def reverse(start, end):
-            nums[start:end + 1] = nums[start:end + 1][::-1]
+            nums[start : end + 1] = nums[start : end + 1][::-1]
 
         reverse(0, n - 1)
         reverse(0, k - 1)
@@ -56,7 +56,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-
     sol = Solution()
 
     # Test 1

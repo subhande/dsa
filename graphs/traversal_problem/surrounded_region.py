@@ -4,8 +4,8 @@
 from collections import deque
 from typing import List
 
-class Solution:
 
+class Solution:
     def isValid(self, r, c, rows, cols):
         return 0 <= r < rows and 0 <= c < cols
 
@@ -27,10 +27,10 @@ class Solution:
         if not board or not board[0]:
             return -1
         rows, cols = len(board), len(board[0])
-        border_cells = [(0,i) for i in range(cols)]
-        border_cells += [(rows-1,i) for i in range(cols)]
-        border_cells += [(i,0) for i in range(1, rows-1)]
-        border_cells += [(i,cols-1) for i in range(1, rows-1)]
+        border_cells = [(0, i) for i in range(cols)]
+        border_cells += [(rows - 1, i) for i in range(cols)]
+        border_cells += [(i, 0) for i in range(1, rows - 1)]
+        border_cells += [(i, cols - 1) for i in range(1, rows - 1)]
 
         for row, col in border_cells:
             if board[row][col] == "O":

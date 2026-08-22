@@ -2,7 +2,6 @@
 
 
 class MyCalendarTwo:
-
     def __init__(self):
         self.bookings = []
         self.overlap_bookings = []
@@ -25,17 +24,12 @@ class MyCalendarTwo:
         return True
 
     # Return True if the booking [start1, end1) & [start2, end2) overlaps.
-    def does_overlap(
-        self, start1: int, end1: int, start2: int, end2: int
-    ) -> bool:
+    def does_overlap(self, start1: int, end1: int, start2: int, end2: int) -> bool:
         return max(start1, start2) < min(end1, end2)
 
     # Return the overlapping booking between [start1, end1) & [start2, end2).
-    def get_overlapped(
-        self, start1: int, end1: int, start2: int, end2: int
-    ) -> tuple:
+    def get_overlapped(self, start1: int, end1: int, start2: int, end2: int) -> tuple:
         return max(start1, start2), min(end1, end2)
-
 
 
 # Your MyCalendarTwo object will be instantiated and called as such:
@@ -47,7 +41,6 @@ from sortedcontainers import SortedDict
 
 
 class MyCalendarTwoLineSweep:
-
     def __init__(self):
         # Store the number of bookings at each point.
         self.booking_count = SortedDict()

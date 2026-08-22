@@ -6,6 +6,7 @@
 from collections import deque
 from typing import List
 
+
 # Time Complexity: O(V + E) | Space Complexity: O(V)
 class Solution:
     def topologicalSort(self, graph, V):
@@ -31,7 +32,6 @@ class Solution:
                     queue.append(neighbour)
         return topoOrder
 
-
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         V = len(graph)
         reverseGraph = [[] for i in range(V)]
@@ -45,11 +45,10 @@ class Solution:
         return topoOrder
 
 
-
 class Solution2:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         V = len(graph)
-        revGraph = [[]for _ in range(V)]
+        revGraph = [[] for _ in range(V)]
         inDegree = [0] * V
 
         for vertex_u, edges in enumerate(graph):
@@ -71,6 +70,7 @@ class Solution2:
                 if inDegree[neighbour] == 0:
                     queue.append(neighbour)
         return sorted(safeNodes)
+
 
 if __name__ == "__main__":
     sol = Solution()

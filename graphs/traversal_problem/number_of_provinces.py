@@ -2,6 +2,7 @@
 from collections import deque
 from typing import List
 
+
 class Solution:
     def numProvinces(self, adj: list[list]):
         """
@@ -28,7 +29,6 @@ class Solution:
                 if neighbor not in visited:
                     dfs(neighbor)
 
-
         province_count = 0
         for vertex in range(V):
             if vertex not in visited:
@@ -37,8 +37,8 @@ class Solution:
 
         return province_count
 
-class Solution2:
 
+class Solution2:
     def bfs(self, node, visited, isConnected):
 
         visited[node] = True
@@ -53,8 +53,6 @@ class Solution2:
                     visited[i] = True
                     queue.append(i)
 
-
-
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
         visited = [False] * n
@@ -67,32 +65,32 @@ class Solution2:
 
         return no_of_provinces
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     sol = Solution()
 
     # Example 1
-    adj = [[1,1,0],[1,1,0],[0,0,1]]
-    print(sol.numProvinces(adj)) # Output: 2
+    adj = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+    print(sol.numProvinces(adj))  # Output: 2
 
     # Example 2
-    adj = [[1,0,0],[0,1,0],[0,0,1]]
-    print(sol.numProvinces(adj)) # Output: 3
+    adj = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    print(sol.numProvinces(adj))  # Output: 3
 
     # Example 3
-    adj = [[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]
-    print(sol.numProvinces(adj)) # Output: 1
+    adj = [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]
+    print(sol.numProvinces(adj))  # Output: 1
 
     sol = Solution2()
 
     # Example 1
-    adj = [[1,1,0],[1,1,0],[0,0,1]]
-    print(sol.findCircleNum(adj)) # Output: 2
+    adj = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+    print(sol.findCircleNum(adj))  # Output: 2
 
     # Example 2
-    adj = [[1,0,0],[0,1,0],[0,0,1]]
-    print(sol.findCircleNum(adj)) # Output: 3
+    adj = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    print(sol.findCircleNum(adj))  # Output: 3
 
     # Example 3
-    adj = [[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]
-    print(sol.findCircleNum(adj)) # Output: 1
+    adj = [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]
+    print(sol.findCircleNum(adj))  # Output: 1

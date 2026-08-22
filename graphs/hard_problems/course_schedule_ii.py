@@ -5,8 +5,9 @@
 
 from collections import deque
 from typing import List
-class Solution:
 
+
+class Solution:
     def topoSort(self, adj, V):
         inDegree = [0] * V
 

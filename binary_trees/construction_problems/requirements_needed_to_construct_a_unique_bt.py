@@ -7,9 +7,11 @@ Post-Order: Left, Right, Root -> 3
 
 """
 
+
 class Solution:
     def unique_binary_tree(self, a, b):
         return not (a == b or (a == 1 and b == 3) or (a == 3 and b == 1))
+
 
 if __name__ == "__main__":
     solution = Solution()

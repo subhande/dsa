@@ -18,6 +18,7 @@ import heapq
 
 """
 
+
 class DisjointSet:
     def __init__(self, n):
         self.parent = list(range(n))
@@ -42,6 +43,7 @@ class DisjointSet:
     def find(self, u, v):
         return self.findParent(u) == self.findParent(v)
 
+
 class Solution:
     # Prim's Algorithm
     # Time complexity: O(ElogE) | Space complexity: O(E + V)
@@ -49,7 +51,7 @@ class Solution:
         total_weight = 0
         visited = [False] * V
         # Start from vertex 0 (can start from any vertex)
-        minHeap = [(0, 0)] # (weight, vertex)
+        minHeap = [(0, 0)]  # (weight, vertex)
 
         while minHeap:
             weight, node = heapq.heappop(minHeap)
@@ -88,8 +90,7 @@ class Solution:
         return total_weight
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1

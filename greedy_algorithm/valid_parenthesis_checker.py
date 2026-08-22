@@ -35,6 +35,7 @@ class Solution:
 
 # Time Complexity: O(n) | Space Complexity: O(1)
 
+
 class Solution2:
     def checkValidString(self, s: str) -> bool:
         minOpen, maxOpen = 0, 0

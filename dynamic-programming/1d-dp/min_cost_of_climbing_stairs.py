@@ -3,6 +3,7 @@
 
 from typing import List
 
+
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         total_steps = len(cost)
@@ -10,17 +11,19 @@ class Solution:
             return 0
 
         cost_two_steps_back = 0  # Cost to reach two steps before
-        cost_one_step_back = 0   # Cost to reach one step before
+        cost_one_step_back = 0  # Cost to reach one step before
 
         for current_step in range(2, total_steps + 1):
             cost_to_current_step = min(
                 cost_one_step_back + cost[current_step - 1],
-                cost_two_steps_back + cost[current_step - 2]
+                cost_two_steps_back + cost[current_step - 2],
             )
             cost_two_steps_back = cost_one_step_back
             cost_one_step_back = cost_to_current_step
 
         return cost_one_step_back
+
+
 """
 --------------------------------------------------
 
@@ -30,9 +33,10 @@ class Solution:
 """
 
 
-
 class Solution2:
-    def minCostClimbingStairsRecursiveHelper(self, cost: List[int], step: int, memo: List[int]) -> int:
+    def minCostClimbingStairsRecursiveHelper(
+        self, cost: List[int], step: int, memo: List[int]
+    ) -> int:
         if step < 2:
             return 0
         if memo[step] != -1:
@@ -40,10 +44,11 @@ class Solution2:
 
         cost_to_current_step = min(
             self.minCostClimbingStairsRecursiveHelper(cost, step - 1, memo) + cost[step - 1],
-            self.minCostClimbingStairsRecursiveHelper(cost, step - 2, memo) + cost[step - 2]
+            self.minCostClimbingStairsRecursiveHelper(cost, step - 2, memo) + cost[step - 2],
         )
         memo[step] = cost_to_current_step
         return cost_to_current_step
+
     def minCostClimbingStairsRecursive(self, cost: List[int]) -> int:
         total_steps = len(cost)
         memo = [-1] * (total_steps + 1)

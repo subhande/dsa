@@ -20,6 +20,7 @@ class Solution:
             longestSubstring = max(longestSubstring, i - state[prefixXOR])
         return longestSubstring
 
+
 """
 This solution finds the length of the longest substring in which each vowel (a, e, i, o, u) appears an even number of times. It does so by using bit manipulation to keep track of the parity (even or odd count) of each vowel as it scans through the input string.
 
@@ -59,7 +60,7 @@ Space Complexity:
 This approach is both time efficient and space efficient, making it a very elegant solution to the problem.
 """
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     obj = Solution()
     s = "eleetminicoworoep"
     print(obj.findTheLongestSubstring(s))

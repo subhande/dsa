@@ -15,6 +15,7 @@ class Solution:
                     validMeetings.append(meeting)
         return len(validMeetings)
 
+
 class Solution2:
     # Function to find the maximum number of meetings that can be held
     def maxMeetings(self, start, end):

@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -7,6 +8,7 @@ sys.path.insert(0, project_root)
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 # Construct a BST from a preorder traversal
+
 
 class Solution:
     # Time Complexity: O(h) | Space Complexity: O(h)
@@ -34,7 +36,7 @@ class Solution:
         inorder = sorted(preorder)
         # Create a map to store indices
         # of elements in the inorder traversal
-        inorderMap = {val: idx for idx, val in enumerate(inorder) }
+        inorderMap = {val: idx for idx, val in enumerate(inorder)}
 
         # Recursive helper function to build the tree
         def helper(preStart, preEnd, inStart, inEnd):
@@ -59,37 +61,36 @@ class Solution:
 
         return helper(0, len(preorder) - 1, 0, len(inorder) - 1)
 
-
     # Time Complexity: O(n) | Space Complexity: O(n)
     # The time complexity is O(n) because each node is processed once, and even in the worst case, the total number of stack operations (push and pop) is at most n.
     # The space complexity is O(n) in the worst case when the tree is skewed, as the stack may hold up to n nodes.
     def bstFromPreorderIterative(self, preorder):
-            if not preorder:
-                return None
+        if not preorder:
+            return None
 
-            # The first element is the root
-            root = TreeNode(preorder[0])
-            stack = [root]
+        # The first element is the root
+        root = TreeNode(preorder[0])
+        stack = [root]
 
-            # Iterate over the rest of the preorder sequence
-            for value in preorder[1:]:
-                node = TreeNode(value)
+        # Iterate over the rest of the preorder sequence
+        for value in preorder[1:]:
+            node = TreeNode(value)
 
-                # If the current value is less than the last node's value on the stack,
-                # it belongs as a left child.
-                if value < stack[-1].data:
-                    stack[-1].left = node
-                    stack.append(node)
-                else:
-                    # Otherwise, pop nodes until finding the parent under which the new node
-                    # should be attached as a right child.
-                    last = None
-                    while stack and stack[-1].data < value:
-                        last = stack.pop()
-                    if last:
-                        last.right = node
-                    stack.append(node)
-            return root
+            # If the current value is less than the last node's value on the stack,
+            # it belongs as a left child.
+            if value < stack[-1].data:
+                stack[-1].left = node
+                stack.append(node)
+            else:
+                # Otherwise, pop nodes until finding the parent under which the new node
+                # should be attached as a right child.
+                last = None
+                while stack and stack[-1].data < value:
+                    last = stack.pop()
+                if last:
+                    last.right = node
+                stack.append(node)
+        return root
 
     def bstFromPreorderOptimalHelper(self, preorder, bound, index):
         # If all elements are used or the next element
@@ -117,8 +118,7 @@ class Solution:
         # Start the recursive function
         # with the first element as the root
         # and the entire range of valid numbers
-        return self.bstFromPreorderOptimalHelper(preorder, float('inf'), [0])
-
+        return self.bstFromPreorderOptimalHelper(preorder, float("inf"), [0])
 
 
 if __name__ == "__main__":
@@ -126,14 +126,14 @@ if __name__ == "__main__":
 
     # Test 1
     preorder = [8, 5, 1, 7, 10, 12]
-    print(sol.bstFromPreorderRecursive(preorder)) # [8, 5, 10, 1, 7, None, 12]
-    print(sol.bstFromPreorderUsingInorder(preorder)) # [8, 5, 10, 1, 7, None, 12]
-    print(sol.bstFromPreorderIterative(preorder)) # [8, 5, 10, 1, 7, None, 12]
-    print(sol.bstFromPreorderOptimal(preorder)) # [8, 5, 10, 1, 7, None, 12]
+    print(sol.bstFromPreorderRecursive(preorder))  # [8, 5, 10, 1, 7, None, 12]
+    print(sol.bstFromPreorderUsingInorder(preorder))  # [8, 5, 10, 1, 7, None, 12]
+    print(sol.bstFromPreorderIterative(preorder))  # [8, 5, 10, 1, 7, None, 12]
+    print(sol.bstFromPreorderOptimal(preorder))  # [8, 5, 10, 1, 7, None, 12]
 
     # Test 2
     preorder = [1, 3]
-    print(sol.bstFromPreorderRecursive(preorder)) # [1, None, 3]
-    print(sol.bstFromPreorderUsingInorder(preorder)) # [1, None, 3]
-    print(sol.bstFromPreorderIterative(preorder)) # [1, None, 3]
-    print(sol.bstFromPreorderOptimal(preorder)) # [1, None, 3]
+    print(sol.bstFromPreorderRecursive(preorder))  # [1, None, 3]
+    print(sol.bstFromPreorderUsingInorder(preorder))  # [1, None, 3]
+    print(sol.bstFromPreorderIterative(preorder))  # [1, None, 3]
+    print(sol.bstFromPreorderOptimal(preorder))  # [1, None, 3]

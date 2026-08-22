@@ -33,15 +33,14 @@ Constraints:
 1 <= s.length, t.length <= 1000
 """
 
-
 """
 Solution:
 --------------
 
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Recursion Approach
     ################################
@@ -53,12 +52,13 @@ class Solution:
             return 0
 
         if s[i] == t[j]:
-            return self.distinctSubsequencesRecursionHelper(s, t, i - 1, j - 1) + self.distinctSubsequencesRecursionHelper(s, t, i - 1, j)
+            return self.distinctSubsequencesRecursionHelper(
+                s, t, i - 1, j - 1
+            ) + self.distinctSubsequencesRecursionHelper(s, t, i - 1, j)
         return self.distinctSubsequencesRecursionHelper(s, t, i - 1, j)
 
     def distinctSubsequencesRecursion(self, s, t):
         return self.distinctSubsequencesRecursionHelper(s, t, len(s) - 1, len(t) - 1) % (10**9 + 7)
-
 
     ################################
     # Recursion with Memoization Approach
@@ -74,7 +74,9 @@ class Solution:
             return dp[i][j]
 
         if s[i] == t[j]:
-            dp[i][j] = self.distinctSubsequencesRecursionMemoizationHelper(s, t, i - 1, j - 1, dp) + self.distinctSubsequencesRecursionMemoizationHelper(s, t, i - 1, j, dp)
+            dp[i][j] = self.distinctSubsequencesRecursionMemoizationHelper(
+                s, t, i - 1, j - 1, dp
+            ) + self.distinctSubsequencesRecursionMemoizationHelper(s, t, i - 1, j, dp)
         else:
             dp[i][j] = self.distinctSubsequencesRecursionMemoizationHelper(s, t, i - 1, j, dp)
         return dp[i][j] % (10**9 + 7)
@@ -110,9 +112,6 @@ class Solution:
 
         return dp[n][m] % (10**9 + 7)
 
-
-
-
     ################################
     # Tabulation Space Optimized Approach
     ################################
@@ -139,43 +138,38 @@ class Solution:
         return prev[m] % (10**9 + 7)
 
 
-
-
-
 if __name__ == "__main__":
     distinctSubsequences = Solution()
 
     test_cases = [
-        {
-            "s": "axbxax",
-            "t": "axa",
-            "output": 2
-        },
-        {
-            "s": "babgbag",
-            "t": "bag",
-            "output": 5
-        },
-        {
-            "s": "abcde",
-            "t": "ace",
-            "output": 1
-        },
+        {"s": "axbxax", "t": "axa", "output": 2},
+        {"s": "babgbag", "t": "bag", "output": 5},
+        {"s": "abcde", "t": "ace", "output": 1},
     ]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
-        outputRecursive = distinctSubsequences.distinctSubsequencesRecursion(test_case["s"], test_case["t"])
+        print(f"Test case {i + 1}")
+        outputRecursive = distinctSubsequences.distinctSubsequencesRecursion(
+            test_case["s"], test_case["t"]
+        )
         print(f"Output (Recursion): {outputRecursive}")
 
-        outputRecursiveMemoization = distinctSubsequences.distinctSubsequencesRecursionMemoization(test_case["s"], test_case["t"])
+        outputRecursiveMemoization = distinctSubsequences.distinctSubsequencesRecursionMemoization(
+            test_case["s"], test_case["t"]
+        )
         print(f"Output (Recursion with Memoization): {outputRecursiveMemoization}")
 
-        outputTabulation = distinctSubsequences.distinctSubsequencesTabulation(test_case["s"], test_case["t"])
+        outputTabulation = distinctSubsequences.distinctSubsequencesTabulation(
+            test_case["s"], test_case["t"]
+        )
         print(f"Output (Tabulation): {outputTabulation}")
 
-        outputTabulationSpaceOptimized = distinctSubsequences.distinctSubsequencesTabulationSpaceOptimized(test_case["s"], test_case["t"])
+        outputTabulationSpaceOptimized = (
+            distinctSubsequences.distinctSubsequencesTabulationSpaceOptimized(
+                test_case["s"], test_case["t"]
+            )
+        )
         print(f"Output (Tabulation Space Optimized): {outputTabulationSpaceOptimized}")
 
         # assert outputTabulation == test_case["output"]

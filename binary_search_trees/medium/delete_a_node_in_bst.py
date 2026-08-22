@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -7,8 +8,8 @@ sys.path.insert(0, project_root)
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 
-
 # Delete a node in BST
+
 
 class Solution:
     def findSuccessor(self, node):
@@ -46,19 +47,18 @@ class Solution:
         return root
 
 
-
 if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
-    root =  [5, 3, 6, 2, 4, None, 7]
+    root = [5, 3, 6, 2, 4, None, 7]
     val = 3
     root = buildTreeFromArray(root)
     print(f"Original Tree: {root}")
     print(f"Tree after deleting node with value {val}: {sol.deleteNode(root, val)}")
 
     # Test 2
-    root =   [5, 3, 6, 2, 4, None, 7]
+    root = [5, 3, 6, 2, 4, None, 7]
     val = 0
     root = buildTreeFromArray(root)
     print(f"Original Tree: {root}")

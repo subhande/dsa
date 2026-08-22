@@ -1,5 +1,6 @@
 # Remove Star from a string
 
+
 class Solution:
     def removeStars(self, s: str) -> str:
         stack = []

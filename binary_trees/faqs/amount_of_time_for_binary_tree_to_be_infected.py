@@ -3,6 +3,7 @@
 
 from typing import Optional
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -11,6 +12,8 @@ class TreeNode:
 
 
 from collections import deque
+
+
 class Solution:
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
         parent_map = {}
@@ -38,10 +41,8 @@ class Solution:
         currentTime = -1
 
         while queue:
-
             size = len(queue)
             for _ in range(size):
-
                 node = queue.popleft()
 
                 if node.left and node.left not in visited:

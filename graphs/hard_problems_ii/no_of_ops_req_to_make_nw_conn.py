@@ -30,6 +30,7 @@ class DisjointSet:
     def find(self, u, v):
         return self.findParent(u) == self.findParent(v)
 
+
 class Solution:
     def makeConnectedBFS(self, n: int, connections: List[List[int]]) -> int:
         if len(connections) < n - 1:

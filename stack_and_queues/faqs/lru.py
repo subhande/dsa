@@ -1,5 +1,3 @@
-
-
 class Node:
     def __init__(self, key, value):
         self.key = key
@@ -9,6 +7,7 @@ class Node:
 
     def __repr__(self):
         return f"Node({self.key}, {self.value})"
+
 
 class DoublyLinkedList:
     def __init__(self, head, tail):
@@ -46,10 +45,6 @@ class DoublyLinkedList:
         return node
 
 
-
-
-
-
 class LRUCacheUsingDLL:
     def __init__(self, capacity):
         self.capacity = capacity
@@ -82,7 +77,9 @@ class LRUCacheUsingDLL:
                 del self.cache[tail.key]
                 self.size -= 1
 
+
 from collections import OrderedDict
+
 
 class LRUCacheUsingDict:
     def __init__(self, capacity: int):
@@ -108,7 +105,8 @@ class LRUCacheUsingDict:
         # Insert the key as the most recently used (end of OrderedDict).
         self.cache[key] = value
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     lru = LRUCacheUsingDLL(2)
     lru.put(1, 1)
     lru.put(2, 2)

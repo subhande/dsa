@@ -54,18 +54,21 @@ Stability: The traditional selection sort is not stable. (Stability in sorting m
 Below is an example of selection sort implemented in Python:
 
 -------------------------------------------------"""
+
+
 def selection_sort(arr):
     n = len(arr)
     for i in range(n):
         # Assume the element at i is the minimum.
         min_index = i
         # Find the minimum element in the rest of the array.
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if arr[j] < arr[min_index]:
                 min_index = j
         # Swap the found minimum element with the first unsorted element.
         arr[i], arr[min_index] = arr[min_index], arr[i]
     return arr
+
 
 # Example usage:
 arr = [29, 10, 14, 37, 13]

@@ -1,5 +1,6 @@
 # Find Square Root of a Number
 
+
 class Solution:
     def floorSqrt(self, n: int) -> int:
         # Base case
@@ -9,7 +10,6 @@ class Solution:
         # Binary search for square root
         left, right = 1, n // 2
         while left <= right:
-
             mid = (left + right) // 2
             # print(f"left: {left}, right: {right}, mid: {mid} => {mid * mid}")
             square = mid * mid

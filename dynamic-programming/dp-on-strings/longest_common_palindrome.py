@@ -28,7 +28,6 @@ Constraints:
 
 
 class Solution:
-
     ################################
     # Recursive Approach with Memoization
     # ###############################
@@ -44,12 +43,14 @@ class Solution:
 
         # If characters match, store the result and move diagonally in both strings
         if str1[index1] == str2[index2]:
-            memo[index1][index2] = 1 + self.lpsMemoizationHelper(str1, str2, index1 - 1, index2 - 1, memo)
+            memo[index1][index2] = 1 + self.lpsMemoizationHelper(
+                str1, str2, index1 - 1, index2 - 1, memo
+            )
         else:
             # If characters do not match, take the maximum of the two possibilities
             memo[index1][index2] = max(
                 self.lpsMemoizationHelper(str1, str2, index1 - 1, index2, memo),
-                self.lpsMemoizationHelper(str1, str2, index1, index2 - 1, memo)
+                self.lpsMemoizationHelper(str1, str2, index1, index2 - 1, memo),
             )
         return memo[index1][index2]
 
@@ -67,9 +68,14 @@ class Solution:
         if memo[start][end] != -1:
             return memo[start][end]
         if str[start] == str[end]:
-            memo[start][end] = 2 + self.longestPalinSubseqRecursiveMemo(str, start + 1, end - 1, memo)
+            memo[start][end] = 2 + self.longestPalinSubseqRecursiveMemo(
+                str, start + 1, end - 1, memo
+            )
         else:
-            memo[start][end] = max(self.longestPalinSubseqRecursiveMemo(str, start + 1, end, memo), self.longestPalinSubseqRecursiveMemo(str, start, end - 1, memo))
+            memo[start][end] = max(
+                self.longestPalinSubseqRecursiveMemo(str, start + 1, end, memo),
+                self.longestPalinSubseqRecursiveMemo(str, start, end - 1, memo),
+            )
         return memo[start][end]
 
     ################################
@@ -77,7 +83,7 @@ class Solution:
     ################################
 
     def longestPalinSubseqTabulation(self, str):
-        '''
+        """
         This function finds the length of the longest palindromic subsequence in the given string using tabulation approach.
         - Intuition: We need to find the length of the longest palindromic subsequence in the given string.
         str = "b b a b c b c a b"
@@ -87,7 +93,7 @@ class Solution:
          -> The length of the palindromic subsequence will also remain the same when the entire string is reversed.
 
         From the above discussion we can conclude that the longest palindromic subsequence of a string is the longest common subsequence of the given string and its reverse.
-        '''
+        """
         str_rev = str[::-1]
         n, m = len(str), len(str_rev)
 
@@ -110,9 +116,6 @@ class Solution:
 
         # The value at dp[n][m] contains length of the LCS
         return dp[n][m]
-
-
-
 
     ################################
     # Tabulation Space Optimized Approach
@@ -139,37 +142,24 @@ class Solution:
         return prev[m]
 
 
-
-
 if __name__ == "__main__":
     longestPalinSubseq = Solution()
 
     test_cases = [
-        {
-            "str": "eeeme",
-            "output": 4
-        },
-        {
-            "str": "annb",
-            "output": 2
-        },
-        {
-            "str": "bbabcbcab",
-            "output": 7
-
-        },
-        {
-            "str": "aacabdkacaa",
-            "output": 9
-        }
+        {"str": "eeeme", "output": 4},
+        {"str": "annb", "output": 2},
+        {"str": "bbabcbcab", "output": 7},
+        {"str": "aacabdkacaa", "output": 9},
     ]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
+        print(f"Test case {i + 1}")
         outputTabulation = longestPalinSubseq.longestPalinSubseqTabulation(test_case["str"])
         print(f"Output (Tabulation): {outputTabulation}")
-        outputTabulationSpaceOptimized = longestPalinSubseq.longestPalinSubseqTabulationSpaceOptimized(test_case["str"])
+        outputTabulationSpaceOptimized = (
+            longestPalinSubseq.longestPalinSubseqTabulationSpaceOptimized(test_case["str"])
+        )
         print(f"Output (Tabulation Space Optimized): {outputTabulationSpaceOptimized}")
 
         assert outputTabulation == test_case["output"]

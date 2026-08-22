@@ -2,6 +2,8 @@
 #
 from typing import List
 from collections import defaultdict
+
+
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         n = len(nums)
@@ -17,6 +19,7 @@ class Solution:
             else:
                 hashMap[mod] = index
         return False
+
 
 class Solution2:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:

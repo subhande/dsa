@@ -1,7 +1,7 @@
-
 """
 # Post Order Traversal
 """
+
 
 class TreeNode(object):
     def __init__(self, value, left=None, right=None):
@@ -12,11 +12,14 @@ class TreeNode(object):
     def __repr__(self):
         return str(self.value)
 
+
 class Solution:
     def postOrderRecursive(self, root: TreeNode | None):
         if root is None:
             return []
-        return self.postOrderRecursive(root.left) + self.postOrderRecursive(root.right) + [root.value]
+        return (
+            self.postOrderRecursive(root.left) + self.postOrderRecursive(root.right) + [root.value]
+        )
 
     def postOrderIterative(self, root: TreeNode | None):
         stack = []
@@ -49,6 +52,7 @@ class Solution:
                 # Move to the right child
                 current = current.right
         return result
+
 
 """
 Let's break down the iterative post order traversal method in simple terms. In post order traversal, you visit a node’s left subtree, then its right subtree, and finally the node itself. The recursive solution is straightforward, but doing it iteratively is a bit trickier because you have to simulate the “returning back” from the recursive calls. This solution uses a stack and a helper pointer (named “prev”) to keep track of the last node that was processed.

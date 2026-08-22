@@ -18,15 +18,15 @@ class TrieNode:
 
     # Check if the node contains a specific key(letter)
     def containsKey(self, ch):
-        return self.links[ord(ch) - ord('a')] is not None
+        return self.links[ord(ch) - ord("a")] is not None
 
     # Insert a new node with a specific key(letter)
     def put(self, ch, node):
-        self.links[ord(ch) - ord('a')] = node
+        self.links[ord(ch) - ord("a")] = node
 
     # Get the node with a specific key(letter)
     def get(self, ch):
-        return self.links[ord(ch) - ord('a')]
+        return self.links[ord(ch) - ord("a")]
 
     # Set the current node as the end of a word
     def setEnd(self):
@@ -187,8 +187,8 @@ if __name__ == "__main__":
 
     # Search for complete words.
     print("Search Results:")
-    print("Is 'hell' in the trie?", trie.search("hell"))      # True
-    print("Is 'hello' in the trie?", trie.search("hello"))    # True
+    print("Is 'hell' in the trie?", trie.search("hell"))  # True
+    print("Is 'hello' in the trie?", trie.search("hello"))  # True
     print("Is 'helloa' in the trie?", trie.search("helloa"))  # False
 
     # Check for prefixes.
@@ -202,10 +202,8 @@ if __name__ == "__main__":
     # trie.delete("hell")
     # print("After deletion, is 'hell' in the trie?", trie.search("hell"))  # Should be False
     # Other words should still exist.
-    print("Is 'hello' in the trie?", trie.search("hello"))              # Still True
-    print("Is 'heavy' in the trie?", trie.search("heavy"))              # Still True
-
-
+    print("Is 'hello' in the trie?", trie.search("hello"))  # Still True
+    print("Is 'heavy' in the trie?", trie.search("heavy"))  # Still True
 
     trie.insert("samsung")
     trie.insert("samsung")
@@ -216,7 +214,6 @@ if __name__ == "__main__":
     print("\nCount Words Equal To: samsung : ", trie.countWordsEqualTo("samsung"))  # 2
     # Test the countWordsStartingWith method
     print("\nCount Words Starting With: sam : ", trie.countWordsStartingWith("sa"))  # 4
-
 
     trie.erase("samsung")
     print("\nCount Words Equal To: samsung : ", trie.countWordsEqualTo("samsung"))  # 1

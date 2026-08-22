@@ -1,4 +1,3 @@
-
 # Minimum Path SUm Grid
 
 
@@ -12,12 +11,12 @@ class Solution:
         # Iterate over each row starting from the second
         for row in range(1, rows):
             # Create a new array for the current row
-            curr = [float('inf')] * cols
+            curr = [float("inf")] * cols
             for col in range(cols):
                 # Get the minimum value from the previous row (down, down-left, down-right)
                 down = prev[col]
-                down_left = prev[col - 1] if col - 1 >= 0 else float('inf')
-                down_right = prev[col + 1] if col + 1 < cols else float('inf')
+                down_left = prev[col - 1] if col - 1 >= 0 else float("inf")
+                down_right = prev[col + 1] if col + 1 < cols else float("inf")
 
                 # Update the current row array with the current cell value plus the minimum above
                 curr[col] = matrix[row][col] + min(down, down_left, down_right)

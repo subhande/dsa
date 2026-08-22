@@ -35,12 +35,12 @@ class Solution:
         # If the number of open parentheses used is less than the total
         # number of pairs, add an open parenthesis and call the function recursively.
         if open_count < n:
-            self._generate(open_count + 1, close_count, n, current + '(', ans)
+            self._generate(open_count + 1, close_count, n, current + "(", ans)
 
         # If the number of close parentheses used is less than the number
         # of open parentheses, add a close parenthesis and call the function recursively.
         if close_count < open_count:
-            self._generate(open_count, close_count + 1, n, current + ')', ans)
+            self._generate(open_count, close_count + 1, n, current + ")", ans)
 
 
 # Example usage

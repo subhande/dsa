@@ -16,6 +16,7 @@ class Solution1:
 
         return result
 
+
 # Solution 2: Optimal Approach
 # Time complexity: O(logn) | Space complexity: O(logn)
 class Solution2:
@@ -196,6 +197,7 @@ That's the intuition and why you inject bits from `(n-1)` into `x`.
 
 """
 
+
 # Solution 3: Optimal Approach (without extra space)
 # Time complexity: O(logn) | Space complexity: O(1)
 class Solution3:
@@ -209,18 +211,17 @@ class Solution3:
             if not (x & (1 << bit_pos)):
                 # Set this bit according to lowest bit of n
                 if n & 1:
-                    result |= (1 << bit_pos)
+                    result |= 1 << bit_pos
                 n >>= 1  # Move to the next bit in n
             bit_pos += 1  # Check next bit position in result/x
 
         return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol1 = Solution1()
     sol2 = Solution2()
     sol3 = Solution3()
-
 
     # Test cases
     #

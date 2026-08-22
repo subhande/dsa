@@ -73,14 +73,16 @@ n & (n - 1) => 0000 1101 & 0000 1100 => 0000 1100 (12 in decimal, least signific
 - Decimal to binary
 - Swapping Two Numbers Without a Third Variable
 ```python
-'''
+"""
 A = 3
 B = 5
 
 1. A = A ^ B  => A = 0000 0011 ^ 0000 0101 => A = 0000 0110 (6 in decimal)
 2. B = A ^ B  => B = 0000 0110 ^ 0000 0101 => B = 0000 0011 (3 in decimal)
 3. A = A ^ B  => A = 0000 0110 ^ 0000 0011 => A = 0000 0101 (5 in decimal)
-'''
+"""
+
+
 def swap(A, B):
     A = A ^ B
     B = A ^ B
@@ -182,8 +184,9 @@ n = 13
 count = 0
 while n > 0:
     count += n & 1  # Increment count if the least significant bit is set
-    n >>= 1          # Right shift n to check the next bit
+    n >>= 1  # Right shift n to check the next bit
 print(count)  # Output: 3 (since 13 has three set bits)
+
 
 def count_set_bits(n):
     count = 0
@@ -191,11 +194,13 @@ def count_set_bits(n):
         count += n & 1
         n >>= 1
     return count
+
+
 # Approach 2: Using Brian Kernighan's Algorithm
 def count_set_bits(n):
     count = 0
     while n > 0:
-        n &= (n - 1)  # Remove the least significant set bit
-        count += 1    # Increment count for each set bit removed
+        n &= n - 1  # Remove the least significant set bit
+        count += 1  # Increment count for each set bit removed
     return count
 ```

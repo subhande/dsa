@@ -4,6 +4,7 @@
 import threading
 import time
 
+
 class ThreadSafeCircularBuffer:
     def __init__(self, size):
         self.size = size
@@ -50,8 +51,6 @@ class ThreadSafeCircularBuffer:
 
 
 if __name__ == "__main__":
-
-
 
     def producer(cb, items):
         for item in items:

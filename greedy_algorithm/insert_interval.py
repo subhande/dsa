@@ -30,7 +30,10 @@ class Solution:
         # Iterate through all intervals
         while i < n:
             current_interval = intervals[i]  # The interval currently being processed
-            start, end = current_interval[0], current_interval[1]  # Start and end of the current interval
+            start, end = (
+                current_interval[0],
+                current_interval[1],
+            )  # Start and end of the current interval
 
             # Check for overlapping intervals
             j = i + 1

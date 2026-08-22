@@ -11,7 +11,7 @@ class SparseVector:
         self.vector = nums
 
     # Return the dotProduct of two sparse vectors
-    def dotProduct(self, vec: 'SparseVector') -> int:
+    def dotProduct(self, vec: "SparseVector") -> int:
         result = 0
         for ele1, ele2 in zip(self.vector, vec.vector):
             result += ele1 * ele2
@@ -28,6 +28,7 @@ class SparseVector:
 # - Initialization: O(n) | Space Complexity: O(L) where L is the number of non-zero elements in the vector
 # - Dot Product: O(L) | Space Complexity: O(1)
 
+
 class SparseVector2:
     def __init__(self, nums: List[int]):
         self.nonzeros = {}
@@ -35,7 +36,7 @@ class SparseVector2:
             if n != 0:
                 self.nonzeros[i] = n
 
-    def dotProduct(self, vec: 'SparseVector2') -> int:
+    def dotProduct(self, vec: "SparseVector2") -> int:
         result = 0
         # iterate through each non-zero element in this sparse vector
         # update the dot product if the corresponding index has a non-zero value in the other vector
@@ -49,6 +50,7 @@ class SparseVector2:
 # Initialization: O(n) | Space Complexity: O(L+L2) where L and L2 are the number of non-zero elements in the two vectors
 # Dot Product: O(L) | Space Complexity: O(1)
 
+
 class SparseVector3:
     def __init__(self, nums: List[int]):
         self.pairs = []
@@ -56,7 +58,7 @@ class SparseVector3:
             if value != 0:
                 self.pairs.append([index, value])
 
-    def dotProduct(self, vec: 'SparseVector3') -> int:
+    def dotProduct(self, vec: "SparseVector3") -> int:
         result = 0
         p, q = 0, 0
 

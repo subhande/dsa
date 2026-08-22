@@ -9,7 +9,10 @@ The variable name wont contain delimiter
 similar to:
 https://leetcode.com/discuss/interview-experience/1670275/imp-facebook-e45-london
 """
+
 from collections import defaultdict, deque
+
+
 def replace_variable(string: str, variables: dict) -> str:
     """
     Replaces variables in the string with their corresponding values from the variables dictionary.
@@ -27,11 +30,11 @@ def replace_variable(string: str, variables: dict) -> str:
     for key, value in variables.items():
         idx = 0
         while idx < len(value):
-            if value[idx] == '#':
+            if value[idx] == "#":
                 right = idx + 1
-                while right < len(value) and value[right] != '#':
+                while right < len(value) and value[right] != "#":
                     right += 1
-                graph[key].append(value[idx+1:right])
+                graph[key].append(value[idx + 1 : right])
                 idx = right + 1
             else:
                 idx += 1
@@ -68,14 +71,9 @@ def replace_variable(string: str, variables: dict) -> str:
     return string
 
 
-
 # Example usage
 if __name__ == "__main__":
     input_string = "hello#b#"
-    variables_dict = {
-        'b': '#a#src',
-        'a': 'data#c#',
-        'c': 'base'
-    }
+    variables_dict = {"b": "#a#src", "a": "data#c#", "c": "base"}
     result = replace_variable(input_string, variables_dict)
     print(result)  # Output: hellodatabasesrc

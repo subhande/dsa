@@ -5,7 +5,7 @@
 
 
 class DisjointSet:
-     # Constructor
+    # Constructor
     def __init__(self, n):
         # Resize the arrays
         self.rank = [0] * (n + 1)
@@ -22,7 +22,6 @@ class DisjointSet:
         # Backtracking step for path compression
         self.parent[node] = self.findUPar(self.parent[node])
         return self.parent[node]
-
 
     def find(self, u: int, v: int) -> bool:
         # Return true if both have same ultimate parent
@@ -53,27 +52,26 @@ class DisjointSet:
             # Update the rank
             self.rank[ulp_u] += 1
 
-
     # Function to perform union of
     # two nodes based on sizes
     def unionBySize(self, u, v):
-       # Get the ultimate parents of both nodes
-       ulp_u = self.findUPar(u)
-       ulp_v = self.findUPar(v)
+        # Get the ultimate parents of both nodes
+        ulp_u = self.findUPar(u)
+        ulp_v = self.findUPar(v)
 
-       # Return if nodes already belong to the same component
-       if ulp_u == ulp_v:
-           return
+        # Return if nodes already belong to the same component
+        if ulp_u == ulp_v:
+            return
 
-       # Otherwise, join the node belonging to the smaller
-       # component to the node belonging to bigger component
-       if self.size[ulp_u] < self.size[ulp_v]:
-           # Update the parent
-           self.parent[ulp_u] = ulp_v
-           # Update the size
-           self.size[ulp_v] += self.size[ulp_u]
-       else:
-           # Update the parent
-           self.parent[ulp_v] = ulp_u
-           # Update the size
-           self.size[ulp_u] += self.size[ulp_v]
+        # Otherwise, join the node belonging to the smaller
+        # component to the node belonging to bigger component
+        if self.size[ulp_u] < self.size[ulp_v]:
+            # Update the parent
+            self.parent[ulp_u] = ulp_v
+            # Update the size
+            self.size[ulp_v] += self.size[ulp_u]
+        else:
+            # Update the parent
+            self.parent[ulp_v] = ulp_u
+            # Update the size
+            self.size[ulp_u] += self.size[ulp_v]

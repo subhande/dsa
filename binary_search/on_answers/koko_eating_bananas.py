@@ -1,6 +1,8 @@
 # Koko eating bananas
 
 import math
+
+
 class Solution:
     def calculateTotalHours(self, nums, hourly):
         totalH = 0
@@ -10,6 +12,7 @@ class Solution:
         for i in range(n):
             totalH += math.ceil(nums[i] / hourly)
         return totalH
+
     def minimumRateToEatBananas(self, nums, h):
         low = 1
         high = max(nums)

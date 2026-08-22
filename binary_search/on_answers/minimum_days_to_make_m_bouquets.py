@@ -34,6 +34,7 @@ class Solution:
 
         return -1
 
+
 # Brute Force: Binary search
 # Time complexity: O(n * log(maxDays - minDays)) | Space complexity: O(1)
 class Solution2:

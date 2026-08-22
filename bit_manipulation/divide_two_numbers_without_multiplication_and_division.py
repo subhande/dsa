@@ -31,6 +31,7 @@ class Solution:
         #     return -2**31
         return quotient if isPositive else -quotient
 
+
 # Optimal Approach
 # Time Complexity: O((log(dividend))^2) | Space Complexity: O(1)
 # Outer loop runs log(dividend) times and inner loop runs log(divisor) times
@@ -61,16 +62,15 @@ class Solution2:
             # divisor << 1 = 6 * (1 << 1) = 12
             # divisor << 1 = 6 * (1 << 1) = 12
             # Max = 6 * (1 << 1) = 12, count = 1
-            while dividend >= (divisor << (count+1)):
+            while dividend >= (divisor << (count + 1)):
                 count += 1
 
             # Updating the answer & dividend
             # 1 << 1 = 2, ans = 2, dividend = 22 - 12 = 10
             # dividend = dividend - divisor * (1 << count)
             # = 22 - 3 * 2 = 22 - 12 = 10
-            ans += (1 << count)
-            dividend -= divisor << count # divisor * (1 << count)
-
+            ans += 1 << count
+            dividend -= divisor << count  # divisor * (1 << count)
 
         # Overflow condition
         # -2147483648 / -1 = 2147483648 which is greater than 2**31 - 1

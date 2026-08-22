@@ -11,9 +11,20 @@ r2 = r1 + c1 - c2
 """
 
 from typing import List
+
+
 class Solution:
-    def cherryPickupRecursiveMemoization(self, grid: List[List[int]], r1: int, c1: int, c2: int, n: int, m: int, memo: List[List[List[int]]]) -> int:
-        NINF = - 10**9
+    def cherryPickupRecursiveMemoization(
+        self,
+        grid: List[List[int]],
+        r1: int,
+        c1: int,
+        c2: int,
+        n: int,
+        m: int,
+        memo: List[List[List[int]]],
+    ) -> int:
+        NINF = -(10**9)
         r2 = r1 + c1 - c2
         if r1 >= n or c1 >= m or r2 >= n or c2 >= m or grid[r1][c1] == -1 or grid[r2][c2] == -1:
             return NINF
@@ -29,10 +40,14 @@ class Solution:
             ans += grid[r2][c2]
 
         ans += max(
-            self.cherryPickupRecursiveMemoization(grid, r1 + 1, c1, c2, n, m, memo), # down down
-            self.cherryPickupRecursiveMemoization(grid, r1 + 1, c1, c2 + 1, n, m, memo), # down right
-            self.cherryPickupRecursiveMemoization(grid, r1, c1 + 1, c2, n, m, memo), # right down
-            self.cherryPickupRecursiveMemoization(grid, r1, c1 + 1, c2 + 1, n, m, memo) # right right
+            self.cherryPickupRecursiveMemoization(grid, r1 + 1, c1, c2, n, m, memo),  # down down
+            self.cherryPickupRecursiveMemoization(
+                grid, r1 + 1, c1, c2 + 1, n, m, memo
+            ),  # down right
+            self.cherryPickupRecursiveMemoization(grid, r1, c1 + 1, c2, n, m, memo),  # right down
+            self.cherryPickupRecursiveMemoization(
+                grid, r1, c1 + 1, c2 + 1, n, m, memo
+            ),  # right right
         )
 
         memo[r1][c1][c2] = ans

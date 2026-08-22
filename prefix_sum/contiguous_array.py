@@ -3,6 +3,8 @@
 from typing import List
 
 from collections import defaultdict
+
+
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         sumSoFar = 0

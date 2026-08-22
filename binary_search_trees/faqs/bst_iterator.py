@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -7,6 +8,7 @@ sys.path.insert(0, project_root)
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 # BST iterator
+
 
 # ------------------------------------------------------------------------------
 # BSTIterator:
@@ -37,7 +39,7 @@ class BSTIterator:
     def inOrder(self, root):
         """Recursive function to do an in-order traversal of the tree."""
         if root:
-            self.inOrder(root.left)   # Recurse on the left child.
+            self.inOrder(root.left)  # Recurse on the left child.
             self.values.append(root.data)  # Process current node; O(1) time.
             self.inOrder(root.right)  # Recurse on the right child.
 
@@ -52,6 +54,8 @@ class BSTIterator:
         self.index += 1
         # O(1) time: returns the current element.
         return self.values[self.index]
+
+
 # ------------------------------------------------------------------------------
 # BSTIteratorOptimized:
 #

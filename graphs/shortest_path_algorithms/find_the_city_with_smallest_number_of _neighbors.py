@@ -4,8 +4,8 @@
 
 from typing import List
 
-class Solution:
 
+class Solution:
     def shortestPathFloyedWarshall(self, matrix):
         n = len(matrix)
         for k in range(n):

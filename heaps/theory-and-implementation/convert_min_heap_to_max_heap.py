@@ -24,6 +24,7 @@ Constraints:
 nums represents a min-heap
 """
 
+
 class Solution:
     def heapifyDown(self, index, nums, size):
         """
@@ -57,7 +58,6 @@ class Solution:
 def main():
     nums = [2, 6, 3, 100, 120, 4, 5]
 
-
     print("Initial Min-heap Array: ", end="")
     for x in nums:
         print(x, end=" ")
@@ -71,6 +71,7 @@ def main():
     print("\nMax-heap converted Array: ", end="")
     for x in nums:
         print(x, end=" ")
+
 
 if __name__ == "__main__":
     main()

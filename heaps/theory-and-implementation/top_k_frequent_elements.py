@@ -2,6 +2,8 @@
 
 from typing import List
 from collections import Counter
+
+
 class Heap:
     def __init__(self, arr: List[tuple]):
         print(arr)
@@ -28,6 +30,7 @@ class Heap:
             self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
             self.heapifyDown(largest)
         return
+
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:

@@ -3,6 +3,8 @@
 # https://leetcode.com/problems/word-ladder/editorial/
 
 from collections import deque
+
+
 # Time Complexity: O(26 * L * N) | Space Complexity: O(N)
 class Solution:
     def wordLadderLength(self, startWord, targetWord, wordList):
@@ -20,16 +22,15 @@ class Solution:
                 return length
 
             for i in range(len(currentWord)):
-
                 currChar = currentWord[i]
 
-                for ch in range(ord('a'), ord('z') + 1):
+                for ch in range(ord("a"), ord("z") + 1):
                     newChar = chr(ch)
 
                     if currChar == newChar:
                         continue
 
-                    newWord = currentWord[:i] + newChar + currentWord[i + 1:]
+                    newWord = currentWord[:i] + newChar + currentWord[i + 1 :]
 
                     if newWord in wordListSet:
                         queue.append((newWord, length + 1))

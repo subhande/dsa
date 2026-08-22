@@ -2,47 +2,47 @@
 Bit manipulation involves performing operations directly on the binary representations of numbers. Here are some of the basic bit manipulation operations along with explanations and examples:
 
 1. AND ( & )
-  • Operation: Compares each binary digit (bit) of two numbers and returns 1 only if both corresponding bits are 1; otherwise, it returns 0.
-  • Example:
-    If A = 1010 (binary for 10) and B = 1100 (binary for 12), then:
-     1010
-     1100
-     A & B = 1000 (which is 8 in decimal).
+• Operation: Compares each binary digit (bit) of two numbers and returns 1 only if both corresponding bits are 1; otherwise, it returns 0.
+• Example:
+If A = 1010 (binary for 10) and B = 1100 (binary for 12), then:
+1010
+1100
+A & B = 1000 (which is 8 in decimal).
 
 2. OR ( | )
-  • Operation: Compares each bit of two numbers and returns 1 if at least one of the corresponding bits is 1.
-  • Example:
-    A = 1010 and B = 1100,
-     1010
-     1100
-     A | B = 1110 (which is 14 in decimal).
+• Operation: Compares each bit of two numbers and returns 1 if at least one of the corresponding bits is 1.
+• Example:
+A = 1010 and B = 1100,
+1010
+1100
+A | B = 1110 (which is 14 in decimal).
 
 3. XOR ( ^ )
-  • Operation: Compares each bit of two numbers and returns 1 if the corresponding bits differ (i.e., one is 0 and the other is 1).
-  • Example:
-    A = 1010 and B = 1100,
-     1010
-     1100
-     A ^ B = 0110 (which is 6 in decimal).
+• Operation: Compares each bit of two numbers and returns 1 if the corresponding bits differ (i.e., one is 0 and the other is 1).
+• Example:
+A = 1010 and B = 1100,
+1010
+1100
+A ^ B = 0110 (which is 6 in decimal).
 
 4. NOT ( ~ )
-  • Operation: This is a unary operator that inverts every bit of the number (turning 1s to 0s and 0s to 1s). Note that in many programming languages, the NOT operator on integers is implemented as bitwise complement, so care must be taken with sign bits and representation (e.g., two’s complement in C/C++).
-  • Example:
-    If A = 1010 (for a simple 4-bit representation), then:
-     ~A would be 0101.
-    In practice, with fixed-width integers (say 32-bit), the result is computed accordingly.
+• Operation: This is a unary operator that inverts every bit of the number (turning 1s to 0s and 0s to 1s). Note that in many programming languages, the NOT operator on integers is implemented as bitwise complement, so care must be taken with sign bits and representation (e.g., two’s complement in C/C++).
+• Example:
+If A = 1010 (for a simple 4-bit representation), then:
+~A would be 0101.
+In practice, with fixed-width integers (say 32-bit), the result is computed accordingly.
 
 5. Left Shift ( << )
-  • Operation: Shifts the bits of a number to the left by a specified number of positions. Bits shifted off the left end are discarded, and new 0 bits are shifted in from the right.
-  • Example:
-    A = 0010 (binary for 2), and A << 2 shifts bits left two positions:
-     0010 << 2 = 1000 (which is 8 in decimal).
+• Operation: Shifts the bits of a number to the left by a specified number of positions. Bits shifted off the left end are discarded, and new 0 bits are shifted in from the right.
+• Example:
+A = 0010 (binary for 2), and A << 2 shifts bits left two positions:
+0010 << 2 = 1000 (which is 8 in decimal).
 
 6. Right Shift ( >> )
-  • Operation: Shifts the bits of a number to the right by a specified number of positions. Depending on the type of right shift (logical vs. arithmetic), the vacated bits on the left might be filled with zeros or with the sign bit.
-  • Example:
-    A = 1000 (binary for 8), and A >> 2 shifts bits right two positions:
-     1000 >> 2 = 0010 (which is 2 in decimal).
+• Operation: Shifts the bits of a number to the right by a specified number of positions. Depending on the type of right shift (logical vs. arithmetic), the vacated bits on the left might be filled with zeros or with the sign bit.
+• Example:
+A = 1000 (binary for 8), and A >> 2 shifts bits right two positions:
+1000 >> 2 = 0010 (which is 2 in decimal).
 
 These operations are widely used in low-level programming, optimization, cryptography, and anywhere direct manipulation of bits is required. Most programming languages like C, C++, Java, and Python (using operators like &, |, ^, ~, <<, >>) support these basic operations, though details like operator precedence and integer sizes might differ across languages.
 
@@ -53,6 +53,7 @@ Let me know if you need further examples or more advanced bit manipulation techn
 """
 https://leetcode.com/problems/sum-of-two-integers/solutions/84278/A-summary:-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently/
 """
+
 
 def main():
     # Define two numbers
@@ -100,15 +101,15 @@ def main():
     a = 5
     b = 7
     print("Before swapping: a =", a, "b =", b)
-    a = a ^ b # a = 5 ^ 7 = 0101 ^ 0111 = 0010 = 2
-    b = a ^ b # b = 2 ^ 7 = 0010 ^ 0111 = 0101 = 5
-    a = a ^ b # a = 2 ^ 5 = 0010 ^ 0101 = 0111 = 7
+    a = a ^ b  # a = 5 ^ 7 = 0101 ^ 0111 = 0010 = 2
+    b = a ^ b  # b = 2 ^ 7 = 0010 ^ 0111 = 0101 = 5
+    a = a ^ b  # a = 2 ^ 5 = 0010 ^ 0101 = 0111 = 7
     # ((a ^ b) ^ b)) = a ^ (b ^ b) = a ^ 0 = a
     # ((a ^ b) ^ a)) = b ^ (a ^ a) = b ^ 0 = b
     print("After swapping: a =", a, "b =", b)
 
     # Chcek if i'th is set or not
-    n = 13 # 1101
+    n = 13  # 1101
     i = 2
     mask = 1 << i
     if n & mask:
@@ -117,26 +118,26 @@ def main():
         print(f"Bit {i} is not set in {n}")
 
     # Set i'th bit
-    n = 13 # 1101
+    n = 13  # 1101
     i = 1
     n = n | 1 << i
     print(f"Set {i}th bit in 13: {n}")
 
     # Unset i'th bit
-    n = 13 # 1101
+    n = 13  # 1101
     i = 2
     n = n & ~(1 << i)
     print(f"Unset {i}th bit in 13: {n}")
 
     # Toggle i'th bit
-    n = 13 # 1101
+    n = 13  # 1101
     i = 2
     n = n ^ 1 << i
     print(f"Toggle {i}th bit in 13: {n}")
 
     # Remove the last set bit or rightmost set bit
-    n = 10 # 1010
-    n = n & (n - 1) # 1010 & 1001 = 1000
+    n = 10  # 1010
+    n = n & (n - 1)  # 1010 & 1001 = 1000
     print(f"Remove the last set bit in 10: {n}")
 
     """
@@ -150,9 +151,9 @@ def main():
 
     # Get the rightmost different bit
 
-    x = 12 # 1100
+    x = 12  # 1100
 
-    res = x & -x # 1100 & 0100 = 0100
+    res = x & -x  # 1100 & 0100 = 0100
     print(f"Rightmost different bit: {res}")
 
     # Check if the number is power of 2
@@ -162,9 +163,8 @@ def main():
     else:
         print(f"{n} is not power of 2")
 
-
     # Count the number of set bits (brute force)
-    n = 10 # 1010
+    n = 10  # 1010
     count = 0
     while n:
         count += n & 1
@@ -172,12 +172,13 @@ def main():
     print(f"Number of set bits in 10 (brute force): {count}")
 
     # Count the number of set bits (optimal)
-    n = 10 # 1010
+    n = 10  # 1010
     count = 0
     while n:
         n = n & (n - 1)
         count += 1
     print(f"Number of set bits in 10 (optimal): {count}")
+
 
 if __name__ == "__main__":
     main()

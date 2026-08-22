@@ -1,5 +1,3 @@
-
-
 # Construct a BT from Preorder and Inorder
 #
 from utils import buildTreeFromArray, TreeNode
@@ -8,12 +6,13 @@ from collections import deque
 
 # Construct a BT from Preorder and Inorder
 
+
 class Solution:
     # Time Complexity: O(n) | Space Complexity: O(n)
     def buildTree(self, preorder, inorder):
         # Create a map to store indices
         # of elements in the inorder traversal
-        inorderMap = {val: idx for idx, val in enumerate(inorder) }
+        inorderMap = {val: idx for idx, val in enumerate(inorder)}
 
         # Recursive helper function to build the tree
         def helper(preStart, preEnd, inStart, inEnd):

@@ -31,18 +31,19 @@ class Solution:
                 first_split_sum = prefix_sum[i + 1] - prefix_sum[curr_index]
 
                 # Find the maximum subarray sum for the current first split.
-                largest_split_sum = max(first_split_sum,
-                                        get_min_largest_split_sum(i + 1, subarray_count - 1))
+                largest_split_sum = max(
+                    first_split_sum, get_min_largest_split_sum(i + 1, subarray_count - 1)
+                )
 
                 # Find the minimum among all possible combinations.
                 minimum_largest_split_sum = min(minimum_largest_split_sum, largest_split_sum)
 
-                '''As we iterate through different possible split points (i), the first_split_sum (the sum of elements from curr_index to i) is monotonically increasing because we're adding more elements to it.
+                """As we iterate through different possible split points (i), the first_split_sum (the sum of elements from curr_index to i) is monotonically increasing because we're adding more elements to it.
                 If we reach a point where first_split_sum (the sum of just the first partition) is already greater than or equal to our current best solution (minimum_largest_split_sum), then continuing to explore later split points is pointless because:
 
                 The first_split_sum will only get larger as i increases
                 The largest split sum would be at least as large as first_split_sum
-                Therefore, we can't get a better result than our current minimum_largest_split_sum'''
+                Therefore, we can't get a better result than our current minimum_largest_split_sum"""
                 if first_split_sum >= minimum_largest_split_sum:
                     break
 
@@ -54,6 +55,7 @@ class Solution:
 # Optimal Solution using Binary Search
 # Time Complexity: O(n * log(sum(nums))) where n is the length of nums and sum(nums) is the total sum of the array.
 # Space Complexity: O(1) for the binary search variables.
+
 
 class Solution2:
     def splitArray(self, nums: List[int], m: int) -> int:
@@ -109,6 +111,7 @@ class Solution3:
             if splitRequired > m:
                 return False
         return True
+
     def splitArray(self, nums: List[int], m: int) -> int:
         totalSum = sum(nums)
         maxElement = max(nums)
@@ -119,7 +122,6 @@ class Solution3:
         left, right = maxElement, totalSum
         minimumLargestSplitSum = -1
         while left <= right:
-
             mid = (left + right) // 2
 
             if self.isPossible(nums, mid, m):

@@ -5,8 +5,9 @@
 
 from collections import deque
 from typing import List
-class Solution:
 
+
+class Solution:
     def topoSort(self, adj, V):
         inDegree = [0] * V
 
@@ -18,7 +19,6 @@ class Solution:
         for node in range(V):
             if inDegree[node] == 0:
                 queue.append(node)
-
 
         topologicalOrder = []
         while queue:
@@ -40,7 +40,6 @@ class Solution:
 
 
 class Solution2:
-
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         adj = [[] for _ in range(numCourses)]
         V = numCourses

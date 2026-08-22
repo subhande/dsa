@@ -2,8 +2,10 @@
 # https://takeuforward.org/plus/dsa/graph/hard-problems-ii/accounts-merge?tab=editorial
 # https://leetcode.com/problems/accounts-merge/
 from collections import defaultdict
+
 # from graphs.hard_problems_ii.making_a_large_island import DisjoinSet
 from typing import List
+
 
 class DisjointSet:
     def __init__(self, n):
@@ -28,6 +30,7 @@ class DisjointSet:
 
     def find(self, u, v):
         return self.findParent(u) == self.findParent(v)
+
 
 class Solution:
     def accountsMerge(self, accounts):
@@ -60,13 +63,14 @@ class Solution:
 
         return res
 
+
 # Better Solution
 class Solution2:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
 
         ds = DisjointSet(len(accounts))
 
-        emailToAccount = {} # email -> account index
+        emailToAccount = {}  # email -> account index
         for idx, account in enumerate(accounts):
             for email in account[1:]:
                 if email in emailToAccount:
@@ -74,7 +78,7 @@ class Solution2:
                 else:
                     emailToAccount[email] = idx
 
-        emailGroup = defaultdict(list) # index of acc -> list of emails
+        emailGroup = defaultdict(list)  # index of acc -> list of emails
 
         for email, idx in emailToAccount.items():
             root = ds.findParent(idx)
@@ -87,6 +91,7 @@ class Solution2:
             result.append([accounts[idx][0]] + emails)
 
         return result
+
 
 """
 

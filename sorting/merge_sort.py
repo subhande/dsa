@@ -26,6 +26,8 @@ d. Combine (Merge):
 Below is a simple and clear Python implementation of Merge Sort:
 
 -----------------------------------------------------------"""
+
+
 def merge_sort(arr):
     # Base case: if the list is of length 0 or 1, it is already sorted.
     if len(arr) <= 1:
@@ -38,6 +40,7 @@ def merge_sort(arr):
 
     # Conquer: merge the two sorted halves.
     return merge(left, right)
+
 
 def merge(left, right):
     merged = []
@@ -56,6 +59,7 @@ def merge(left, right):
     merged.extend(left[i:])
     merged.extend(right[j:])
     return merged
+
 
 # Example usage:
 if __name__ == "__main__":

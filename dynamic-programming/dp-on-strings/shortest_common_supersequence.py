@@ -25,7 +25,6 @@ str1 and str2 consist of lowercase English letters.
 
 """
 
-
 """
 Solution:
 --------------
@@ -34,8 +33,8 @@ Approach:
 
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Tabulation Approach
     ################################
@@ -86,26 +85,19 @@ class Solution:
         return supersequence
 
 
-
 if __name__ == "__main__":
     shortestCommonSupersequence = Solution()
 
     test_cases = [
-        {
-            "str1": "mno",
-            "str2": "nop",
-            "output": "mnop"
-        },
-        {
-            "str1": "dynamic",
-            "str2": "program",
-            "output": "dynprogramic"
-        }
+        {"str1": "mno", "str2": "nop", "output": "mnop"},
+        {"str1": "dynamic", "str2": "program", "output": "dynprogramic"},
     ]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
-        outputTabulation = shortestCommonSupersequence.shortestCommonSupersequenceTabulation(test_case["str1"], test_case["str2"])
+        print(f"Test case {i + 1}")
+        outputTabulation = shortestCommonSupersequence.shortestCommonSupersequenceTabulation(
+            test_case["str1"], test_case["str2"]
+        )
         print(f"Output (Tabulation): {outputTabulation}")
         assert outputTabulation == test_case["output"]

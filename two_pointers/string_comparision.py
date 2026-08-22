@@ -24,9 +24,7 @@ class Solution:
                     chars[insert_index] = ch
                     insert_index += 1
                 current_char_count = 1
-        temp = (
-            chars[-1] + str(current_char_count) if current_char_count > 1 else chars[-1]
-        )
+        temp = chars[-1] + str(current_char_count) if current_char_count > 1 else chars[-1]
         string_length += len(temp)
         for ch in temp:
             chars[insert_index] = ch
@@ -49,9 +47,7 @@ class Solution2:
                 if count > 1:
                     count_str = str(count)
                     count_str_len = len(count_str)
-                    chars[insert_index : insert_index + count_str_len] = list(
-                        str(count)
-                    )
+                    chars[insert_index : insert_index + count_str_len] = list(str(count))
                     insert_index += count_str_len
 
                 curr_ch = chars[i]

@@ -1,14 +1,15 @@
-
 # Evaluate Reverse Polish Notation
 from typing import List
+
+
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
         op_map = {
-            "+": lambda x,y: x+y,
-            "-": lambda x,y: x-y,
-            "*": lambda x,y: x*y,
-            "/": lambda x,y: (x/y)
+            "+": lambda x, y: x + y,
+            "-": lambda x, y: x - y,
+            "*": lambda x, y: x * y,
+            "/": lambda x, y: x / y,
         }
         for token in tokens:
             if token not in ["+", "-", "*", "/"]:

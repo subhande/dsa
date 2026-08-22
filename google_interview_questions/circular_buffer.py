@@ -1,5 +1,6 @@
 # Circular Buffer
 
+
 class CircularBuffer:
     def __init__(self, size):
         self.size = size
@@ -31,7 +32,9 @@ class CircularBuffer:
         return item
 
     def __repr__(self):
-        return f"CircularBuffer({self.buffer}, head={self.head}, tail={self.tail}, count={self.count})"
+        return (
+            f"CircularBuffer({self.buffer}, head={self.head}, tail={self.tail}, count={self.count})"
+        )
 
 
 if __name__ == "__main__":

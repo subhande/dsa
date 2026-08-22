@@ -3,6 +3,8 @@
 # https://leetcode.com/problems/word-ladder-ii/description/
 
 from collections import deque
+
+
 # Time Complexity: O(26 * L * N) | Space Complexity: O(N*M)
 class Solution:
     def findSequences(self, startWord, targetWord, wordList):
@@ -38,11 +40,11 @@ class Solution:
 
                 # Try changing each letter of the currentWord
                 for i in range(len(currentWord)):
-                    for c in range(ord('a'), ord('z')+1):
+                    for c in range(ord("a"), ord("z") + 1):
                         c = chr(c)
                         if currentWord[i] == c:
                             continue
-                        newWord = currentWord[:i] + c + currentWord[i+1:]
+                        newWord = currentWord[:i] + c + currentWord[i + 1 :]
                         if newWord in wordSet:
                             levelVisited.add(newWord)
                             queue.append((newWord, sequence + [newWord]))

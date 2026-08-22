@@ -26,8 +26,8 @@ Constraints:
 
 """
 
-class Solution:
 
+class Solution:
     ###############################################
     # Recursive Approach
     ###############################################
@@ -44,8 +44,10 @@ class Solution:
         # If characters do not match, find the maximum of the two possibilities:
         # - Excluding the current character of str1
         # - Excluding the current character of str2
-        return max(self.lcsRecursiveHelper(str1, str2, index1 - 1, index2),
-                   self.lcsRecursiveHelper(str1, str2, index1, index2 - 1))
+        return max(
+            self.lcsRecursiveHelper(str1, str2, index1 - 1, index2),
+            self.lcsRecursiveHelper(str1, str2, index1, index2 - 1),
+        )
 
     def lcsRecursive(self, str1, str2):
         return self.lcsRecursiveHelper(str1, str2, len(str1) - 1, len(str2) - 1)
@@ -65,12 +67,14 @@ class Solution:
 
         # If characters match, store the result and move diagonally in both strings
         if str1[index1] == str2[index2]:
-            memo[index1][index2] = 1 + self.lcsMemoizationHelper(str1, str2, index1 - 1, index2 - 1, memo)
+            memo[index1][index2] = 1 + self.lcsMemoizationHelper(
+                str1, str2, index1 - 1, index2 - 1, memo
+            )
         else:
             # If characters do not match, take the maximum of the two possibilities
             memo[index1][index2] = max(
                 self.lcsMemoizationHelper(str1, str2, index1 - 1, index2, memo),
-                self.lcsMemoizationHelper(str1, str2, index1, index2 - 1, memo)
+                self.lcsMemoizationHelper(str1, str2, index1, index2 - 1, memo),
             )
         return memo[index1][index2]
 
@@ -135,21 +139,9 @@ if __name__ == "__main__":
 
     # Define test cases
     test_cases = [
-        {
-            "str1": "bdefg",
-            "str2": "bfg",
-            "expected_output": 3
-        },
-        {
-            "str1": "mnop",
-            "str2": "mnq",
-            "expected_output": 2
-        },
-        {
-            "str1": "abc",
-            "str2": "dafb",
-            "expected_output": 2
-        }
+        {"str1": "bdefg", "str2": "bfg", "expected_output": 3},
+        {"str1": "mnop", "str2": "mnq", "expected_output": 2},
+        {"str1": "abc", "str2": "dafb", "expected_output": 2},
     ]
 
     # Run the test cases

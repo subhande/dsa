@@ -1,13 +1,14 @@
 # Subset II
 
+
 class Solution:
     def subsetSumsRecursive(self, nums, index, currSubset, validSubset):
         if index == -1:
             validSubset.append(currSubset)
             return
-        self.subsetSumsRecursive(nums, index-1, [nums[index]] + currSubset, validSubset)
+        self.subsetSumsRecursive(nums, index - 1, [nums[index]] + currSubset, validSubset)
         # Skip duplicates and recur for the next unique element
-        for nextNext in range(index-1, -1, -1):
+        for nextNext in range(index - 1, -1, -1):
             if nums[nextNext] != nums[index]:
                 self.subsetSumsRecursive(nums, nextNext, currSubset[:], validSubset)
                 return
@@ -17,5 +18,5 @@ class Solution:
     def subsetsWithDup(self, nums):
         validSubset = []
         nums.sort()
-        self.subsetSumsRecursive(nums, len(nums)-1, [], validSubset)
+        self.subsetSumsRecursive(nums, len(nums) - 1, [], validSubset)
         return validSubset

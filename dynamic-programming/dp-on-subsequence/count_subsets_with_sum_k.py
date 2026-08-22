@@ -2,6 +2,7 @@
 
 MODULO = 10**9 + 7
 
+
 class Solution:
     # Function to find out number of subsets with sum k
     def perfectSum(self, arr, K):
@@ -52,12 +53,14 @@ class Solution:
 
 MODULO = 10**9 + 7
 
+
 class Solution2:
-    """ Function to count the number of
-    subsets with sum k using memoization """
+    """Function to count the number of
+    subsets with sum k using memoization"""
+
     def findWaysUtil(self, ind, target, arr, dp):
-        """ Base case: If the target sum
-        is 0, we found a valid subset """
+        """Base case: If the target sum
+        is 0, we found a valid subset"""
         if target == 0:
             return 1
 

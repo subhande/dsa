@@ -9,6 +9,8 @@
 --------------------
  1   0   1   1   0   1   0   1
 """
+
+
 class Solution:
     def reverseBits(self, n: int) -> int:
         ret, power = 0, 31

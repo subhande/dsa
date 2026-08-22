@@ -34,9 +34,6 @@ class Solution:
                         remaining_characters += 1
                 window_start += 1
 
-            if (
-                window_end - window_start + 1 == window_length
-                and remaining_characters == 0
-            ):
+            if window_end - window_start + 1 == window_length and remaining_characters == 0:
                 return True
         return False

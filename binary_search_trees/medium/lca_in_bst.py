@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -7,6 +8,7 @@ sys.path.insert(0, project_root)
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 # LCA in BST
+
 
 class Solution:
     # Time Complexity: O(h) | Space Complexity: O(1)
@@ -42,20 +44,17 @@ class Solution:
         return current
 
 
-
-
-
 if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
-    root =  buildTreeFromArray([5, 3, 6, 2, 4, None, 7])
+    root = buildTreeFromArray([5, 3, 6, 2, 4, None, 7])
     p = 2
     q = 4
-    print(sol.lca(root, p, q)) # 2
+    print(sol.lca(root, p, q))  # 2
 
     # Test 2
     root = buildTreeFromArray([5, 3, 6, 2, 4, None, 7])
     p = 3
     q = 7
-    print(sol.lca(root, p, q)) # 5
+    print(sol.lca(root, p, q))  # 5

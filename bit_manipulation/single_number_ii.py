@@ -22,6 +22,8 @@ e.g. If postion 0 has a bit sum of 7, then the bit of the loner at position 0 is
 
 
 """
+
+
 # Time Complexity: 32 * O(n) = O(n). | Space Complexity: O(1).
 class Solution1:
     def singleNumber(self, nums: List[int]) -> int:
@@ -35,7 +37,6 @@ class Solution1:
 
             # For this bit, iterate over all integers
             for num in nums:
-
                 # Compute the bit of num, and add it to bit_sum
                 bit_sum += (num >> shift) & 1
 
@@ -48,6 +49,7 @@ class Solution1:
             loner = loner - (1 << 32)
 
         return loner
+
 
 """
 
@@ -62,6 +64,8 @@ When a number appears for the first time, it will be added to Ones.
 When the same number appears for the second time, it will be moved from Ones to Twos.
 When the same number appears for the third time, it will be removed from both Ones and Twos.
 """
+
+
 # Time Complexity: O(n) | Space Complexity: O(1).
 class Solution2:
     def singleNumber(self, nums: List[int]) -> int:

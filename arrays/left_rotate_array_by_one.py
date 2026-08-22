@@ -1,7 +1,6 @@
 # Left Rotate an Array by One
 
 
-
 class Solution:
     def rotateArrayByOne(self, nums):
         # Store the first element in a temporary variable

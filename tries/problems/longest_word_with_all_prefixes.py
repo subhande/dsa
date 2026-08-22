@@ -1,5 +1,6 @@
 # Longest word with all prefixes
 
+
 class TrieNode:
     def __init__(self):
         # To store references to child nodes
@@ -9,15 +10,15 @@ class TrieNode:
 
     # Checks if the current character link exists
     def containsKey(self, ch):
-        return self.links[ord(ch) - ord('a')] is not None
+        return self.links[ord(ch) - ord("a")] is not None
 
     # Returns the next node corresponding to the character
     def get(self, ch):
-        return self.links[ord(ch) - ord('a')]
+        return self.links[ord(ch) - ord("a")]
 
     # Creates a link to the next node for the current character
     def put(self, ch, node):
-        self.links[ord(ch) - ord('a')] = node
+        self.links[ord(ch) - ord("a")] = node
 
     # Marks the end of a word
     def setEnd(self):
@@ -72,7 +73,6 @@ class Trie:
         return True
 
 
-
 class Solution:
     # Time complexity: O(n*m), where n is the number of words and m is the length of the longest word
     def completeString(self, nums):
@@ -100,13 +100,13 @@ if __name__ == "__main__":
     solution = Solution()
 
     # Test 1
-    nums = [ "n", "ni", "nin", "ninj" , "ninja" , "nil" ]
+    nums = ["n", "ni", "nin", "ninj", "ninja", "nil"]
     # Get the longest word with all prefixes
     result = solution.completeString(nums)
     print(result)  # Output: "ninja"
 
     # Test 1
-    nums =  [ "ninja" , "night" , "nil" ]
+    nums = ["ninja", "night", "nil"]
     # Get the longest word with all prefixes
     result = solution.completeString(nums)
     print(result)  # Output: None

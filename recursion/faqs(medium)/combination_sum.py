@@ -2,8 +2,11 @@
 
 from typing import List
 
+
 class Solution:
-    def combinationSumRecursive(self, candidates, target, index, currCombination, validCombinations):
+    def combinationSumRecursive(
+        self, candidates, target, index, currCombination, validCombinations
+    ):
         if target == 0:
             validCombinations.append(currCombination)
             return
@@ -17,9 +20,18 @@ class Solution:
             return
         # if index == -1:
         #     return
-        self.combinationSumRecursive(candidates, target, index-1, currCombination[:], validCombinations)
+        self.combinationSumRecursive(
+            candidates, target, index - 1, currCombination[:], validCombinations
+        )
         if target >= candidates[index]:
-            self.combinationSumRecursive(candidates, target-candidates[index], index, currCombination + [candidates[index]], validCombinations)
+            self.combinationSumRecursive(
+                candidates,
+                target - candidates[index],
+                index,
+                currCombination + [candidates[index]],
+                validCombinations,
+            )
+
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         validCombinations = []
         self.combinationSumRecursive(candidates, target, len(candidates) - 1, [], validCombinations)
@@ -40,9 +52,19 @@ class Solution2:
                 return []
             taken = []
             if target >= candidates[index]:
-                taken = self.combinationSumRecursive(candidates, target-candidates[index], index, [candidates[index]] + currCombination)
-            notTaken = self.combinationSumRecursive(candidates, target, index-1, currCombination[:])
+                taken = self.combinationSumRecursive(
+                    candidates,
+                    target - candidates[index],
+                    index,
+                    [candidates[index]] + currCombination,
+                )
+            notTaken = self.combinationSumRecursive(
+                candidates, target, index - 1, currCombination[:]
+            )
             return taken + notTaken
+
         def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-            validCombinations = self.combinationSumRecursive(candidates, target, len(candidates) - 1, [])
+            validCombinations = self.combinationSumRecursive(
+                candidates, target, len(candidates) - 1, []
+            )
             return validCombinations

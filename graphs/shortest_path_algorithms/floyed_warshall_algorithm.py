@@ -7,7 +7,6 @@ class Solution:
         for k in range(n):
             for i in range(n):
                 for j in range(n):
-
                     if matrix[i][k] == -1 or matrix[k][j] == -1:
                         continue
 

@@ -25,7 +25,6 @@ class Solution:
 
         # Iterate over each row starting from the second row
         for row in range(1, num_rows):
-
             # Create a new list to store the minimum path sums for the current row
             curr_row_min_sums = [float("inf") for _ in range(num_cols)]
 
@@ -38,8 +37,8 @@ class Solution:
 
                 # Calculate the minimum path sum for the current element
                 curr_row_min_sums[col] = min(
-                    prev_row_min_sums[col] + current_value,     # From the element directly above
-                    prev_row_min_sums[col - 1] + current_value # From the element above-left
+                    prev_row_min_sums[col] + current_value,  # From the element directly above
+                    prev_row_min_sums[col - 1] + current_value,  # From the element above-left
                 )
 
             # Update the previous row's minimum sums with the current row's sums
@@ -47,6 +46,7 @@ class Solution:
 
         # Return the minimum value in the last row's minimum sums
         return min(prev_row_min_sums)
+
 
 class Solution2:
     def minTriangleSum(self, triangle):

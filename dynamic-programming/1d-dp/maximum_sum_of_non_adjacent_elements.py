@@ -3,8 +3,9 @@
 
 
 class Solution1:
-    """ Function to calculate the maximum
-    sum of nonAdjacent elements """
+    """Function to calculate the maximum
+    sum of nonAdjacent elements"""
+
     def nonAdjacent(self, nums):
         n = len(nums)
         dp = [0] * n
@@ -14,7 +15,6 @@ class Solution1:
 
         # Iterate through the elements of the array
         for i in range(1, n):
-
             """ Calculate maximum value by either picking
             the current element or not picking it"""
             pick = nums[i]
@@ -29,9 +29,11 @@ class Solution1:
         will contain the maximum sum"""
         return dp[-1]
 
+
 class Solution2:
     """Function to calculate the maximum
     sum of nonAdjacent elements"""
+
     def nonAdjacent(self, nums):
         n = len(nums)
         prev = nums[0]

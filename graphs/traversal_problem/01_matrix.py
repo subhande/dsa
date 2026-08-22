@@ -6,6 +6,7 @@
 from collections import deque
 from typing import List
 
+
 # Distance of nearest cell having 0 | Multi-source BFS | Start from 0s
 class Solution1:
     def isValid(self, row: int, col: int, rows: int, cols: int) -> bool:
@@ -56,7 +57,6 @@ class Solution1:
         return dist
 
 
-
 # Using DP | Distance of nearest cell having 1 | Two-pass DP approach | Start from 1s
 class Solution2:
     def nearest(self, grid):
@@ -70,7 +70,7 @@ class Solution2:
 
         n, m = len(grid), len(grid[0])
         # Initialize DP with a large number.
-        dp = [[float('inf')] * m for _ in range(n)]
+        dp = [[float("inf")] * m for _ in range(n)]
 
         # First pass: top-left to bottom-right.
         for i in range(n):
@@ -80,19 +80,19 @@ class Solution2:
                 else:
                     # Look top.
                     if i > 0:
-                        dp[i][j] = min(dp[i][j], dp[i-1][j] + 1)
+                        dp[i][j] = min(dp[i][j], dp[i - 1][j] + 1)
                     # Look left.
                     if j > 0:
-                        dp[i][j] = min(dp[i][j], dp[i][j-1] + 1)
+                        dp[i][j] = min(dp[i][j], dp[i][j - 1] + 1)
 
         # Second pass: bottom-right to top-left.
         for i in range(n - 1, -1, -1):
             for j in range(m - 1, -1, -1):
                 # Look bottom.
                 if i < n - 1:
-                    dp[i][j] = min(dp[i][j], dp[i+1][j] + 1)
+                    dp[i][j] = min(dp[i][j], dp[i + 1][j] + 1)
                 # Look right.
                 if j < m - 1:
-                    dp[i][j] = min(dp[i][j], dp[i][j+1] + 1)
+                    dp[i][j] = min(dp[i][j], dp[i][j + 1] + 1)
 
         return dp

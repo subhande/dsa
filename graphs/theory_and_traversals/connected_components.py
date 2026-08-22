@@ -22,8 +22,10 @@ Explanation of the code:
 
 This solution efficiently counts the number of connected components in an undirected graph.
 """
+
 from collections import deque, defaultdict
 from typing import List
+
 
 class Solution:
     # Time Complexity: O(V + E) | Space Complexity: O(V + E)
@@ -73,14 +75,13 @@ class Solution:
         for vertex in range(V):
             if vertex not in visited:
                 component_count += 1  # Found a new component
-                dfs(vertex)           # Visit all nodes in this component using DFS
+                dfs(vertex)  # Visit all nodes in this component using DFS
                 # bfs(vertex)         # Use BFS instead of DFS
 
         return component_count
 
 
 class Solution2:
-
     # Depth-First Search (DFS) helper function
     def dfs(self, node, graph, visited):
         visited.add(node)  # Mark the current node as visited
@@ -91,13 +92,13 @@ class Solution2:
     # Breadth-First Search (BFS) helper function
     def bfs(self, node, graph, visited):
         queue = deque([node])  # Initialize queue with the starting node
-        visited.add(node)      # Mark the starting node as visited
+        visited.add(node)  # Mark the starting node as visited
 
         while queue:  # Continue until the queue is empty
             current = queue.popleft()  # Get the next node from the queue
             for neighbor in graph[current]:  # Check all neighbors of the current node
                 if neighbor not in visited:  # If neighbor hasn't been visited
-                    visited.add(neighbor)   # Mark neighbor as visited
+                    visited.add(neighbor)  # Mark neighbor as visited
                     queue.append(neighbor)  # Add neighbor to the queue for further traversal
 
     # Main function to count the number of connected components in the graph
@@ -130,14 +131,13 @@ if __name__ == "__main__":
     V = 4
     edges = [[0, 1], [1, 2]]
 
-    print(s.findNumberOfComponent(E, V, edges)) # 2
+    print(s.findNumberOfComponent(E, V, edges))  # 2
 
     # Test Case 2
     E = 4
     V = 7
     edges = [[0, 1], [1, 2], [2, 3], [4, 5]]
-    print(s.findNumberOfComponent(E, V, edges)) # 3
-
+    print(s.findNumberOfComponent(E, V, edges))  # 3
 
     s2 = Solution2()
 

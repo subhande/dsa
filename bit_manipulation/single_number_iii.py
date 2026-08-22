@@ -20,6 +20,7 @@ Now check which numbers have 1 at the rightmost set bit position (which is 1 in 
 
 """
 
+
 class Solution1:
     # Function to get the single
     # numbers in the given array
@@ -37,7 +38,7 @@ class Solution1:
 
         # Variable to get the rightmost
         # set bit in overall XOR
-        rightmost = (XOR & (XOR - 1)) ^ XOR # XOR ^ -XOR
+        rightmost = (XOR & (XOR - 1)) ^ XOR  # XOR ^ -XOR
 
         # Variables to stores XOR of
         # elements in bucket 1 and 2
@@ -72,4 +73,4 @@ class Solution2:
             if num & diff:
                 x ^= num
 
-        return [x, bitmask^x]
+        return [x, bitmask ^ x]

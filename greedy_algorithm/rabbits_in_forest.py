@@ -2,8 +2,9 @@
 # https://leetcode.com/problems/rabbits-in-forest/
 
 from collections import defaultdict  # to count how many times each answer appears
-import math                          # for the ceiling function
-from typing import List              # for type hints
+import math  # for the ceiling function
+from typing import List  # for type hints
+
 
 class Solution:
     def numRabbits(self, answers: List[int]) -> int:

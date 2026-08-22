@@ -45,9 +45,7 @@ class Solution1:
         Space: O(1) - only two scalar variables (maxValueSoFar, noOfPartitions)
                regardless of n; no auxiliary array is built.
         """
-        maxValueSoFar = (
-            -1
-        )  # safe sentinel since arr[i] >= 0 always (permutation of 0..n-1);
+        maxValueSoFar = -1  # safe sentinel since arr[i] >= 0 always (permutation of 0..n-1);
         # int instead of float("-inf") keeps types consistent with arr's ints
         noOfPartitions = 0
 

@@ -2,6 +2,7 @@
 
 from typing import List
 
+
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         g.sort()
@@ -18,11 +19,12 @@ class Solution:
                 cookieIdx += 1
         return count
 
+
 # Time: O(N logN + M logM + M) | Space: O(1)
 class Solution2:
     def findMaximumCookieStudents(self, Student, Cookie):
 
-         # Sorting of lists
+        # Sorting of lists
         student = sorted(Student)
         cookie = sorted(Cookie)
 
@@ -32,7 +34,7 @@ class Solution2:
 
         max_student_with_cookies = 0
 
-         # Traverse through both lists
+        # Traverse through both lists
         while i < n and j < m:
             """If the current cookie can satisfy
             the current student, move to the

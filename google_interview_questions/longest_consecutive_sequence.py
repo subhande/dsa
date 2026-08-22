@@ -4,6 +4,7 @@
 
 from typing import List
 
+
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         longest_streak = 0
@@ -22,6 +23,7 @@ class Solution:
 
         return longest_streak
 
+
 class Solution12:
     def longestConsecutive(self, nums: List[int]) -> int:
         if not nums:
@@ -32,10 +34,10 @@ class Solution12:
         n = len(nums)
         right = 1
         while right < n:
-            if nums[right] - nums[right-1] == 1:
+            if nums[right] - nums[right - 1] == 1:
                 currSequenceLength += 1
                 maxSequenceLength = max(maxSequenceLength, currSequenceLength)
-            elif nums[right] - nums[right-1] == 0:
+            elif nums[right] - nums[right - 1] == 0:
                 pass
             else:
                 currSequenceLength = 1
@@ -44,9 +46,9 @@ class Solution12:
         return maxSequenceLength
 
 
-
 # Longest Increasing Consicutive Subsequence
 from typing import List
+
 
 class Solution2:
     def longestIncreasingConsecutiveSubsequence(self, arr: List[int]) -> List[int]:
@@ -54,10 +56,10 @@ class Solution2:
             return []
 
         # Initialize
-        max_start = 0         # start index of max subsequence
-        max_len = 1           # length of max subsequence
-        curr_start = 0        # start index of current subsequence
-        curr_len = 1          # length of current subsequence
+        max_start = 0  # start index of max subsequence
+        max_len = 1  # length of max subsequence
+        curr_start = 0  # start index of current subsequence
+        curr_len = 1  # length of current subsequence
 
         # Walk through the array
         for i in range(1, len(arr)):
@@ -84,6 +86,8 @@ class Solution2:
 # Longest Increasing Consicutive Subsequence with Max k diff
 
 from typing import List
+
+
 class Solution3:
     def longestIncreasingSubsequenceWithMaxDiff(self, arr: List[int], k: int) -> List[int]:
         if not arr:

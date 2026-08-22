@@ -1,5 +1,5 @@
-
 # Detect a cycle in an undirected graph
+
 
 class Solution:
     def dfs(self, graph, visited, parent, node):
@@ -25,7 +25,6 @@ class Solution:
                 if self.dfs(graph, visited, -1, node):
                     return True
         return False
-
 
     def bfs(self, graph, visited, parent, node):
         queue = [(node, parent)]
@@ -55,6 +54,7 @@ class Solution:
 from collections import deque
 from typing import List
 
+
 class SolutionLeetcode:
     def isValid(self, row, col, rows, cols):
         return 0 <= row < rows and 0 <= col < cols
@@ -79,32 +79,30 @@ class SolutionLeetcode:
                         return True
         return False
 
-
-
     def containsCycle(self, grid: List[List[str]]) -> bool:
         rows = len(grid)
         cols = len(grid[0])
 
         for row in range(rows):
             for col in range(cols):
-                if "vis-" not in grid[row][col] and self.bfs(row, col, rows, cols, grid, grid[row][col], "vis-" + grid[row][col]):
+                if "vis-" not in grid[row][col] and self.bfs(
+                    row, col, rows, cols, grid, grid[row][col], "vis-" + grid[row][col]
+                ):
                     return True
         return False
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
     V = 6
-    adj= [[1, 3], [0, 2, 4], [1, 5], [0, 4], [1, 3, 5], [2, 4]]
-    print(sol.isCycleDFS(V, adj)) # True
-    print(sol.isCycleBFS(V, adj)) # True
+    adj = [[1, 3], [0, 2, 4], [1, 5], [0, 4], [1, 3, 5], [2, 4]]
+    print(sol.isCycleDFS(V, adj))  # True
+    print(sol.isCycleBFS(V, adj))  # True
 
     # Test 2
     V = 4
     adj = [[1, 2], [0], [0, 3], [2]]
-    print(sol.isCycleDFS(V, adj)) # False
-    print(sol.isCycleBFS(V, adj)) # False
+    print(sol.isCycleDFS(V, adj))  # False
+    print(sol.isCycleBFS(V, adj))  # False

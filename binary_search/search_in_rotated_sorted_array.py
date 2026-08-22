@@ -2,11 +2,12 @@
 
 from typing import List
 
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
 
         low = 0
-        high = len(nums)-1
+        high = len(nums) - 1
 
         while low <= high:
             mid = (low + high) // 2
@@ -15,7 +16,7 @@ class Solution:
                 return mid
             # Case 2: Left subarray is sorted
             elif nums[low] <= nums[mid]:
-                if nums[low] <= target  and target < nums[mid]:
+                if nums[low] <= target and target < nums[mid]:
                     high = mid - 1
                 else:
                     low = mid + 1

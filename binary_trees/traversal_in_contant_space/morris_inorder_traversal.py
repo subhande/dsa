@@ -1,5 +1,3 @@
-
-
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
@@ -7,9 +5,11 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
+
 # This method performs an inorder traversal of a binary tree
 # using the Morris Traversal algorithm, which does not use
 # additional space for a stack or recursion.
+
 
 class Solution:
     def getInorder(self, root):
@@ -44,6 +44,7 @@ class Solution:
 
         # Return inorder traversal
         return inorder
+
 
 if __name__ == "__main__":
     root = TreeNode(1)

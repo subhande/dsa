@@ -32,12 +32,10 @@ if __name__ == "__main__":
     sol = Solution()
 
     # Test Case 1
-    root = buildTreeFromArray( [1, 2, 3, None, 5, None, 4])
+    root = buildTreeFromArray([1, 2, 3, None, 5, None, 4])
     # Right view: [1, 3, 4]
     # Left view: [1, 2, 5]
     print(sol.allRootToLeaf(root))
-
-
 
     # Test Case 2
     root = buildTreeFromArray([1, 2, 3, 6, 5, 8, 4])

@@ -1,17 +1,16 @@
 # Find Nth root of a number
 
 
-
 class Solution:
     def helper(self, mid, n, m):
-        '''
+        """
         3 * 5
 
         14 * 3  | 27
 
         1 * 14 = 14
 
-        '''
+        """
         ans, base = 1, mid
         while n > 0:
             if n % 2 == 1:
@@ -27,7 +26,6 @@ class Solution:
         if ans == m:
             return 1
         return 0
-
 
     def NthRoot(self, n, m):
 

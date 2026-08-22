@@ -1,6 +1,8 @@
 # Single Number I
 # https://leetcode.com/problems/single-number/
 from typing import List
+
+
 # Time complexity: O(n) | Space complexity: O(1)
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
@@ -8,6 +10,7 @@ class Solution:
         for i in range(len(nums)):
             result ^= nums[i]
         return result
+
 
 class SolutionExtended1:
     def find_unique(self, nums, duplicate_count=2, unique_count=1):
@@ -42,7 +45,7 @@ class SolutionExtended1:
             # Therefore, if bit_sum % duplicate_count equals unique_count % duplicate_count,
             # we assume that bit is 1 in the unique number.
             if bit_sum % duplicate_count == unique_count % duplicate_count:
-                result |= (1 << i)
+                result |= 1 << i
 
         # To handle negative numbers (if using 32-bit signed integers)
         if result >= 2**31:
@@ -54,20 +57,32 @@ class SolutionExtended1:
 
         return result
 
+
 # Example usage:
 # Does not work if unique_count >= duplicate_count
 if __name__ == "__main__":
     sol_ext1 = SolutionExtended1()
     # Standard case: duplicates appear twice and unique appears once.
     nums1 = [2, 3, 2, 4, 4]
-    print("Unique (duplicates twice, unique once):", sol_ext1.find_unique(nums1, duplicate_count=2, unique_count=1))
+    print(
+        "Unique (duplicates twice, unique once):",
+        sol_ext1.find_unique(nums1, duplicate_count=2, unique_count=1),
+    )
 
     nums1 = [2, 3, 2, 3, 4, 3, 4, 4]
-    print("Unique (duplicates thrice, unique twice):", sol_ext1.find_unique(nums1, duplicate_count=3, unique_count=2))
-
+    print(
+        "Unique (duplicates thrice, unique twice):",
+        sol_ext1.find_unique(nums1, duplicate_count=3, unique_count=2),
+    )
 
     nums2 = [7, 5, 5, 5, 9, 9, 9]
-    print("Unique (duplicates twice, unique 4 times):", sol_ext1.find_unique(nums2, duplicate_count=3, unique_count=4))
+    print(
+        "Unique (duplicates twice, unique 4 times):",
+        sol_ext1.find_unique(nums2, duplicate_count=3, unique_count=4),
+    )
 
     nums2 = [7, 7, 7, 7, 5, 5, 5, 9, 9, 9]
-    print("Unique (duplicates twice, unique 4 times):", sol_ext1.find_unique(nums2, duplicate_count=3, unique_count=4))
+    print(
+        "Unique (duplicates twice, unique 4 times):",
+        sol_ext1.find_unique(nums2, duplicate_count=3, unique_count=4),
+    )

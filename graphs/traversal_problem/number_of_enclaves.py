@@ -3,6 +3,7 @@
 from collections import deque
 from typing import List
 
+
 class Solution:
     def isValid(self, r, c, n_rows, n_cols):
         return 0 <= r < n_rows and 0 <= c < n_cols
@@ -47,25 +48,23 @@ class Solution2:
         grid[r][c] = 0
         pathLength = 0
         queue.append((r, c))
-        directions = [(0,-1), (0, 1), (-1, 0), (1, 0)]
+        directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
         while queue:
             row, col = queue.popleft()
             pathLength += 1
-            for (dr, dc) in directions:
+            for dr, dc in directions:
                 nr = row + dr
                 nc = col + dc
                 if self.isValid(nr, nc, n, m) and grid[nr][nc] == 1:
                     grid[nr][nc] = 0
-                    queue.append((nr,nc))
+                    queue.append((nr, nc))
         return pathLength
-
 
     def numEnclaves(self, grid: List[List[int]]) -> int:
 
         n = len(grid)
         m = len(grid[0])
         totalLandCells = 0
-
 
         for row in range(n):
             for col in range(m):
@@ -74,11 +73,10 @@ class Solution2:
 
         for row in range(n):
             for col in range(m):
-                if (row in [0, n-1] or col in [0, m-1]) and grid[row][col] == 1:
+                if (row in [0, n - 1] or col in [0, m - 1]) and grid[row][col] == 1:
                     totalLandCells -= self.bfs(row, col, n, m, grid)
 
         return totalLandCells
-
 
 
 if __name__ == "__main__":
@@ -86,8 +84,8 @@ if __name__ == "__main__":
 
     # Test 1
     grid = [[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
-    print(sol.numberOfEnclaves(grid)) # Output: 3
+    print(sol.numberOfEnclaves(grid))  # Output: 3
 
     # Test 2
-    grid =  [[0, 0, 0, 1],[0, 0, 0, 1], [0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
-    print(sol.numberOfEnclaves(grid)) # Output: 3
+    grid = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
+    print(sol.numberOfEnclaves(grid))  # Output: 3

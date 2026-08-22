@@ -5,15 +5,16 @@ from utils import buildTreeFromArray, TreeNode
 from collections import deque
 
 
-
 class Solution:
-    def getPathFromRoot(self, root, node, path:list):
+    def getPathFromRoot(self, root, node, path: list):
         if not root:
             return False
         path.append(root)
         if root == node:
             return True
-        if self.getPathFromRoot(root.left, node, path) or self.getPathFromRoot(root.right, node, path):
+        if self.getPathFromRoot(root.left, node, path) or self.getPathFromRoot(
+            root.right, node, path
+        ):
             return True
         path.pop()
         return False
@@ -30,7 +31,7 @@ class Solution:
             if p_path[i].data != q_path[i].data:
                 break
             i += 1
-        return p_path[i-1]
+        return p_path[i - 1]
 
     # Time Complexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     def lowestCommonAncestorOptimized(self, root, p, q):
@@ -56,13 +57,11 @@ if __name__ == "__main__":
     sol = Solution()
 
     # Test Case 1
-    root = buildTreeFromArray(  [3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
+    root = buildTreeFromArray([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
     p, q = root.left, root.right
     # LCA: 3
     print(sol.lowestCommonAncestorBruteForce(root, p, q))
     print(sol.lowestCommonAncestorOptimized(root, p, q))
-
-
 
     # Test Case 2
     root = buildTreeFromArray([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])

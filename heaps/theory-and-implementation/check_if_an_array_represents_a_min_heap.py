@@ -25,6 +25,7 @@ The array represents a complete binary tree.
 --------------------------------------------
 """
 
+
 class Solution:
     def isHeap(self, nums):
         """
@@ -65,6 +66,7 @@ def main():
         print("\nThe given array is a min-heap.")
     else:
         print("\nThe given array is not a min-heap.")
+
 
 if __name__ == "__main__":
     main()

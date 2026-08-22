@@ -1,11 +1,12 @@
-
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
         self.data = val
         self.left = left
         self.right = right
+
     def __str__(self):
         return str(self.data)
+
 
 def buildTreeFromArray(arr):
     if not arr:

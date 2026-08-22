@@ -2,10 +2,11 @@
 # Distance of nearest cell having 0
 # Distance of nearest cell having 1
 # 1765: Map of Highest Peak
-#TODO: Visit 01 Matrix for other solutions
+# TODO: Visit 01 Matrix for other solutions
 
 from collections import deque
 from typing import List
+
 
 # Time Complexity: O(n * m) | Space Complexity: O(n * m)
 class Solution:
@@ -32,7 +33,6 @@ class Solution:
         # Directions for moving up, down, left, right
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-
         queue = deque()
         # Add all water cells to the queue and mark them as visited
         for row in range(n):
@@ -49,13 +49,13 @@ class Solution:
             dist[i][j] = steps
 
             # Check all four neighbors
-            for (di, dj) in directions:
+            for di, dj in directions:
                 ni = i + di
                 nj = j + dj
                 # Check for valid unvisited neighbors
                 if self.isValid(ni, nj, n, m) and not visited[ni][nj]:
                     # If the neighbor is not water, add it to the queue
-                    queue.append((ni, nj, steps+1))
+                    queue.append((ni, nj, steps + 1))
                     # Mark the neighbor as visited
                     visited[ni][nj] = True
 

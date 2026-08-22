@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -9,11 +10,13 @@ from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 # Largest BST in Binary Tree
 
+
 class NodeValue:
     def __init__(self, minNode, maxNode, maxSize):
         self.minNode = minNode
         self.maxNode = maxNode
         self.maxSize = maxSize
+
 
 class Solution:
     def largestBSTHelper(self, root):
@@ -24,9 +27,14 @@ class Solution:
         right = self.largestBSTHelper(root.right)
 
         if left.maxNode < root.data < right.minNode:
-            return NodeValue(min(left.minNode, root.data), max(right.maxNode, root.data), left.maxSize + right.maxSize + 1)
+            return NodeValue(
+                min(left.minNode, root.data),
+                max(right.maxNode, root.data),
+                left.maxSize + right.maxSize + 1,
+            )
         else:
             return NodeValue(float("-inf"), float("inf"), max(left.maxSize, right.maxSize))
+
     # Time complexity: O(n) | Space complexity: O(n) + O(h) for additional info and recursive call stack
     def largestBST(self, root):
         return self.largestBSTHelper(root).maxSize

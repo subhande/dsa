@@ -5,8 +5,12 @@
 
 from typing import List
 import heapq
+
+
 class Solution:
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    def findCheapestPrice(
+        self, n: int, flights: List[List[int]], src: int, dst: int, k: int
+    ) -> int:
         adj = [[] for _ in range(n)]
 
         for flight in flights:
@@ -27,18 +31,17 @@ class Solution:
                 # print(node, adj[node], neighbor, n_cost, cost)
                 if cost[node] + n_cost < cost[neighbor] and stop <= k:
                     cost[neighbor] = cost[node] + n_cost
-                    heapq.heappush(minHeap, (cost[neighbor], neighbor, stop+1))
+                    heapq.heappush(minHeap, (cost[neighbor], neighbor, stop + 1))
 
         return cost[dst] if cost[dst] != INF else -1
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
     n = 4
-    flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]]
+    flights = [[0, 1, 100], [1, 2, 100], [2, 0, 100], [1, 3, 600], [2, 3, 200]]
     src = 0
     dst = 3
     k = 1
@@ -47,7 +50,7 @@ if __name__ == '__main__':
 
     # Test 2
     n = 3
-    flights = [[0,1,100],[1,2,100],[0,2,500]]
+    flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
     src = 0
     dst = 2
     k = 1

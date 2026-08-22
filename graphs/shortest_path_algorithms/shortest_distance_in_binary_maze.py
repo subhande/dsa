@@ -1,8 +1,9 @@
 # Shortest Distance in a Binary Maze
 # https://takeuforward.org/plus/dsa/graph/shortest-path-algorithms/shortest-path-with-minimum-effort
 from collections import deque
-class Solution:
 
+
+class Solution:
     def isValid(self, row, col, rows, cols):
         return 0 <= row < rows and 0 <= col < cols
 
@@ -14,7 +15,7 @@ class Solution:
 
         rows, cols = len(grid), len(grid[0])
 
-        dist = [[float('inf') for _ in range(cols)] for _ in range(rows)]
+        dist = [[float("inf") for _ in range(cols)] for _ in range(rows)]
 
         dist[source[0]][source[1]] = 0
 
@@ -24,7 +25,11 @@ class Solution:
             distance, row, col = queue.popleft()
             for x, y in directions:
                 newRow, newCol = row + x, col + y
-                if self.isValid(newRow, newCol, rows, cols) and grid[newRow][newCol] == 1 and distance + 1 < dist[newRow][newCol]:
+                if (
+                    self.isValid(newRow, newCol, rows, cols)
+                    and grid[newRow][newCol] == 1
+                    and distance + 1 < dist[newRow][newCol]
+                ):
                     dist[newRow][newCol] = distance + 1
 
                     if (newRow, newCol) == destination:
@@ -34,10 +39,14 @@ class Solution:
 
         return -1
 
+
 import heapq
+
+
 class Solution2:
     def isValid(self, row, col, rows, cols):
         return 0 <= row < rows and 0 <= col < cols
+
     def shortestPath(self, grid, source, destination):
         if source == destination:
             return 0
@@ -46,7 +55,7 @@ class Solution2:
 
         rows, cols = len(grid), len(grid[0])
 
-        dist = [[float('inf') for _ in range(cols)] for _ in range(rows)]
+        dist = [[float("inf") for _ in range(cols)] for _ in range(rows)]
 
         dist[source[0]][source[1]] = 0
 
@@ -56,7 +65,11 @@ class Solution2:
             distance, row, col = heapq.heappop(minHeap)
             for x, y in directions:
                 newRow, newCol = row + x, col + y
-                if self.isValid(newRow, newCol, rows, cols) and grid[newRow][newCol] == 1 and distance + 1 < dist[newRow][newCol]:
+                if (
+                    self.isValid(newRow, newCol, rows, cols)
+                    and grid[newRow][newCol] == 1
+                    and distance + 1 < dist[newRow][newCol]
+                ):
                     dist[newRow][newCol] = distance + 1
 
                     if (newRow, newCol) == destination:
@@ -64,12 +77,13 @@ class Solution2:
 
                     heapq.heappush(minHeap, (distance + 1, newRow, newCol))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sol = Solution()
     sol1 = Solution2()
 
     # Test 1
-    grid = [[1, 1, 1, 1],[1, 1, 0, 1],[1, 1, 1, 1],[1, 1, 0, 0],[1, 0, 0, 1]]
+    grid = [[1, 1, 1, 1], [1, 1, 0, 1], [1, 1, 1, 1], [1, 1, 0, 0], [1, 0, 0, 1]]
     source = (0, 1)
     destination = (2, 2)
     print(sol.shortestPath(grid, source, destination))  # Expected output: 3

@@ -25,11 +25,7 @@ class Solution:
             node.right, maxPathSameValue
         )
 
-        if (
-            leftValue is not None
-            and rightValue is not None
-            and leftValue == rightValue == node.val
-        ):
+        if leftValue is not None and rightValue is not None and leftValue == rightValue == node.val:
             maxPathSameValue[0] = max(
                 maxPathSameValue[0],
                 1 + leftSameValuePathLength + rightSameValuePathLength,
@@ -118,9 +114,7 @@ class Solution3:
 
             # Only extend the arm if child exists and matches value
             left_arm = left_len + 1 if node.left and node.left.val == node.val else 0
-            right_arm = (
-                right_len + 1 if node.right and node.right.val == node.val else 0
-            )
+            right_arm = right_len + 1 if node.right and node.right.val == node.val else 0
 
             # Path through this node connects both arms
             self.ans = max(self.ans, left_arm + right_arm)

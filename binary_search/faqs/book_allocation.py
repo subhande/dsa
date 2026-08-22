@@ -28,7 +28,6 @@ class Solution:
         low, high = maxPagesInABook, totalPages
         maximumPages = -1
         while low <= high:
-
             mid = (low + high) // 2
 
             if self.isPossible(nums, mid, m):

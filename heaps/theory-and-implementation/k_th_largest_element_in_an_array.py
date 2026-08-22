@@ -1,4 +1,3 @@
-
 """
 # K-th Largest element in an array
 
@@ -14,6 +13,7 @@ Input: nums = [-5, 4, 1, 2, -3], k = 5
 Output: -5
 ---------------------------------------
 """
+
 
 class Solution:
     def heapifyDown(self, index, nums, size):
@@ -51,7 +51,7 @@ class Solution:
         size = len(nums)
 
         # Iterate over all elements of the heap
-        for i in range(size - 1, size-k, -1):
+        for i in range(size - 1, size - k, -1):
             # Swap the root of the heap with the last element of the heap
             nums[0], nums[i] = nums[i], nums[0]
             # Reduce the size of the heap by 1

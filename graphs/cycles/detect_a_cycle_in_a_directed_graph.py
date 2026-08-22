@@ -1,5 +1,5 @@
-
 # Detect a cycle in an directed graph
+
 
 class Solution:
     # Helper for DFS cycle detection. Here, "parent" will be used as the recursion stack.
@@ -64,12 +64,12 @@ class Solution:
 
 
 # Testing the solution:
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
     V = 6
-    adj = [ [1], [2, 5], [3], [4], [1], [] ]
+    adj = [[1], [2, 5], [3], [4], [1], []]
     print(sol.isCycleDFS(V, adj))  # Expected output: True
     print(sol.isCycleBFS(V, adj))  # Expected output: True
 

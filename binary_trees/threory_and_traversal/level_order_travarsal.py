@@ -4,11 +4,13 @@
 
 from collections import deque
 
+
 class TreeNode(object):
     def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
+
 
 class Solution:
     def levelOrder(self, root: TreeNode | None):
@@ -30,8 +32,6 @@ class Solution:
                     queue.append(node.right)
             result.append(level)
         return result
-
-
 
 
 if __name__ == "__main__":

@@ -2,11 +2,13 @@
 # Pre, Post, Inorder in one traversal
 """
 
+
 class TreeNode(object):
     def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
+
 
 class Solution:
     def tree_traversal(self, root: TreeNode | None):
@@ -28,7 +30,6 @@ class Solution:
             else:
                 post_order.append(node.value)
         return pre_order, in_order, post_order
-
 
 
 if __name__ == "__main__":

@@ -33,8 +33,8 @@ Solution:
 
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Recursion Approach
     ################################
@@ -42,7 +42,7 @@ class Solution:
     def is_all_stars(self, s, j):
         # Check if all characters in pattern[0...j] are '*'
         for k in range(j + 1):
-            if s[k] != '*':
+            if s[k] != "*":
                 return False
         return True
 
@@ -59,19 +59,20 @@ class Solution:
             return self.is_all_stars(pat, j)
 
         # If current characters match or pattern has a '?', move both pointers
-        if str[i] == pat[j] or pat[j] == '?':
+        if str[i] == pat[j] or pat[j] == "?":
             return self.wildCardRecursionHelper(str, pat, i - 1, j - 1)
 
         # If pattern has '*', it can either match no character or one character
-        if pat[j] == '*':
-            return self.wildCardRecursionHelper(str, pat, i - 1, j) or self.wildCardRecursionHelper(str, pat, i, j - 1)
+        if pat[j] == "*":
+            return self.wildCardRecursionHelper(str, pat, i - 1, j) or self.wildCardRecursionHelper(
+                str, pat, i, j - 1
+            )
 
         # Characters don't match and no wildcard is present
         return False
 
     def wildCardRecursion(self, str, pat):
         return self.wildCardRecursionHelper(str, pat, len(str) - 1, len(pat) - 1)
-
 
     ################################
     # Recursion with Memoization Approach
@@ -93,13 +94,15 @@ class Solution:
             return dp[i][j]
 
         # If current characters match or pattern has a '?', move both pointers
-        if str[i] == pat[j] or pat[j] == '?':
+        if str[i] == pat[j] or pat[j] == "?":
             dp[i][j] = self.wildCardRecursionMemoizationHelper(str, pat, i - 1, j - 1, dp)
             return dp[i][j]
         else:
             # If pattern has '*', it can either match no character or one character
-            if pat[j] == '*':
-                dp[i][j] = self.wildCardRecursionMemoizationHelper(str, pat, i - 1, j, dp) or self.wildCardRecursionMemoizationHelper(str, pat, i, j - 1, dp)
+            if pat[j] == "*":
+                dp[i][j] = self.wildCardRecursionMemoizationHelper(
+                    str, pat, i - 1, j, dp
+                ) or self.wildCardRecursionMemoizationHelper(str, pat, i, j - 1, dp)
                 return dp[i][j]
             else:
                 # Characters don't match and no wildcard is present
@@ -129,7 +132,7 @@ class Solution:
 
         # Fill the first row: empty string vs pattern
         for j in range(1, m + 1):
-            if pat[j - 1] == '*':
+            if pat[j - 1] == "*":
                 dp[0][j] = dp[0][j - 1]
             else:
                 dp[0][j] = False
@@ -137,9 +140,9 @@ class Solution:
         # Fill the DP table
         for i in range(1, n + 1):
             for j in range(1, m + 1):
-                if pat[j - 1] == s[i - 1] or pat[j - 1] == '?':
+                if pat[j - 1] == s[i - 1] or pat[j - 1] == "?":
                     dp[i][j] = dp[i - 1][j - 1]
-                elif pat[j - 1] == '*':
+                elif pat[j - 1] == "*":
                     # '*' can match zero characters (dp[i][j-1])
                     # or one more character from s (dp[i-1][j])
                     dp[i][j] = dp[i][j - 1] or dp[i - 1][j]
@@ -147,8 +150,6 @@ class Solution:
                     dp[i][j] = False
 
         return dp[n][m]
-
-
 
     ################################
     # Tabulation Space Optimized Approach
@@ -170,7 +171,7 @@ class Solution:
 
         # Initialize dp for an empty string s and non-empty pattern.
         for j in range(1, m + 1):
-            if pat[j - 1] == '*':
+            if pat[j - 1] == "*":
                 dp[j] = dp[j - 1]
             else:
                 dp[j] = False
@@ -183,9 +184,9 @@ class Solution:
             dp[0] = False
             for j in range(1, m + 1):
                 temp = dp[j]  # Save the current dp[j] (from previous row) before updating.
-                if pat[j - 1] == s[i - 1] or pat[j - 1] == '?':
+                if pat[j - 1] == s[i - 1] or pat[j - 1] == "?":
                     dp[j] = prev
-                elif pat[j - 1] == '*':
+                elif pat[j - 1] == "*":
                     dp[j] = dp[j] or dp[j - 1]
                 else:
                     dp[j] = False
@@ -194,51 +195,34 @@ class Solution:
         return dp[m]
 
 
-
-
-
-
-
 if __name__ == "__main__":
     wildCard = Solution()
 
     test_cases = [
-        {
-            "str": "xaylmz",
-            "pat": "x?y*z",
-            "output": True
-        },
-        {
-            "str": "xyza",
-            "pat": "x*z",
-            "output": False
-        },
-        {
-            "str": "abc",
-            "pat": "a?c",
-            "output": True
-        },
-        {
-            "str": "mayfojkazdpj",
-            "pat": "?*?d*j",
-            "output": True
-        },
+        {"str": "xaylmz", "pat": "x?y*z", "output": True},
+        {"str": "xyza", "pat": "x*z", "output": False},
+        {"str": "abc", "pat": "a?c", "output": True},
+        {"str": "mayfojkazdpj", "pat": "?*?d*j", "output": True},
     ]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
+        print(f"Test case {i + 1}")
         outputRecursive = wildCard.wildCardRecursion(test_case["str"], test_case["pat"])
         # print(test_case)
         print(f"Output (Recursion): {outputRecursive} | Expected: {test_case['output']}")
 
-        outputRecursiveMemoization = wildCard.wildCardRecursionMemoization(test_case["str"], test_case["pat"])
+        outputRecursiveMemoization = wildCard.wildCardRecursionMemoization(
+            test_case["str"], test_case["pat"]
+        )
         print(f"Output (Recursion with Memoization): {outputRecursiveMemoization}")
 
         outputTabulation = wildCard.wildCardTabulation(test_case["str"], test_case["pat"])
         print(f"Output (Tabulation): {outputTabulation}")
 
-        outputTabulationSpaceOptimized = wildCard.wildCardTabulationSpaceOptimized(test_case["str"], test_case["pat"])
+        outputTabulationSpaceOptimized = wildCard.wildCardTabulationSpaceOptimized(
+            test_case["str"], test_case["pat"]
+        )
         print(f"Output (Tabulation Space Optimized): {outputTabulationSpaceOptimized}")
 
         assert outputTabulation == test_case["output"]

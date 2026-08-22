@@ -4,9 +4,7 @@ from collections import Counter, defaultdict
 
 
 class Solution:
-    def longestSubstringHelper(
-        self, s: str, start_index: int, end_index: int, k: int
-    ) -> int:
+    def longestSubstringHelper(self, s: str, start_index: int, end_index: int, k: int) -> int:
         # If the current substring length is smaller than k,
         # it is impossible for any character to appear at least k times.
         if start_index > end_index or end_index - start_index + 1 < k:
@@ -74,9 +72,7 @@ Since there are only 26 lowercase letters, trying all possible unique character 
 
 # Time Complexity: O(n * 26) where n is the length of the input string s | Space Complexity: O(26) since we are storing frequency of characters in current window which can have at most 26 characters
 class Solution2:
-    def longestSubstringHelper(
-        self, s: str, start_index: int, end_index: int, k: int
-    ) -> int:
+    def longestSubstringHelper(self, s: str, start_index: int, end_index: int, k: int) -> int:
 
         # Current substring is too short to be valid.
         if start_index > end_index or end_index - start_index + 1 < k:
@@ -93,10 +89,7 @@ class Solution2:
                 next_valid_index = split_index + 1
 
                 # Skip all consecutive invalid characters.
-                while (
-                    next_valid_index <= end_index
-                    and frequency_map[s[next_valid_index]] < k
-                ):
+                while next_valid_index <= end_index and frequency_map[s[next_valid_index]] < k:
                     next_valid_index += 1
 
                 longest_left_substring = self.longestSubstringHelper(
@@ -175,8 +168,6 @@ class Solution3:
                     current_unique_chars == target_unique_chars
                     and chars_with_frequency_at_least_k == target_unique_chars
                 ):
-                    longest_substring_length = max(
-                        longest_substring_length, right - left + 1
-                    )
+                    longest_substring_length = max(longest_substring_length, right - left + 1)
 
         return longest_substring_length

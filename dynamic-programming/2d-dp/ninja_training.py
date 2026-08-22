@@ -1,6 +1,7 @@
 # Ninja's training
 # https://takeuforward.org/plus/dsa/dynamic-programming/2d-dp/ninja's-training
 
+
 class Solution:
     def ninjaTraining(self, matrix):
         n = len(matrix)

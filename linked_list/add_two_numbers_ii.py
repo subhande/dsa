@@ -8,9 +8,7 @@ class ListNode:
 
 
 class Solution:
-    def addTwoNumbers(
-        self, l1: Optional[ListNode], l2: Optional[ListNode]
-    ) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
 
         prev, curr = None, l1
 
@@ -82,9 +80,7 @@ class Solution:
             head = temp
         return prev
 
-    def addTwoNumbers(
-        self, l1: Optional[ListNode], l2: Optional[ListNode]
-    ) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         r1 = self.reverseList(l1)
         r2 = self.reverseList(l2)
 

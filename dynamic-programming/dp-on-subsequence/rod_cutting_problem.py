@@ -23,8 +23,8 @@ Constraints:
 
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Recursive Approach
     ################################
@@ -44,7 +44,7 @@ class Solution:
         return max(taken, notTaken)
 
     def rodCuttingRecursive(self, price, n):
-        return self.rodCuttingRecursiveHelper(price, n-1, n)
+        return self.rodCuttingRecursiveHelper(price, n - 1, n)
 
     ################################
     # Memoization Approach
@@ -70,7 +70,7 @@ class Solution:
     def rodCuttingMemoization(self, price, n):
         memo = [[0] * (n + 1) for _ in range(n + 1)]
 
-        return self.rodCuttingMemoizationHelper(price, n-1, n, memo)
+        return self.rodCuttingMemoizationHelper(price, n - 1, n, memo)
 
     ################################
     # Tabulation Approach
@@ -79,7 +79,7 @@ class Solution:
     def rodCuttingTabulation(self, price, n):
         memo = [[0] * (n + 1) for _ in range(n)]
 
-        for length in range(n+1):
+        for length in range(n + 1):
             memo[0][length] = price[0] * length
 
         for ind in range(1, n):
@@ -92,7 +92,7 @@ class Solution:
 
                 memo[ind][length] = max(taken, notTaken)
 
-        return memo[n-1][n]
+        return memo[n - 1][n]
 
     ################################
     # Tabulation Space Optimized Approach
@@ -102,7 +102,7 @@ class Solution:
         prev = [0] * (n + 1)
         cur = [0] * (n + 1)
 
-        for length in range(n+1):
+        for length in range(n + 1):
             prev[length] = price[0] * length
 
         for ind in range(1, n):
@@ -133,7 +133,7 @@ if __name__ == "__main__":
         price = test["price"]
         N = test["N"]
 
-        print("="*50)
+        print("=" * 50)
 
         print("The maximum value is (Recursive):", sol.rodCuttingRecursive(price, N))
 
@@ -141,4 +141,7 @@ if __name__ == "__main__":
 
         print("The maximum value is (Tabulation):", sol.rodCuttingTabulation(price, N))
 
-        print("The maximum value is (Tabulation Space Optimized):", sol.rodCuttingTabulationSpaceOptimized(price, N))
+        print(
+            "The maximum value is (Tabulation Space Optimized):",
+            sol.rodCuttingTabulationSpaceOptimized(price, N),
+        )

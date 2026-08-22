@@ -13,6 +13,7 @@ output : 4
 Similar to: https://leetcode.com/problems/maximum-width-ramp/
 """
 
+
 # Time complexity: O(n^2) | Space complexity: O(1)
 class Solution:
     def maxLenSubstr(self, s: str) -> int:
@@ -33,6 +34,7 @@ class Solution:
 
         return max_len
 
+
 # Time complexity: O(26n) | Space complexity: O(1
 class Solution2:
     def maxLenSubstr(self, s: str) -> int:
@@ -46,15 +48,15 @@ class Solution2:
         last_pos = [-1 for _ in range(26)]
 
         for i in range(n):
-            pos = ord(s[i])-ord('a')
+            pos = ord(s[i]) - ord("a")
             last_pos[pos] = i
 
-        max_length = -float('inf')
+        max_length = -float("inf")
 
         for i in range(n):
-            pos = ord(s[i])-ord('a')
+            pos = ord(s[i]) - ord("a")
             last_index = i
-            for j in range(pos+1, 26):
+            for j in range(pos + 1, 26):
                 if last_pos[j] > last_index:
                     last_index = last_pos[j]
 
@@ -77,21 +79,21 @@ class Solution3:
         """
         n = len(s)
         right_max = [-1] * n
-        right_max[n - 1] = ord(s[n - 1]) - ord('a')
+        right_max[n - 1] = ord(s[n - 1]) - ord("a")
 
         # Fill right max char
         for i in range(n - 2, -1, -1):
-            right_max[i] = max(right_max[i + 1], ord(s[i]) - ord('a'))
+            right_max[i] = max(right_max[i + 1], ord(s[i]) - ord("a"))
 
         print(list(s))
-        print([chr(i+ord('a')) for i in right_max])
+        print([chr(i + ord("a")) for i in right_max])
 
         start = 0
         end = 0
         max_length = 0
         # Traverse the array using left and right pointers
         while end < n:
-            while start < end and ord(s[start])-ord('a') >= right_max[end]:
+            while start < end and ord(s[start]) - ord("a") >= right_max[end]:
                 start += 1
 
             max_length = max(max_length, end - start + 1)

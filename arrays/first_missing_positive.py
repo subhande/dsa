@@ -13,7 +13,7 @@ class Solution:
         for num in nums:
             if num >= 0:
                 numsMap[num] = True
-        for i in range(1, maxPossibleValue+1):
+        for i in range(1, maxPossibleValue + 1):
             if i not in numsMap:
                 return i
         return -1
@@ -30,6 +30,8 @@ Pass 2: nums = [-3, -6, -6, 3, 2]
 Pass 3: The first index with a positive value is at index 0, which indicates
 the missing positive number is 1.
 """
+
+
 class Solution2:
     def firstMissingPositive(self, nums: List[int]) -> int:
         n = len(nums)

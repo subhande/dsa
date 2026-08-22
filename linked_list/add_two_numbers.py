@@ -8,9 +8,7 @@ class ListNode:
 
 
 class Solution:
-    def addTwoNumbers(
-        self, l1: Optional[ListNode], l2: Optional[ListNode]
-    ) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         l3 = ListNode(val=0, next=None)
         curr_l3 = l3
 
@@ -32,9 +30,7 @@ class Solution:
 
 
 class Solution2:
-    def addTwoNumbers(
-        self, l1: Optional[ListNode], l2: Optional[ListNode]
-    ) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
 
         carry = 0
 

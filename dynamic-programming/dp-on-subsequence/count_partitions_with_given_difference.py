@@ -1,5 +1,6 @@
 # Count partitions with given difference
 
+
 class Solution:
     # Modulus value to avoid overflow in calculations.
     mod = int(1e9 + 7)
@@ -7,6 +8,7 @@ class Solution:
     """Function to calculate the number of subsets
        with a specific target sum. Uses space optimization
        to store only the previous state in the DP table."""
+
     def findWays(self, num, tar):
         n = len(num)
 
@@ -62,7 +64,6 @@ class Solution:
 
         # Calculate the target sum for one subset.
         return self.findWays(arr, (tot_sum - diff) // 2)
-
 
 
 class Solution2:

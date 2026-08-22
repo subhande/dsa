@@ -9,9 +9,7 @@ class TreeNode:
 
 
 class Solution:
-    def sumOfLeftLeavesHelper(
-        self, node: TreeNode | None, leftChild: bool = False
-    ) -> int:
+    def sumOfLeftLeavesHelper(self, node: TreeNode | None, leftChild: bool = False) -> int:
 
         if node and node.left is None and node.right is None:
             return node.val if leftChild is True else 0

@@ -77,12 +77,14 @@ Input: nums = [1, 2, 3, 4, 5, 6, 7], k = 3
 
 """
 
+
 class Solution2:
     def reverse(self, nums, start, end):
         while start < end:
             nums[start], nums[end] = nums[end], nums[start]
             start += 1
             end -= 1
+
     def rotateArrayLeft(self, nums, k):
         n = len(nums)
         if n == 0:

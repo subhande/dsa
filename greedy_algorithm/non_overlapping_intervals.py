@@ -1,6 +1,8 @@
 # Non Overlapping Intervals
 
 from typing import List
+
+
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[1])
@@ -10,7 +12,6 @@ class Solution:
         count = 0
 
         for i in range(1, len(intervals)):
-
             if limit > intervals[i][0]:
                 count += 1
             else:
@@ -50,4 +51,4 @@ class Solution2:
                 # Update the ending time
                 last_end_time = intervals[i][1]
 
-        return n-cnt
+        return n - cnt

@@ -28,12 +28,14 @@ https://www.youtube.com/watch?v=wjYnzkAhcNk&ab_channel=NeetCode
 
 from typing import List
 
+
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         nums.sort()
         for i in range(1, len(nums)):
-            if nums[i] == nums[i-1]:
+            if nums[i] == nums[i - 1]:
                 return nums[i]
+
 
 class Solution2:
     def findDuplicate(self, nums: List[int]) -> int:
@@ -43,6 +45,7 @@ class Solution2:
                 return num
             seen.add(num)
         return -1  # This line should never be reached if the input is valid
+
 
 class Solution3:
     def findDuplicate(self, nums):

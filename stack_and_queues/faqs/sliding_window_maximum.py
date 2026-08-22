@@ -21,6 +21,7 @@ For each window of size k=3, we find the maximum element in the window and add i
 
 from collections import deque
 
+
 class Solution:
     # Time complexity: O((n-k)*k) | Space complexity: O(n)
     def maxSlidingWindowBruteForce(self, arr, k):
@@ -29,7 +30,7 @@ class Solution:
         # Iterate over each window of size k.
         for i in range(n - k + 1):
             # Find the maximum element in the current window.
-            maxWindow.append(max(arr[i:i+k]))
+            maxWindow.append(max(arr[i : i + k]))
         return maxWindow
 
     def maxSlidingWindow(self, arr, k):
@@ -58,6 +59,7 @@ class Solution:
 
         return result
 
+
 """
 ─────────────────────────────
 Explanation:
@@ -82,7 +84,7 @@ Explanation:
 This approach efficiently gives the maximum of all sliding windows and is particularly useful when n is very large.
 """
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1

@@ -9,6 +9,7 @@ class Solution:
             total += digit**2
             n = n // 10
         return total
+
     def isHappy(self, n: int) -> bool:
         fast = self.getSquares(n)
         slow = n

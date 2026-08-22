@@ -1,4 +1,5 @@
 import os, sys
+
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
@@ -7,10 +8,11 @@ sys.path.insert(0, project_root)
 from binary_search_trees.utils import TreeNode, buildTreeFromArray
 
 
-#TODO: Implement more optimal solution
+# TODO: Implement more optimal solution
 
 
 # Insert a given node in BST
+
 
 class Solution:
     # Time Complexity: O(h) | Space Complexity: O(h)
@@ -25,6 +27,7 @@ class Solution:
         else:
             root.right = self.insertIntoBSTRecrsive(root.right, val)
         return root
+
     # Time Complexity: O(h) | Space Complexity: O(1)
     def insertIntoBSTIterative(self, root, val):
         if not root:
@@ -47,7 +50,6 @@ class Solution:
         return root
 
 
-
 if __name__ == "__main__":
     sol = Solution()
 
@@ -59,7 +61,7 @@ if __name__ == "__main__":
     print(sol.insertIntoBSTIterative(root, val))
 
     # Test 2
-    root =  [40, 20, 60, 10, 30, 50, 70]
+    root = [40, 20, 60, 10, 30, 50, 70]
     val = 25
     root = buildTreeFromArray(root)
     print(sol.insertIntoBSTRecrsive(root, val))

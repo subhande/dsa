@@ -162,10 +162,7 @@ class Solution2:
 
                     # If frequency becomes exactly equal to requirement,
                     # we just removed the excess occurrence.
-                    if (
-                        window_word_count[leftmost_word]
-                        == required_word_count[leftmost_word]
-                    ):
+                    if window_word_count[leftmost_word] == required_word_count[leftmost_word]:
                         has_excess_word = False
                     else:
                         # We removed a word that was contributing toward

@@ -1,6 +1,7 @@
-
 # Bipartite graph
 from collections import deque
+
+
 class Solution:
     def bfs(self, start, V, adj, color):
         queue = deque([start])
@@ -24,18 +25,17 @@ class Solution:
         return True
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
     V = 4
-    adj=  [[1,3],[0,2],[1,3],[0,2]]
-    print(sol.isBipartite(V, adj)) # True
+    adj = [[1, 3], [0, 2], [1, 3], [0, 2]]
+    print(sol.isBipartite(V, adj))  # True
     # print(sol.isBipartite(V, adj)) # True
 
     # Test 2
     V = 4
-    adj = [[1,2,3],[0,2],[0,1,3],[0,2]]
-    print(sol.isBipartite(V, adj)) # False
+    adj = [[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]
+    print(sol.isBipartite(V, adj))  # False
     # print(sol.isBipartite(V, adj)) # False

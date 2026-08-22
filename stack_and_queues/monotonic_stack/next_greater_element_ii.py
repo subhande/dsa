@@ -22,6 +22,8 @@ Explanation:
 
 Both methods ultimately return the correct next greater element for every element in the circular array.
 """
+
+
 class Solution:
     # Time complexity: O(n^2) | Space complexity: O(n)
     def nextGreaterElementsBruteForce(self, arr):
@@ -36,6 +38,7 @@ class Solution:
                     result[i] = cand
                     break
         return result
+
     # Time complexity: O(n) | Space complexity: O(n)
     def nextGreaterElementsOptimized(self, arr):
         n = len(arr)
@@ -61,7 +64,8 @@ class Solution:
             stack.append(current)
         return result
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sol = Solution()
 
     # Test 1
@@ -71,7 +75,7 @@ if __name__ == '__main__':
     print(sol.nextGreaterElementsOptimized(arr))
 
     # Test 2
-    arr =  [5, 7, 1, 7, 6, 0]
+    arr = [5, 7, 1, 7, 6, 0]
     # Output: [7, -1, 7, -1, 7, 5]
     print(sol.nextGreaterElementsBruteForce(arr))
     print(sol.nextGreaterElementsOptimized(arr))

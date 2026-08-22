@@ -1,7 +1,6 @@
 # Maximum Xor with an element from an array
 
 
-
 class TrieNode:
     def __init__(self):
         self.links = [None] * 2
@@ -40,6 +39,7 @@ class Trie:
                 node = node.get(bit)
         return xor
 
+
 class Solution:
     # Time complexity: O(nlogn + qlogq + 32N + 32Q) -> O(nlogn + qlogq) | Space complexity: O(q)
     def maximizeXor(self, nums, queries):
@@ -60,14 +60,14 @@ if __name__ == "__main__":
     sol = Solution()
     # Test 1
     nums = [4, 9, 2, 5, 0, 1]
-    queries = [ [3, 0], [3, 10], [7, 5], [7,9] ]
+    queries = [[3, 0], [3, 10], [7, 5], [7, 9]]
     expectedOutput = [3, 10, 7, 14]
     output = sol.maximizeXor(nums, queries)
     print(f"Output: {output}, Expected: {expectedOutput}")
 
     # Test 2
     nums = [0, 1, 2, 3, 4]
-    queries = [ [3, 1], [1, 3], [5, 6] ]
+    queries = [[3, 1], [1, 3], [5, 6]]
     expectedOutput = [3, 3, 7]
     output = sol.maximizeXor(nums, queries)
     print(f"Output: {output}, Expected: {expectedOutput}")

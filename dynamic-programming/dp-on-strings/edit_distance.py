@@ -38,15 +38,14 @@ Constraints:
 1 ≤ start.length, target.length ≤ 1000
 """
 
-
 """
 Solution:
 --------------
 
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Recursion Approach
     ################################
@@ -63,13 +62,12 @@ class Solution:
             return 1 + min(
                 self.editDistanceRecursionHelper(start, target, i - 1, j),
                 self.editDistanceRecursionHelper(start, target, i, j - 1),
-                self.editDistanceRecursionHelper(start, target, i - 1, j - 1)
+                self.editDistanceRecursionHelper(start, target, i - 1, j - 1),
             )
 
     def editDistanceRecursion(self, start, target):
         n, m = len(start), len(target)
         return self.editDistanceRecursionHelper(start, target, n - 1, m - 1)
-
 
     ################################
     # Recursion with Memoization Approach
@@ -87,16 +85,18 @@ class Solution:
             dp[i][j] = self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j - 1, dp)
         else:
             dp[i][j] = 1 + min(
-                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j, dp), # delete
-                self.editDistanceRecursionMemoizationHelper(start, target, i, j - 1, dp), # insert
-                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j - 1, dp) # replace
+                self.editDistanceRecursionMemoizationHelper(start, target, i - 1, j, dp),  # delete
+                self.editDistanceRecursionMemoizationHelper(start, target, i, j - 1, dp),  # insert
+                self.editDistanceRecursionMemoizationHelper(
+                    start, target, i - 1, j - 1, dp
+                ),  # replace
             )
         return dp[i][j]
 
     def editDistanceRecursionMemoization(self, start, target):
         n, m = len(start), len(target)
         dp = [[-1] * (m) for _ in range(n)]
-        return self.editDistanceRecursionMemoizationHelper(start, target, n-1, m-1, dp)
+        return self.editDistanceRecursionMemoizationHelper(start, target, n - 1, m - 1, dp)
 
     ################################
     # Tabulation Approach
@@ -116,14 +116,8 @@ class Solution:
                 if start[i - 1] == target[j - 1]:
                     dp[i][j] = dp[i - 1][j - 1]
                 else:
-                    dp[i][j] = 1 + min(
-                        dp[i - 1][j],
-                        dp[i][j - 1],
-                        dp[i - 1][j - 1]
-                    )
+                    dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
         return dp[n][m]
-
-
 
     ################################
     # Tabulation Space Optimized Approach
@@ -144,52 +138,41 @@ class Solution:
                 if start[i - 1] == target[j - 1]:
                     curr[j] = prev[j - 1]
                 else:
-                    curr[j] = 1 + min(
-                        prev[j],
-                        curr[j - 1],
-                        prev[j - 1]
-                    )
+                    curr[j] = 1 + min(prev[j], curr[j - 1], prev[j - 1])
             prev = curr[:]
         return curr[m]
-
-
-
 
 
 if __name__ == "__main__":
     editDistance = Solution()
 
     test_cases = [
-        {
-            "start": "planet",
-            "target": "plan",
-            "output": 2
-        },
-        {
-            "start": "abcdefg",
-            "target": "azced",
-            "output": 4
-        },
-        {
-            "start": "saturday",
-            "target": "sunday",
-            "output": 1
-        },
+        {"start": "planet", "target": "plan", "output": 2},
+        {"start": "abcdefg", "target": "azced", "output": 4},
+        {"start": "saturday", "target": "sunday", "output": 1},
     ]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
-        outputRecursive = editDistance.editDistanceRecursion(test_case["start"], test_case["target"])
+        print(f"Test case {i + 1}")
+        outputRecursive = editDistance.editDistanceRecursion(
+            test_case["start"], test_case["target"]
+        )
         print(f"Output (Recursion): {outputRecursive}")
 
-        outputRecursiveMemoization = editDistance.editDistanceRecursionMemoization(test_case["start"], test_case["target"])
+        outputRecursiveMemoization = editDistance.editDistanceRecursionMemoization(
+            test_case["start"], test_case["target"]
+        )
         print(f"Output (Recursion with Memoization): {outputRecursiveMemoization}")
 
-        outputTabulation = editDistance.editDistanceTabulation(test_case["start"], test_case["target"])
+        outputTabulation = editDistance.editDistanceTabulation(
+            test_case["start"], test_case["target"]
+        )
         print(f"Output (Tabulation): {outputTabulation}")
 
-        outputTabulationSpaceOptimized = editDistance.editDistanceTabulationSpaceOptimized(test_case["start"], test_case["target"])
+        outputTabulationSpaceOptimized = editDistance.editDistanceTabulationSpaceOptimized(
+            test_case["start"], test_case["target"]
+        )
         print(f"Output (Tabulation Space Optimized): {outputTabulationSpaceOptimized}")
 
         # assert outputTabulation == test_case["output"]

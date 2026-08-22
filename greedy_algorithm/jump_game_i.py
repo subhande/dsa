@@ -22,17 +22,16 @@ class Solution:
         return True
 
 
-
-
-
 from typing import List
+
+
 class Solution2:
     def canJump(self, nums: List[int]):
         n = len(nums)
         dp = [False] * n
         dp[0] = True
         for i in range(1, n):
-            for k in range(i-1, -1, -1):
+            for k in range(i - 1, -1, -1):
                 if not dp[i]:
-                    dp[i] = nums[k] >= i-k and dp[k]
+                    dp[i] = nums[k] >= i - k and dp[k]
         return dp[-1]

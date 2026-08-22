@@ -1,6 +1,7 @@
 # Longest Increasing Subsequence
 from typing import List
 
+
 class Solution:
     def LISRecursiveMemo(self, nums: List[int], prev: int, curr: int, memo: List) -> int:
         if curr == len(nums):
@@ -13,10 +14,10 @@ class Solution:
             taken = 1 + self.LISRecursiveMemo(nums, curr, curr + 1, memo)
         memo[curr][prev + 1] = max(taken, not_taken)
         return memo[curr][prev + 1]
-    def LIS(self, nums: List[int]) -> int:
-        memo = [[-1 for _ in range(len(nums)+1)] for _ in range(len(nums))]
-        return self.LISRecursiveMemo(nums, -1, 0, memo)
 
+    def LIS(self, nums: List[int]) -> int:
+        memo = [[-1 for _ in range(len(nums) + 1)] for _ in range(len(nums))]
+        return self.LISRecursiveMemo(nums, -1, 0, memo)
 
 
 class Solution2:
@@ -31,7 +32,7 @@ class Solution2:
         return max(dp)
 
 
-if __name__ == '__main__':
-    nums = [1,3,5,4,7]
-    print(Solution().LIS(nums)) # Output 4
-    print(Solution2().LISTabularSpaceOptimized(nums)) # Output 4
+if __name__ == "__main__":
+    nums = [1, 3, 5, 4, 7]
+    print(Solution().LIS(nums))  # Output 4
+    print(Solution2().LISTabularSpaceOptimized(nums))  # Output 4

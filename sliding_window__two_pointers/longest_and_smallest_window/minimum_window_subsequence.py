@@ -24,11 +24,7 @@ class Solution:
                     minWindowEndIdx = i + 1
                 i += 1
 
-        return (
-            s1[minWindowStartIdx:minWindowEndIdx]
-            if minWindowStartIdx is not None
-            else ""
-        )
+        return s1[minWindowStartIdx:minWindowEndIdx] if minWindowStartIdx is not None else ""
 
 
 class Solution2:

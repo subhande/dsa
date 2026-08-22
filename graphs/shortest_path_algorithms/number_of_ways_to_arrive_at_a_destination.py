@@ -5,10 +5,11 @@ import heapq
 
 from typing import List
 
+
 class Solution:
     def countPaths(self, n: int, roads: List[List[int]]) -> int:
         adjList = [[] for _ in range(n)]
-        MOD = 10 ** 9 + 7
+        MOD = 10**9 + 7
         INF = float("inf")
 
         for road in roads:
@@ -18,23 +19,19 @@ class Solution:
         dist = [INF] * n
         minWays = [0] * n
 
-
         dist[0] = 0
         minWays[0] = 1
 
         minHeap = [(0, 0)]
 
         while minHeap:
-
             timeElapsed, node = heapq.heappop(minHeap)
 
             if timeElapsed > dist[node]:
                 continue
 
             for neighbor, duration in adjList[node]:
-
                 if timeElapsed + duration < dist[neighbor]:
-
                     dist[neighbor] = timeElapsed + duration
 
                     minWays[neighbor] = minWays[node]
@@ -42,7 +39,6 @@ class Solution:
                     heapq.heappush(minHeap, (dist[neighbor], neighbor))
 
                 elif dist[node] + duration == dist[neighbor]:
-
                     minWays[neighbor] = (minWays[neighbor] + minWays[node]) % MOD
 
         return minWays[-1]

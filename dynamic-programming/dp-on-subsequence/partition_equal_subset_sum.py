@@ -1,8 +1,10 @@
 # Partition Equal Subset Sum
 
+
 class Solution:
-    """ Function to check if it's possible to partition
+    """Function to check if it's possible to partition
     the array into two subsets with equal sum"""
+
     def func(self, n, arr):
         tot_sum = 0
 
@@ -57,17 +59,18 @@ class Solution:
 
     """ Function to check if the array can
     be partitioned into two equal subsets"""
+
     def equalPartition(self, n, arr):
         # Return the result
         return self.func(n, arr)
 
 
-
 class Solution2:
-    """ Function to check if it's possible to partition
+    """Function to check if it's possible to partition
     the array into two subsets with equal sum"""
+
     def func(self, ind, target, arr, dp):
-        """ Base case: If the target sum
+        """Base case: If the target sum
         is 0,we found a valid partition"""
         if target == 0:
             return True
@@ -97,6 +100,7 @@ class Solution2:
 
     """ Function to check if the array can be
     partitioned into two equal subsets"""
+
     def equalPartition(self, n, arr):
         tot_sum = 0
 

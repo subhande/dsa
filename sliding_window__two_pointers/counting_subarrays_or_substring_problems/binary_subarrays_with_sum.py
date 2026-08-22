@@ -33,9 +33,9 @@ class Solution:
         # The number of subarrays with sum exactly 'goal' is the difference between:
         # - subarrays with sum at most 'goal'
         # - subarrays with sum at most 'goal - 1'
-        return self.numSubarraysWithSumHelper(
-            nums, goal
-        ) - self.numSubarraysWithSumHelper(nums, goal - 1)
+        return self.numSubarraysWithSumHelper(nums, goal) - self.numSubarraysWithSumHelper(
+            nums, goal - 1
+        )
 
 
 # Prefix Sum

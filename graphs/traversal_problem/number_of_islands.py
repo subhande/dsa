@@ -2,6 +2,7 @@
 
 from collections import deque
 
+
 class Solution:
     def isValid(self, r, c, rows, cols):
         # Check if the coordinates are within bounds
@@ -19,7 +20,11 @@ class Solution:
             for dr in range(-1, 2):
                 for dc in range(-1, 2):
                     nr, nc = row + dr, col + dc
-                    if self.isValid(nr, nc, rows, cols) and not visited[nr][nc] and grid[nr][nc] == '1':
+                    if (
+                        self.isValid(nr, nc, rows, cols)
+                        and not visited[nr][nc]
+                        and grid[nr][nc] == "1"
+                    ):
                         visited[nr][nc] = True
                         queue.append((nr, nc))
 
@@ -34,7 +39,7 @@ class Solution:
 
         for r in range(rows):
             for c in range(cols):
-                if not visited[r][c] and grid[r][c] == '1':
+                if not visited[r][c] and grid[r][c] == "1":
                     no_of_islands += 1
                     self.bfs(r, c, rows, cols, visited, grid)
         return no_of_islands
@@ -49,7 +54,7 @@ class Solution2:
         queue = deque()
         queue.append((r, c))
         # Mark the current cell as visited
-        grid[r][c] = '0'
+        grid[r][c] = "0"
 
         while queue:
             row, col = queue.popleft()
@@ -57,8 +62,8 @@ class Solution2:
             for dr in range(-1, 2):
                 for dc in range(-1, 2):
                     nr, nc = row + dr, col + dc
-                    if self.isValid(nr, nc, rows, cols) and grid[nr][nc] == '1':
-                        grid[nr][nc] = '0'
+                    if self.isValid(nr, nc, rows, cols) and grid[nr][nc] == "1":
+                        grid[nr][nc] = "0"
                         queue.append((nr, nc))
 
     # Time Complexity: O(n*m) | Space Complexity: O(1)
@@ -72,24 +77,34 @@ class Solution2:
         for i in range(rows):
             for j in range(cols):
                 # If the cell is part of an island
-                if grid[i][j] == '1':
+                if grid[i][j] == "1":
                     num_islands += 1
                     self.bfs(i, j, rows, cols, grid)
         return num_islands
+
 
 if __name__ == "__main__":
     sol = Solution()
     sol2 = Solution2()
 
     # Example 1
-    grid = [ ["1", "1", "1", "0", "1"], ["1", "0", "0", "0", "0"], ["1", "1", "1", "0", "1"], ["0", "0", "0", "1", "1"] ]
+    grid = [
+        ["1", "1", "1", "0", "1"],
+        ["1", "0", "0", "0", "0"],
+        ["1", "1", "1", "0", "1"],
+        ["0", "0", "0", "1", "1"],
+    ]
 
-    print(sol.numIslands(grid)) # Output: 2
-    print(sol2.numIslands(grid)) # Output: 2
-
+    print(sol.numIslands(grid))  # Output: 2
+    print(sol2.numIslands(grid))  # Output: 2
 
     # Example 2
-    grid =  [ ["1", "0", "0", "0", "1"], ["0", "1", "0", "1", "0"], ["0", "0", "1", "0", "0"], ["0", "1", "0", "1"," 0"] ]
+    grid = [
+        ["1", "0", "0", "0", "1"],
+        ["0", "1", "0", "1", "0"],
+        ["0", "0", "1", "0", "0"],
+        ["0", "1", "0", "1", " 0"],
+    ]
 
-    print(sol.numIslands(grid)) # Output: 1
-    print(sol2.numIslands(grid)) # Output: 1
+    print(sol.numIslands(grid))  # Output: 1
+    print(sol2.numIslands(grid))  # Output: 1

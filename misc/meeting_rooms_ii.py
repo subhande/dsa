@@ -3,6 +3,7 @@
 
 from typing import List
 
+
 # Time complexity: O(n^2) | Space complexity: O(n)
 class Solution1:
     def checkOverlapping(self, meeting_1: List[int], meeting_2: List[int]) -> bool:
@@ -29,6 +30,7 @@ class Solution1:
 
 from heapq import heappush, heappop
 from typing import List
+
 
 class Solution2:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:

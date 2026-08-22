@@ -15,6 +15,7 @@ class Solution:
                     return True
 
         return False
+
     def aggressiveCows(self, nums, k):
         nums.sort()
 
@@ -26,6 +27,7 @@ class Solution:
                 return i
 
         return -1
+
 
 # Binary Search
 # Time complexity: O(n * log(max - min)) | Space complexity: O(1)
@@ -42,6 +44,7 @@ class Solution2:
                     return True
 
         return False
+
     def aggressiveCows(self, nums, k):
         nums.sort()
 
@@ -57,6 +60,5 @@ class Solution2:
                 low = mid + 1
             else:
                 high = mid - 1
-
 
         return maxDist

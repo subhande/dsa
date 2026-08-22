@@ -1,4 +1,3 @@
-
 class LinkedListNode:
     def __init__(self, x):
         self.val = x
@@ -29,19 +28,16 @@ class LinkedListStack:
         self.size -= 1
         return temp.val
 
-
     def top(self):
         if self.isEmpty():
             return -1
         return self.head.val
 
-
     def isEmpty(self):
         return self.size == 0
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     stack = LinkedListStack()
     stack.push(1)
     stack.push(2)

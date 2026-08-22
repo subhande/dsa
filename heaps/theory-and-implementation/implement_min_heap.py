@@ -48,7 +48,6 @@ Constraints:
 
 
 class Solution:
-
     def __init__(self):
         self.heap = []
         self.size = 0
@@ -80,14 +79,11 @@ class Solution:
         self.heap.clear()
         self.size = 0
 
-
     def insert(self, key):
         self.heap.append(key)
         self.size += 1
         self.heapifyUp(self.size - 1)
         return
-
-
 
     def changeKey(self, index, new_val):
         # Update the value at index `ind`
@@ -101,7 +97,6 @@ class Solution:
         else:
             self.heap[index] = new_val
             self.heapifyDown(index)
-
 
     def extractMin(self):
         if self.size == 0:
@@ -122,7 +117,6 @@ class Solution:
             self.heapifyDown(0)
 
         return ele
-
 
     def isEmpty(self):
         # Check if the heap is empty
@@ -146,9 +140,12 @@ def main():
     heap.initializeHeap()
 
     # Performing different operations
-    heap.insert(4); print("Inserting 4 in the min-heap")
-    heap.insert(5); print("Inserting 5 in the min-heap")
-    heap.insert(10); print("Inserting 10 in the min-heap")
+    heap.insert(4)
+    print("Inserting 4 in the min-heap")
+    heap.insert(5)
+    print("Inserting 5 in the min-heap")
+    heap.insert(10)
+    print("Inserting 10 in the min-heap")
     print("Minimum value in the min-heap is:", heap.getMin())
     print("Size of min-heap is:", heap.heapSize())
     print("Is heap empty:", heap.isEmpty())

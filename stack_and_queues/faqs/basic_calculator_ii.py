@@ -15,19 +15,19 @@ class Solution:
                 continue
             if ch.isdigit():
                 num = num * 10 + int(ch)
-            if ch in ops or index == n-1:
+            if ch in ops or index == n - 1:
                 if operation == "+":
                     stack.append(num)
                 elif operation == "-":
                     stack.append(-num)
-                elif operation == '*':
+                elif operation == "*":
                     prev = stack.pop()
                     stack.append(prev * num)
-                elif operation == '/':
+                elif operation == "/":
                     prev = stack.pop()
                     # Python division truncates towards negative infinity so we adjust to truncate toward zero.
                     if prev < 0:
-                        stack.append(- (abs(prev) // num))
+                        stack.append(-(abs(prev) // num))
                     else:
                         stack.append(prev // num)
                 operation = ch

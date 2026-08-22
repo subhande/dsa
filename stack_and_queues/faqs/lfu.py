@@ -1,5 +1,6 @@
 # LFU Cache
 
+
 class Node:
     def __init__(self, key, value):
         self.key = key
@@ -9,6 +10,7 @@ class Node:
 
     def __repr__(self):
         return f"Node({self.key}, {self.value})"
+
 
 class DoublyLinkedList:
     def __init__(self, head=None, tail=None):
@@ -63,6 +65,7 @@ class DoublyLinkedList:
         self.removeNode(tail_node)
         return tail_node
 
+
 # LFU Cache using Doubly Linked Lists for nodes with equal frequency.
 # We maintain:
 #  • key_table: mapping key -> (node, freq)
@@ -72,7 +75,7 @@ class LFUCacheUsingDLL:
     def __init__(self, capacity):
         self.capacity = capacity
         self.min_freq = 0
-        self.key_table = {}   # key -> (node, frequency)
+        self.key_table = {}  # key -> (node, frequency)
         self.freq_table = {}  # freq -> DoublyLinkedList
 
     # O(1) time | O(1) space
@@ -108,7 +111,7 @@ class LFUCacheUsingDLL:
         # If key already exists, update the value and frequency.
         if key_ in self.key_table:
             node, freq = self.key_table[key_]
-            node.value = value   # update the value
+            node.value = value  # update the value
             # Calling get(key_) will update the node's frequency.
             self.get(key_)
             return
@@ -131,7 +134,9 @@ class LFUCacheUsingDLL:
         self.key_table[key_] = (new_node, 1)
         self.min_freq = 1  # reset min_freq
 
+
 from collections import defaultdict, OrderedDict
+
 
 class LFUCacheUsingDict:
     def __init__(self, capacity: int):
@@ -141,7 +146,9 @@ class LFUCacheUsingDict:
         """
         self.capacity = capacity
         self.key_to_node = {}  # key: (value, freq)
-        self.freq_to_keys = defaultdict(OrderedDict)  # freq: OrderedDict of keys preserving recency order.
+        self.freq_to_keys = defaultdict(
+            OrderedDict
+        )  # freq: OrderedDict of keys preserving recency order.
         self.min_freq = 0
 
     def _update_freq(self, key: int):
@@ -209,7 +216,8 @@ class LFUCacheUsingDict:
         self.freq_to_keys[1][key] = None
         self.min_freq = 1  # Reset min_freq to 1 for the new key
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     LFU = LFUCacheUsingDLL(2)
     LFU.put(1, 1)
     LFU.put(2, 2)

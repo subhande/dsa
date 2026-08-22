@@ -12,9 +12,7 @@ class Solution2:
         # this will let us know if there are no more instances of s[i] left in s
         last_occurrence = {c: i for i, c in enumerate(s)}
 
-
         for i, c in enumerate(s):
-
             # we can only try to add c if it's not already in our solution
             # this is to maintain only one of each character
             if c not in seen:
@@ -27,4 +25,4 @@ class Solution2:
                     seen.discard(stack.pop())
                 seen.add(c)
                 stack.append(c)
-        return ''.join(stack)
+        return "".join(stack)

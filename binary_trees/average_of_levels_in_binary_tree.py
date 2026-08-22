@@ -11,9 +11,7 @@ class TreeNode:
 
 
 class Solution:
-    def averageOfLevelsRecursiveHelper(
-        self, node: Optional[TreeNode], level: int, levels: dict
-    ):
+    def averageOfLevelsRecursiveHelper(self, node: Optional[TreeNode], level: int, levels: dict):
         if node is None:
             return
 

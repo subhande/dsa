@@ -18,9 +18,7 @@ class Solution1:
             # Increment the frequency of the current character
             characterFreqMap[s[right]] += 1
             # Update the max frequency in the current window
-            maxFreq = max(
-                characterFreqMap.values()
-            )  # Get the count of the most frequent character
+            maxFreq = max(characterFreqMap.values())  # Get the count of the most frequent character
 
             # If the number of characters to change exceeds k, shrink the window from the left
             # We can also use while here
@@ -43,9 +41,7 @@ class Solution2:
         characterFreqMap = defaultdict(int)
         n = len(s)
         maxLen = 0  # Stores the length of the longest valid window found
-        maxFreq = (
-            0  # Stores the count of the most frequent character in the current window
-        )
+        maxFreq = 0  # Stores the count of the most frequent character in the current window
 
         # Expand the window by moving the right pointer
         while right < n:

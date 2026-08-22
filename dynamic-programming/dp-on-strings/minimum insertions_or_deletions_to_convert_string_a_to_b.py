@@ -22,7 +22,6 @@ Constraints:
 
 """
 
-
 """
 Solution:
 --------------
@@ -32,15 +31,14 @@ Approach:
 -> Return (n-k) + (m-k) as answer.
 """
 
-class Solution:
 
+class Solution:
     ################################
     # Tabulation Approach
     ################################
 
     def minOperationsTabulation(self, str):
         pass
-
 
     ################################
     # Tabulation Space Optimized Approach
@@ -50,30 +48,22 @@ class Solution:
         pass
 
 
-
-
 if __name__ == "__main__":
     minOperations = Solution()
 
     test_cases = [
-        {
-            "str1": "kitten",
-            "str2": "sitting",
-            "output": 5
-        },
-        {
-            "str1": "flaw",
-            "str2": "lawn",
-            "output": 2
-        },
+        {"str1": "kitten", "str2": "sitting", "output": 5},
+        {"str1": "flaw", "str2": "lawn", "output": 2},
     ]
 
     for i, test_case in enumerate(test_cases):
         print("==================================")
-        print(f"Test case {i+1}")
+        print(f"Test case {i + 1}")
         outputTabulation = minOperations.minOperationsTabulation(test_case["str"])
         print(f"Output (Tabulation): {outputTabulation}")
-        outputTabulationSpaceOptimized = minOperations.minOperationsTabulationSpaceOptimized(test_case["str"])
+        outputTabulationSpaceOptimized = minOperations.minOperationsTabulationSpaceOptimized(
+            test_case["str"]
+        )
         print(f"Output (Tabulation Space Optimized): {outputTabulationSpaceOptimized}")
 
         # assert outputTabulation == test_case["output"]

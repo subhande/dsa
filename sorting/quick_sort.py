@@ -7,8 +7,8 @@ Pick a pivot, put smaller elements left and larger right, then repeat recursivel
 
 • The algorithm works by selecting a “pivot” element from the array.
 • The array is then partitioned into two sub-arrays:
-  – Elements less than the pivot
-  – Elements greater than the pivot
+– Elements less than the pivot
+– Elements greater than the pivot
 • The pivot is now in its correct sorted position.
 • The algorithm recursively applies the same logic to the sub-arrays until the entire array is sorted.
 
@@ -47,6 +47,8 @@ B. In-Place Quick Sort
 (This version modifies the array without using extra lists; it is more space-efficient.)
 
 ------------------------------------------------"""
+
+
 def partition(arr, low, high):
     # Use the last element as pivot
     pivot = arr[high]
@@ -59,6 +61,7 @@ def partition(arr, low, high):
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
     return i + 1
 
+
 def quick_sort_helper(arr, low, high):
     if low < high:
         # Partition the array and get pivot index
@@ -67,8 +70,10 @@ def quick_sort_helper(arr, low, high):
         quick_sort_helper(arr, low, pi - 1)
         quick_sort_helper(arr, pi + 1, high)
 
+
 def quick_sort(arr):
     quick_sort_helper(arr, 0, len(arr) - 1)
+
 
 # Example:
 lst = [33, 10, 59, 25, 72, 18, 10]

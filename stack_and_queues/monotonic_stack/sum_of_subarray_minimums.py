@@ -14,9 +14,7 @@ class Solution:
             # Find the minimum element in each subarray of size 'size'.
             for i in range(n - size + 1):
                 # Add the minimum element to the sum.
-                subArraySumOfMinElements = (
-                    subArraySumOfMinElements + min(arr[i : i + size])
-                ) % mod
+                subArraySumOfMinElements = (subArraySumOfMinElements + min(arr[i : i + size])) % mod
         return subArraySumOfMinElements
 
     def previousSmallerElement(self, arr):

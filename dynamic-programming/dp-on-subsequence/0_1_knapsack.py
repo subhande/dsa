@@ -1,9 +1,10 @@
 # 0-1 KnapSack
 
+
 class Solution:
     # Function to solve the 0/1 Knapsack problem
     def knapsack01(self, wt, val, n, W):
-        """ Initialize a vector 'prev' to represent
+        """Initialize a vector 'prev' to represent
         the previous row of the DP table"""
         prev = [0] * (W + 1)
 
@@ -18,7 +19,7 @@ class Solution:
                 """ Calculate the maximum value by either
                 excluding the current item or including it"""
                 notTaken = prev[cap]
-                taken = float('-inf')
+                taken = float("-inf")
 
                 """ Check if the current item can be included
                 without exceeding the knapsack's capacity"""
@@ -36,7 +37,7 @@ class Solution:
 class Solution2:
     # Function to solve the 0/1 Knapsack problem with arrays
     def func(self, wt, val, ind, W, dp):
-        """ Base case: If there are no items left
+        """Base case: If there are no items left
         or the knapsack has no capacity, return 0"""
         if ind < 0 or W == 0:
             return 0

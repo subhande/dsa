@@ -1,8 +1,10 @@
 # Partition a set into two subsets with minimum absolute sum difference
 
+
 class Solution:
-    """ Function to find the minimum absolute
+    """Function to find the minimum absolute
     difference between two subset sums"""
+
     def minDifference(self, arr, n):
         totSum = sum(arr)
 
@@ -38,7 +40,7 @@ class Solution:
             # Set 'cur' as the 'prev' for the next iteration
             prev = cur
 
-        mini = float('inf')
+        mini = float("inf")
         for i in range(totSum + 1):
             if prev[i]:
                 """ Calculate the absolute
@@ -60,7 +62,7 @@ class Solution2:
         """ Base case: If we have considered all elements
         and the target is still not 0, return false"""
         if ind == 0:
-            dp[ind][target] = (arr[0] == target)
+            dp[ind][target] = arr[0] == target
             return dp[ind][target]
 
         """ If the result for this state is
@@ -83,6 +85,7 @@ class Solution2:
 
     """ Function to find the minimum absolute
     difference between two subset sums"""
+
     def minDifference(self, arr, n):
         tot_sum = 0
 
@@ -99,8 +102,7 @@ class Solution2:
         for i in range(tot_sum + 1):
             self.func(n - 1, i, arr, dp)
 
-
-        mini = float('inf')
+        mini = float("inf")
         for i in range(tot_sum + 1):
             if dp[n - 1][i] == True:
                 diff = abs(i - (tot_sum - i))

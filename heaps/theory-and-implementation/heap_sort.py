@@ -1,4 +1,3 @@
-
 """
 # Heap Sort
 
@@ -38,6 +37,7 @@ Approach:
     - Repeat the above steps until the heap is sorted.
 ---------------------------------------
 """
+
 
 class Solution:
     def heapifyDown(self, index, nums, size):
@@ -80,6 +80,7 @@ class Solution:
             # Maintain the max-heap property of the heap
             self.heapifyDown(0, nums, size)
         return
+
 
 # Driver code
 if __name__ == "__main__":

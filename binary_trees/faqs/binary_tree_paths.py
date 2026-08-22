@@ -7,9 +7,7 @@ class TreeNode:
 
 
 class Solution:
-    def binaryTreePathsHelper(
-        self, node: TreeNode | None, currPath: str, paths: list[str]
-    ) -> None:
+    def binaryTreePathsHelper(self, node: TreeNode | None, currPath: str, paths: list[str]) -> None:
         if node is None:
             return
         currPath += str(node.val) if not currPath else f"->{node.val}"

@@ -15,9 +15,7 @@ class Solution:
         if p is None or q is None:
             return False
         return (
-            p.val == q.val
-            and self.isSameTree(p.left, q.left)
-            and self.isSameTree(p.right, q.right)
+            p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         )
 
     def isSubtree(self, root: TreeNode | None, subRoot: TreeNode | None) -> bool:

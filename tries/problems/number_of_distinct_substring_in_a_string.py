@@ -7,13 +7,13 @@ class TrieNode:
         self.flag = False
 
     def containsKey(self, ch):
-        return self.links[ord(ch) - ord('a')] is not None
+        return self.links[ord(ch) - ord("a")] is not None
 
     def get(self, ch):
-        return self.links[ord(ch) - ord('a')]
+        return self.links[ord(ch) - ord("a")]
 
     def put(self, ch, node):
-        self.links[ord(ch) - ord('a')] = node
+        self.links[ord(ch) - ord("a")] = node
 
     def setEnd(self):
         self.flag = True
@@ -21,8 +21,8 @@ class TrieNode:
     def isEnd(self):
         return self.flag
 
-class Solution:
 
+class Solution:
     def countDistinctSubstringBruteForce(self, s):
         substrings = set()
 
@@ -49,6 +49,7 @@ class Solution:
                     distinct_count += 1
                 current_node = current_node.get(ch)
         return distinct_count + 1
+
 
 # Example usage:
 sol = Solution()

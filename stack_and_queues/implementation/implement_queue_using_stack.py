@@ -1,5 +1,6 @@
 # Implement a queue using stacks
 
+
 class StackQueue:
     def __init__(self):
         self.stack1 = []
@@ -19,24 +20,21 @@ class StackQueue:
         while self.stack2:
             self.stack1.append(self.stack2.pop())
 
-
     def pop(self):
         if self.isEmpty():
             return -1
         return self.stack1.pop()
-
 
     def peek(self):
         if self.isEmpty():
             return -1
         return self.stack1[-1]
 
-
     def isEmpty(self):
         return len(self.stack1) == 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     queue = StackQueue()
     queue.push(1)
     queue.push(2)

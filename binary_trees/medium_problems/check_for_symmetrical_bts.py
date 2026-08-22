@@ -7,6 +7,7 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
+
 class Solution:
     def symmetry(self, left, right):
         if left is None and right is None:
@@ -16,12 +17,12 @@ class Solution:
         if left.data != right.data:
             return False
         return self.symmetry(left.left, right.right) and self.symmetry(left.right, right.left)
+
     # Time Complexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     def is_symmetric(self, root):
         if root is None:
             return True
         return self.symmetry(root.left, root.right)
-
 
 
 class Solution2:
@@ -31,7 +32,7 @@ class Solution2:
             return True
         stackLeft, stackRight = [root.left], [root.right]
 
-        while len(stackLeft)  > 0:
+        while len(stackLeft) > 0:
             left = stackLeft.pop()
             right = stackRight.pop()
 
@@ -49,7 +50,6 @@ class Solution2:
 
 
 if __name__ == "__main__":
-
     root = TreeNode(1)
     root.left = TreeNode(2)
     root.right = TreeNode(2)

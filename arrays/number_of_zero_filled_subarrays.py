@@ -38,9 +38,7 @@ class Solution:
                     ) // 2
                     currZeroSubArrLength = 0
         if currZeroSubArrLength > 0:
-            totalNumberOfZeroSubarrays += (
-                currZeroSubArrLength * (currZeroSubArrLength + 1)
-            ) // 2
+            totalNumberOfZeroSubarrays += (currZeroSubArrLength * (currZeroSubArrLength + 1)) // 2
         return totalNumberOfZeroSubarrays
 
     # Time Complexity: O(n) | Space Complexity: O(1)

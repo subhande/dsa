@@ -28,7 +28,6 @@ Constraints:
 
 
 class Solution:
-
     ################################
     # Recursive Approach
     ################################
@@ -48,7 +47,9 @@ class Solution:
         # Include the current coin (if it's not larger than the remaining amount)
         include_current = 0
         if coins[index] <= remainingAmount:
-            include_current = self.countRecursiveHelper(coins, index, remainingAmount - coins[index])
+            include_current = self.countRecursiveHelper(
+                coins, index, remainingAmount - coins[index]
+            )
 
         return include_current + exclude_current
 
@@ -78,7 +79,9 @@ class Solution:
         # Include the current coin (if it's not larger than the remaining amount)
         include_current = 0
         if coins[index] <= remainingAmount:
-            include_current = self.countMemoizationHelper(coins, index, remainingAmount - coins[index], memo)
+            include_current = self.countMemoizationHelper(
+                coins, index, remainingAmount - coins[index], memo
+            )
 
         memo[index][remainingAmount] = include_current + exclude_current
 
@@ -150,7 +153,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-
     # Create an instance of Solution class
     sol = Solution()
 
@@ -166,9 +168,20 @@ if __name__ == "__main__":
         numCoins = len(coins)
         print("=" * 50)
         print(f"For coins = {coins} and amount = {amount}")
-        print("The total number of ways (Recursive) is:", sol.countRecursive(coins, numCoins, amount))
-        print("The total number of ways (Memoization) is:", sol.countMemoization(coins, numCoins, amount))
-        print("The total number of ways (Tabulation) is:", sol.countTabulation(coins, numCoins, amount))
-        print("The total number of ways (Space Optimized) is:", sol.countTabulationSpaceOptimized(coins, numCoins, amount))
+        print(
+            "The total number of ways (Recursive) is:", sol.countRecursive(coins, numCoins, amount)
+        )
+        print(
+            "The total number of ways (Memoization) is:",
+            sol.countMemoization(coins, numCoins, amount),
+        )
+        print(
+            "The total number of ways (Tabulation) is:",
+            sol.countTabulation(coins, numCoins, amount),
+        )
+        print(
+            "The total number of ways (Space Optimized) is:",
+            sol.countTabulationSpaceOptimized(coins, numCoins, amount),
+        )
         print("Expected output is:", test_case["output"])
         print()

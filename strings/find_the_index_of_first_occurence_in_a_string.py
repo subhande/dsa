@@ -40,9 +40,7 @@ class Solution1:
         # Computing the initial hash values
         for i in range(m):
             hashPat = (hashPat + ((ord(needle[i]) - ord("a") + 1) * pRight) % mod) % mod
-            hashText = (
-                hashText + ((ord(haystack[i]) - ord("a") + 1) * pRight) % mod
-            ) % mod
+            hashText = (hashText + ((ord(haystack[i]) - ord("a") + 1) * pRight) % mod) % mod
 
             pRight = (pRight * p) % mod
 

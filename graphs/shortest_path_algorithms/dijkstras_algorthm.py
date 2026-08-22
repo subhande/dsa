@@ -2,10 +2,11 @@
 
 import heapq
 
+
 class Solution:
     # Time complexity: O(V+E)*log(V) | Space complexity: O(V)
     def dijkstraUsingHeap(self, V, adj, S):
-        INF = float('inf')
+        INF = float("inf")
         # Initialize distance array with infinity.
         dist = [INF] * V
         dist[S] = 0
@@ -24,7 +25,7 @@ class Solution:
 
     # Time complexity: O(V^2+E) | Space complexity: O(V)
     def dijkstraUsingSet(self, V, adj, S):
-        INF = float('inf')
+        INF = float("inf")
         # Initialize distance array with infinity.
         dist = [INF] * V
         dist[S] = 0
@@ -42,21 +43,19 @@ class Solution:
         return dist
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     sol = Solution()
-
 
     # Test 1
     V = 2
     adj = [[[1, 9]], [[0, 9]]]
-    S=0
+    S = 0
     print(sol.dijkstraUsingHeap(V, adj, S))  # Expected output: [0, 9]
     print(sol.dijkstraUsingSet(V, adj, S))  # Expected output: [0, 9]
 
     # Test 2
     V = 3
     adj = [[[1, 1], [2, 6]], [[2, 3], [0, 1]], [[1, 3], [0, 6]]]
-    S=2
+    S = 2
     print(sol.dijkstraUsingHeap(V, adj, S))  # Expected output: [4, 3, 0]
     print(sol.dijkstraUsingSet(V, adj, S))  # Expected output: [4, 3, 0]

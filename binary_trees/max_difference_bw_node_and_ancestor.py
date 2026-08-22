@@ -55,9 +55,7 @@ class Solution2:
             if not node:
                 return
             # update `result`
-            self.result = max(
-                self.result, abs(cur_max - node.val), abs(cur_min - node.val)
-            )
+            self.result = max(self.result, abs(cur_max - node.val), abs(cur_min - node.val))
             # update the max and min
             cur_max = max(cur_max, node.val)
             cur_min = min(cur_min, node.val)

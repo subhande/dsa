@@ -1,6 +1,7 @@
 # Unique Paths II
 # https://takeuforward.org/plus/dsa/dynamic-programming/dp-on-grids/unique-paths-ii
 
+
 class Solution:
     def uniquePathsWithObstacles(self, matrix):
         m = len(matrix)
@@ -15,8 +16,9 @@ class Solution:
                 if j == 0:
                     dp[j] = dp[j] if matrix[i][j] != 1 else 0
                 else:
-                    dp[j] = dp[j-1] + dp[j] if matrix[i][j] != 1 else 0
+                    dp[j] = dp[j - 1] + dp[j] if matrix[i][j] != 1 else 0
         return dp[-1]
+
 
 class Solution2:
     # Function to solve the problem using memoization
@@ -42,6 +44,7 @@ class Solution2:
 
     """ Function to find all unique paths to reach
     matrix[m-1][n-1] from matrix[0][0] with obstacles"""
+
     def uniquePathsWithObstacles(self, matrix):
         m = len(matrix)
         n = len(matrix[0])

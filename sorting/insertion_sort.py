@@ -28,6 +28,7 @@ def insertion_sort(arr):
 
     return arr
 
+
 # Example usage:
 if __name__ == "__main__":
     sample_list = [12, 11, 13, 5, 6]

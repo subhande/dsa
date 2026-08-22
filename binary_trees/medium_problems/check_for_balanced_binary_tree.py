@@ -8,6 +8,7 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
+
 class Solution1:
     def isBalancedHelper(self, root):
         if root is None:
@@ -18,6 +19,7 @@ class Solution1:
         diff = abs(leftSubTreeHeight - rightSubTreeHeight)
         balanced = diff <= 1 and leftSubTreeBalanced and rightSubTreeBalanced
         return height, balanced
+
     # Time Complexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     def isBalanced(self, root):
         _, balanced = self.isBalancedHelper(root)
@@ -37,6 +39,7 @@ class Solution2:
         if abs(leftSubTreeHeight - rightSubTreeHeight) > 1:
             return -1
         return 1 + max(leftSubTreeHeight, rightSubTreeHeight)
+
     # Time Complexity: O(n) | Space Complexity: O(h) where h is the height of the tree
     def isBalanced(self, root):
         height = self.dfsHeight(root)
@@ -44,7 +47,6 @@ class Solution2:
 
 
 if __name__ == "__main__":
-
     root = TreeNode(3)
     root.left = TreeNode(9)
     root.right = TreeNode(20)

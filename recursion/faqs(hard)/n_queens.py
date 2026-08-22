@@ -5,6 +5,7 @@
 #     def solveNQueens(self, n: int) -> List[List[str]]:
 #         pass
 
+
 class Solution:
     # Check if it's safe to place a queen at board[row][col]
     def safe(self, board, row, col):
@@ -12,7 +13,7 @@ class Solution:
 
         # Check upper left diagonal
         while r >= 0 and c >= 0:
-            if board[r][c] == 'Q':
+            if board[r][c] == "Q":
                 return False
             r -= 1
             c -= 1
@@ -22,7 +23,7 @@ class Solution:
 
         # Check left side
         while c >= 0:
-            if board[r][c] == 'Q':
+            if board[r][c] == "Q":
                 return False
             c -= 1
 
@@ -31,7 +32,7 @@ class Solution:
 
         # Check lower left diagonal
         while r < len(board) and c >= 0:
-            if board[r][c] == 'Q':
+            if board[r][c] == "Q":
                 return False
             r += 1
             c -= 1
@@ -51,13 +52,13 @@ class Solution:
             # Check if it's safe to place a queen
             if self.safe(board, row, col):
                 # Place the queen
-                board[row] = board[row][:col] + 'Q' + board[row][col+1:]
+                board[row] = board[row][:col] + "Q" + board[row][col + 1 :]
 
                 # Recursively place queens in the next columns
                 self.func(col + 1, ans, board)
 
                 # Remove the queen and backtrack
-                board[row] = board[row][:col] + '.' + board[row][col+1:]
+                board[row] = board[row][:col] + "." + board[row][col + 1 :]
 
     # Solve the N-Queens problem
     def solveNQueens(self, n):
@@ -70,10 +71,11 @@ class Solution:
         self.func(0, ans, board)
         return ans
 
+
 # Main method to test the solution
 if __name__ == "__main__":
     solution = Solution()
-    n = 4 # Example with 4 queens
+    n = 4  # Example with 4 queens
     solutions = solution.solveNQueens(n)
 
     # Print all solutions

@@ -21,7 +21,9 @@ Constraints:
 nums[i] is either 0 or 1.
 
 """
+
 from typing import List
+
 
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
