@@ -104,6 +104,47 @@ class Solution2:
         self.rightBoundary(root.right, boundary)
         return boundary
 
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    def boundaryOfBinaryTree(self, root: Optional[TreeNode]) -> List[int]:
+        # Root + left boundary + leaves + right boundary
+
+        def isLeafNode(node):
+            return node.left is None and node.right is None
+
+        if root and isLeafNode(root):
+            return [root.val]
+
+        leftBoundary = []
+        rightBoundary = []
+        leafNodes = []
+
+        node = root.left
+        while node and not isLeafNode(node):
+           leftBoundary.append(node.val)
+           node = node.left if node.left else node.right
+        
+        node = root.right
+        while node and not isLeafNode(node):
+           rightBoundary.append(node.val)
+           node = node.right if node.right else node.left
+
+        stack = [root]
+        while len(stack) > 0:
+            node = stack.pop()
+            if node and isLeafNode(node):
+                leafNodes.append(node.val)
+            if node.right is not None:
+                stack.append(node.right)
+            if node.left is not None:
+                stack.append(node.left)
+        return [root.val] + leftBoundary + leafNodes + rightBoundary[::-1]
+         
+        
 
 def buildTreeFromArray(arr):
     if not arr:
@@ -131,6 +172,7 @@ def buildTreeFromArray(arr):
             node.right = TreeNode(item)
             q.append(node.right)
     return root
+
 
 
 if __name__ == "__main__":
