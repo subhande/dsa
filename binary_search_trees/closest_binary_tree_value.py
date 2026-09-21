@@ -1,6 +1,6 @@
-
 # Closest Binary Search Tree Value
 # https://leetcode.com/problems/closest-binary-search-tree-value/
+
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):

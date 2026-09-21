@@ -1,15 +1,14 @@
-
 # Dselete a node in a BST
 
 
 class Solution:
     # One step right and then always left
     def successor(self, root: TreeNode) -> int:
-            root = root.right
-            while root.left:
-                root = root.left
-            return root.val
-        
+        root = root.right
+        while root.left:
+            root = root.left
+        return root.val
+
     # One step left and then always right
     def predecessor(self, root: TreeNode) -> int:
         root = root.left

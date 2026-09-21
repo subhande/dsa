@@ -43,8 +43,9 @@ class Solution:
         # and None (or current which is now None) is returned.
         return current
 
+
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(self, root: "TreeNode", p: "TreeNode", q: "TreeNode") -> "TreeNode":
 
         node = root
         if p.val > q.val:
@@ -59,7 +60,7 @@ class Solution:
             else:
                 node = node.right
         return root
-        
+
 
 if __name__ == "__main__":
     sol = Solution()
