@@ -1,4 +1,5 @@
-import os, sys
+import os
+import sys
 
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +20,15 @@ class Solution:
             else:
                 root = root.right
         return None
+
+    def searchBSTRecursive(self, root, val):
+        if root is None or root.data == val:
+            return root
+        return (
+            self.searchBSTRecursive(root.left, val)
+            if val < root.data
+            else self.searchBSTRecursive(root.right, val)
+        )
 
 
 if __name__ == "__main__":

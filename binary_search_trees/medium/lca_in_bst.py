@@ -43,6 +43,23 @@ class Solution:
         # and None (or current which is now None) is returned.
         return current
 
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+
+        node = root
+        if p.val > q.val:
+            p, q = q, p
+        while node:
+            if node.val == p.val or node.val == q.val:
+                return node
+            elif p.val < node.val and q.val > node.val:
+                return node
+            elif p.val < node.val and q.val < node.val:
+                node = node.left
+            else:
+                node = node.right
+        return root
+        
 
 if __name__ == "__main__":
     sol = Solution()

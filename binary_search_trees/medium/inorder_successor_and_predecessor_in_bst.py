@@ -1,4 +1,5 @@
-import os, sys
+import os
+import sys
 
 # Determine the project root relative to this file
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -15,6 +16,7 @@ class Solution1:
             inorder.append(root.data)
             self.inorderTraversal(root.right, inorder)
 
+    # Approach 1: Using Inorder Traversal to find the successor and predecessor of a given node in a BST
     # Time Complexity: O(n) | Space Complexity: O(n)
     def succPredBSTUsingInOder(self, root, key):
         # Find the inorder traversal of the BST
@@ -27,6 +29,36 @@ class Solution1:
         succ = inorder[index + 1] if index < len(inorder) - 1 else -1
         return [pred, succ]
 
+    # Approach 2: Iterative Inorder Traversal to find the successor of a given node in a BST
+    # Time Complexity: O(h) | Space Complexity: O(h)
+    def inorderSuccessor(self, root: TreeNode, p: TreeNode) -> Optional[TreeNode]:
+        stack = []
+        result = []
+
+        node = root
+
+        nodeFound = False
+        nextNode = None
+
+        while True:
+            if node is not None:
+                stack.append(node)
+                node = node.left
+            elif len(stack) > 0:
+                node = stack.pop()
+                if node is not None:
+                    if nodeFound:
+                        nextNode = node
+                        break
+                    elif node.val == p.val:
+                        nodeFound = True
+                    result.append(node.val)
+                    node = node.right
+            else:
+                break
+        return nextNode
+
+    # Approach 3: Optimized approach to find the successor and predecessor of a given node in a BST
     # Time Complexity: O(h) | Space Complexity: O(1)
     def succPredBSTOptimized(self, root, key):
         # Initialize successor and predecessor as None.
