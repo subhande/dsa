@@ -1,6 +1,7 @@
 # Min Distance Between BST Nodes
 # Minimum Absolute Difference in BST
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -17,7 +18,6 @@ class Solution:
         node = root
 
         while True:
-
             if node is not None:
                 stack.append(node)
                 node = node.left
@@ -30,8 +30,6 @@ class Solution:
         minDiff = float("inf")
 
         for idx in range(1, len(inorder)):
-            minDiff = min(minDiff, inorder[idx] - inorder[idx-1])
-    
-        return minDiff
+            minDiff = min(minDiff, inorder[idx] - inorder[idx - 1])
 
-        
+        return minDiff
