@@ -7,6 +7,7 @@ class Node:
         self.left = left
         self.right = right
 
+
 # Time Complexity: O(n) | Space Complexity: O(h) where h is the height of the tree
 class Solution:
     def treeToDoublyList(self, root: "Node") -> "Node":

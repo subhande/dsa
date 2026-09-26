@@ -7,6 +7,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 # Approach 1: Recursive Brute Force
 # Time Complexity: O(n^2) | Space Complexity: O(n)
 class Solution:
@@ -72,19 +73,19 @@ class Solution:
 # Time Complexity: O(n) | Space Complexity: O(n)
 class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
-        def helper(lower = float('-inf'), upper = float('inf')):
+        def helper(lower=float("-inf"), upper=float("inf")):
             nonlocal idx
             # If all elements from preorder are used
             # Then the tree is constructed
             if idx == n:
                 return None
-            
+
             val = preorder[idx]
-            # If the current element 
+            # If the current element
             # couldn't be placed here to meet BST requirements
             if val < lower or val > upper:
                 return None
-            
+
             # place the current element
             # and recursively construct subtrees
             idx += 1
@@ -92,7 +93,7 @@ class Solution:
             root.left = helper(lower, val)
             root.right = helper(val, upper)
             return root
-        
+
         idx = 0
         n = len(preorder)
         return helper()

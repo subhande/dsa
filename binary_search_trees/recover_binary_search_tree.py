@@ -8,6 +8,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 # Approach 1: Brute Force: Inorder Traversal and Sorting
 # Time Complexity: O(nlogn) | Space Complexity: O(n)
 class Solution:
@@ -26,7 +27,7 @@ class Solution:
                 return
 
             inorder(node.left)
-            nodes.append(node.val)  
+            nodes.append(node.val)
             inorder(node.right)
 
         inorder(root)
@@ -85,6 +86,7 @@ class Solution:
 # Case 2: Swapped nodes are adjacent
 # Example: 3, 5, 8, |7|, 10, 15, 20, 25
 
+
 class Solution2:
     def recoverTree(self, root: TreeNode | None) -> None:
         """
@@ -118,5 +120,3 @@ class Solution2:
         if first and second:
             # Swap the values of the two nodes to recover the BST
             first.val, second.val = second.val, first.val
-
-        
