@@ -67,6 +67,44 @@ class Solution:
 
         return nums
 
+    def heapifyDownMax(self, arr, index, heapSize):
+        """
+        Maintains the max-heap property by moving the element at the given index down the heap.
+        :param arr: List of integers representing the heap.
+        :param index: Index of the element to heapify down.
+        :param heapSize: Current size of the heap.
+        """
+
+        largest = index  # assume the current index is the largest value
+        leftChild = 2 * index + 1
+        rightChild = 2 * index + 2
+
+        # Check if the left child exists and is larger than the current largest value.
+        if leftChild < heapSize and arr[leftChild] > arr[largest]:
+            largest = leftChild
+
+        # Check if the right child exists and is larger than the current largest value.
+        if rightChild < heapSize and arr[rightChild] > arr[largest]:
+            largest = rightChild
+
+        # If the largest value is not at the current index, swap and continue heapifying down.
+        if largest != index:
+            arr[index], arr[largest] = arr[largest], arr[index]
+            self.heapifyDownMax(arr, largest, heapSize)
+
+    def buildMaxHeap(self, nums):
+        """
+        Converts the given array into a max-heap in-place.
+        :param nums: List of integers to be transformed into a max-heap.
+        """
+
+        heapSize = len(nums)
+
+        for i in range((heapSize // 2) - 1, -1, -1):
+            self.heapifyDownMax(nums, i, heapSize)
+
+        return nums
+
 
 from binarytree import build
 
@@ -87,3 +125,9 @@ if __name__ == "__main__":
     print_tree(nums)  # Output: [2, 3, 4, 1, 7, 3, 9, 4, 6]
     nums = sol.buildMinHeap(nums)
     print_tree(nums)  # Output: [1, 2, 3, 3, 7, 4, 9, 4, 6]
+
+
+    nums = [2, 7 , 4, 1, 8, 1]
+    print_tree(nums)  # Output: [2, 7 , 4, 1, 8, 1]
+    nums = sol.buildMaxHeap(nums)
+    print_tree(nums)  # Output: [8, 7, 4, 1, 2, 1]
