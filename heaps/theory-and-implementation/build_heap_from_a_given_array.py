@@ -126,8 +126,7 @@ if __name__ == "__main__":
     nums = sol.buildMinHeap(nums)
     print_tree(nums)  # Output: [1, 2, 3, 3, 7, 4, 9, 4, 6]
 
-
-    nums = [2, 7 , 4, 1, 8, 1]
+    nums = [2, 7, 4, 1, 8, 1]
     print_tree(nums)  # Output: [2, 7 , 4, 1, 8, 1]
     nums = sol.buildMaxHeap(nums)
     print_tree(nums)  # Output: [8, 7, 4, 1, 2, 1]

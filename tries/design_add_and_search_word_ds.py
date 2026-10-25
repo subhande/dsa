@@ -158,7 +158,6 @@ class WordDictionary:
 # Approach 3: Dict-based trie + recursive DFS search
 # addWord: O(m) | search: O(m) without dots, O(min(26^m, T)) with dots | Space: O(T)
 class WordDictionary:
-
     def __init__(self):
         """
         Initialize your data structure here.
@@ -191,9 +190,7 @@ class WordDictionary:
                     if ch == ".":
                         for x in node:
                             # Skip the end-of-word marker; recurse on the rest of the pattern
-                            if x != "$" and search_in_node(
-                                word[i + 1 :], node[x]
-                            ):
+                            if x != "$" and search_in_node(word[i + 1 :], node[x]):
                                 return True
 
                     # If no nodes lead to an answer
@@ -209,6 +206,7 @@ class WordDictionary:
             return "$" in node
 
         return search_in_node(word, self.trie)
+
 
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()

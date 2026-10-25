@@ -3,6 +3,7 @@ from collections import deque
 
 ## DFS SOlution
 
+
 class Solution:
     def isValid(self, r, c, rows, cols):
         # Check if the coordinates are within bounds
@@ -34,10 +35,11 @@ class Solution:
         self.bfs(sr, sc, rows, cols, image, original_color, newColor)
         return image
 
+
 ## BFS Solution
 
-class Solution:
 
+class Solution:
     def isValid(self, r, c, rows, cols) -> bool:
         return 0 <= r < rows and 0 <= c < cols
 
@@ -49,7 +51,6 @@ class Solution:
         grid[r][c] = new_color
 
         while stack:
-
             row, col = stack.pop()
 
             for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
@@ -63,7 +64,7 @@ class Solution:
         cols = len(image[0])
 
         original_color = image[sr][sc]
-        
+
         if original_color == color:
             return image
 
@@ -71,8 +72,6 @@ class Solution:
 
         return image
 
-        
-        
 
 if __name__ == "__main__":
     sol = Solution()
