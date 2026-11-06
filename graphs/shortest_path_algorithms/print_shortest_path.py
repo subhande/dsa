@@ -5,7 +5,7 @@ from typing import List
 
 
 class Solution:
-    def dijkstraUsingHeap(self, V, adj, S, parent):
+    def wd(self, V, adj, S, parent):
         INF = float("inf")
 
         dist = [INF] * V
