@@ -23,6 +23,7 @@ class DisjointSet:
     def __init__(self, n):
         self.parent = list(range(n))
         self.rank = [0] * n
+
     def findParent(self, u):
         if u != self.parent[u]:
             self.parent[u] = self.findParent(self.parent[u])
